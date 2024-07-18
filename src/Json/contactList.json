@@ -1,0 +1,235 @@
+{
+  "title": "Contacts",
+  "allButton": {
+    "title": "ALL",
+    "icon-down": "@/assets/icon-down.svg",
+    "icon-up": "@/assets/icon-up.svg"
+  },
+  "addButton": {
+    "title": "ADD CONTACT",
+    "icon": "@/assets/plus-icon.svg"
+  },
+  "searchBoxLabel": "Contact Search",
+  "individualUser": {
+    "actionButtonTitle": "ACTION",
+    "editButtonTitle": "EDIT",
+    "detailsButtonTitle": "DETAILS",
+    "opertunitiesTitle": "Opertunities",
+    "activities": "Activities"
+  },
+  "table": {
+    "tableHead": ["Name", "Company", "Status", "Assigned to", "Phone", "Email"],
+    "tableBody": [
+      {
+        "name": "Amelia Harper",
+        "position": "Network Admin",
+        "company": "ACME",
+        "status": "Salaried",
+        "assignedTo": "John Heart",
+        "phone": "+1(213)555-4276",
+        "email": "ameliah@dx-email.com",
+        "address": "527 W 7th St",
+        "oppertunities": [
+          {
+            "text": "incoming Request for conference Room",
+            "price": "$2,115"
+          },
+          {
+            "text": "POS Touch Screens",
+            "price": "$1,645"
+          }
+        ],
+        "activities": [
+          {
+            "title": "Qualified",
+            "date": "05/19/2020",
+            "user": "Samantha Bright"
+          },
+          {
+            "title": "Disqualified",
+            "date": "05/19/2020",
+            "user": "Samantha Bright"
+          },
+          {
+            "title": "Call planned",
+            "date": "05/20/2020",
+            "user": "Samantha Bright"
+          },
+          {
+            "title": "Message Sent",
+            "date": "02/28/2020",
+            "user": "Samantha Bright"
+          }
+        ]
+      },
+      {
+        "name": "Antony Remmen",
+        "position": "Support Assistant",
+        "company": "Clicker",
+        "status": "Salaried",
+        "assignedTo": "Samantha Bright",
+        "phone": "+1(310)555-6625",
+        "email": "anthonyr@dx-email.com",
+        "address": "1542 S Beacon St",
+        "oppertunities": [
+          {
+            "text": "incoming Request for conference Room",
+            "price": "$2,115"
+          },
+          {
+            "text": "POS Touch Screens",
+            "price": "$1,645"
+          }
+        ],
+        "activities": [
+          {
+            "title": "Qualified",
+            "date": "06/10/2020",
+            "user": "Samantha Bright"
+          },
+          {
+            "title": "Incoming call logged",
+            "date": "06/11/2020",
+            "user": "Samantha Bright"
+          },
+          {
+            "title": "Outbound call logged",
+            "date": "06/11/2020",
+            "user": "Samantha Bright"
+          },
+          {
+            "title": "Message Sent",
+            "date": "06/12/2020",
+            "user": "Samantha Bright"
+          }
+        ]
+      },
+      {
+        "name": "Arnie Schwartz",
+        "position": "Engineer",
+        "company": "Screen Shop",
+        "status": "Salaried",
+        "assignedTo": "John Heart",
+        "phone": "+1(714)555-8882",
+        "email": "arnolds@dx-email.com",
+        "address": "125 W Elm St",
+        "oppertunities": [
+          {
+            "text": "incoming Request for conference Room",
+            "price": "$2,115"
+          },
+          {
+            "text": "POS Touch Screens",
+            "price": "$1,645"
+          }
+        ],
+        "activities": [
+          {
+            "title": "Qualified",
+            "date": "05/19/2020",
+            "user": "John Heart"
+          },
+          {
+            "title": "Disqualified",
+            "date": "05/19/2020",
+            "user": "John Heart"
+          },
+          {
+            "title": "Call planned",
+            "date": "05/20/2020",
+            "user": "John Heart"
+          },
+          {
+            "title": "Message Sent",
+            "date": "02/28/2020",
+            "user": "John Heart"
+          }
+        ]
+      },
+      {
+        "name": "Arthur Miller",
+        "position": "CTO",
+        "company": "Super Mart of the West",
+        "status": "Salaried",
+        "assignedTo": "Samantha Bright",
+        "phone": "+1(310)555-8583",
+        "email": "arthurm@dx-email.com",
+        "address": "3800 Horner St.",
+        "oppertunities": [
+          {
+            "text": "incoming Request for conference Room",
+            "price": "$2,115"
+          },
+          {
+            "text": "POS Touch Screens",
+            "price": "$1,645"
+          }
+        ],
+        "activities": [
+          {
+            "title": "Qualified",
+            "date": "05/05/2020",
+            "user": "Samantha Bright"
+          },
+          {
+            "title": "Disqualified",
+            "date": "05/06/2020",
+            "user": "Samantha Bright"
+          },
+          {
+            "title": "Call planned",
+            "date": "05/06/2020",
+            "user": "Samantha Bright"
+          },
+          {
+            "title": "Message Sent",
+            "date": "05/07/2020",
+            "user": "Samantha Bright"
+          }
+        ]
+      },
+      {
+        "name": "Barb Banks",
+        "position": "Support Manager",
+        "company": "StereoShack",
+        "status": "Salaried",
+        "assignedTo": "Samantha Bright",
+        "phone": "+1(310)555-3355",
+        "email": "barbarab@dx-email.com",
+        "address": "17985 Pacific Coast Hwy",
+        "oppertunities": [
+          {
+            "text": "incoming Request for conference Room",
+            "price": "$2,115"
+          },
+          {
+            "text": "POS Touch Screens",
+            "price": "$1,645"
+          }
+        ],
+        "activities": [
+          {
+            "title": "Qualified",
+            "date": "05/19/2020",
+            "user": "Samantha Bright"
+          },
+          {
+            "title": "Disqualified",
+            "date": "05/19/2020",
+            "user": "Samantha Bright"
+          },
+          {
+            "title": "Call planned",
+            "date": "05/20/2020",
+            "user": "Samantha Bright"
+          },
+          {
+            "title": "Message Sent",
+            "date": "05/21/2020",
+            "user": "Samantha Bright"
+          }
+        ]
+      }
+    ]
+  }
+}

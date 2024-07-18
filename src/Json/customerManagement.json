@@ -1,0 +1,37 @@
+{
+  "header": {
+    "title": "UI Template Gallery",
+    "searchBoxLabel": "Search"
+  },
+  "sidebar": {
+    "copyright": "Copyright © 2024",
+    "companyName": "Developer Express Inc.",
+    "sidebarContents": [
+      {
+        "title": "CRM",
+        "image": "@/assets/crm-icon.svg",
+        "contents": ["Contact List", "Contact Details"]
+      },
+      {
+        "title": "Planning",
+        "image": "@/assets/calender-icon.svg",
+        "contents": ["Task List", "Task Details", "Scheduler"]
+      },
+      {
+        "title": "Analytics",
+        "image": "@/assets/analytics-icon.svg",
+        "contents": ["Dashboard", "Sales Report", "Geography"]
+      },
+      {
+        "title": "Authentication",
+        "image": "@/assets/authentication-icon.svg",
+        "contents": ["Sign In Form", "Sign Up Form", "Reset Password Form"]
+      },
+      {
+        "title": "Common",
+        "image": "@/assets/common-icon.svg",
+        "contents": ["User Profile"]
+      }
+    ]
+  }
+}
