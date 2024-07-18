@@ -9,27 +9,27 @@
     "sidebarContents": [
       {
         "title": "CRM",
-        "image": "@/assets/crm-icon.svg",
+        "icon": "@/assets/crm-icon.svg",
         "contents": ["Contact List", "Contact Details"]
       },
       {
         "title": "Planning",
-        "image": "@/assets/calender-icon.svg",
+        "icon": "@/assets/calender-icon.svg",
         "contents": ["Task List", "Task Details", "Scheduler"]
       },
       {
         "title": "Analytics",
-        "image": "@/assets/analytics-icon.svg",
+        "icon": "@/assets/analytics-icon.svg",
         "contents": ["Dashboard", "Sales Report", "Geography"]
       },
       {
         "title": "Authentication",
-        "image": "@/assets/authentication-icon.svg",
+        "icon": "@/assets/authentication-icon.svg",
         "contents": ["Sign In Form", "Sign Up Form", "Reset Password Form"]
       },
       {
         "title": "Common",
-        "image": "@/assets/common-icon.svg",
+        "icon": "@/assets/common-icon.svg",
         "contents": ["User Profile"]
       }
     ]

@@ -2,16 +2,48 @@
   "title": "Contacts",
   "allButton": {
     "title": "ALL",
-    "icon-down": "@/assets/icon-down.svg",
-    "icon-up": "@/assets/icon-up.svg"
+    "icon-down": "@/assets/arrow-down.svg",
+    "icon-up": "@/assets/arrow-up.svg",
+    "contents": ["All", "Salaried", "Commission", "Terminated"]
   },
   "addButton": {
     "title": "ADD CONTACT",
     "icon": "@/assets/plus-icon.svg"
   },
+  "refreshButton": {
+    "icon": "@/assets/refresh-icon.svg"
+  },
+  "exportButton": {
+    "icon-down": "@/assets/arrow-down.svg",
+    "icon-up": "@/assets/arrow-up.svg",
+    "contents": [
+      {
+        "text": "Export all data into Excel",
+        "icon": "@/assets/excelData-icon.svg"
+      },
+      {
+        "text": "Export selected rows to Excel",
+        "icon": "@/assets/selectedExcel-icon.svg"
+      },
+      {
+        "text": "Export all data to PDF",
+        "icon": "@/assets/pdf-icon.svg"
+      },
+      {
+        "text": "Export selected rows to PDF",
+        "icon": "@/assets/selectedPDF-icon.svg"
+      }
+    ]
+  },
+  "rowChooserButton": {
+    "icon": "@/assets/rowChooser-icon.svg"
+  },
   "searchBoxLabel": "Contact Search",
   "individualUser": {
-    "actionButtonTitle": "ACTION",
+    "actionButton": {
+      "title": "ACTIONS",
+      "contents": ["Call", "Send Fax", "Send Email", "Make a Meeting"]
+    },
     "editButtonTitle": "EDIT",
     "detailsButtonTitle": "DETAILS",
     "opertunitiesTitle": "Opertunities",
