@@ -4,43 +4,53 @@
     "searchBoxLabel": "Search"
   },
   "sidebar": {
-    "copyright": "Copyright © 2024",
+    "copyrightText": "Copyright © 2024",
     "companyName": "Developer Express Inc.",
     "sidebarContents": [
       {
         "title": "CRM",
-        "icon": "@/assets/crm-icon.svg",
-        "contents": ["Contact List", "Contact Details"]
+        "prepend-icon": "@/assets/crm-icon.svg",
+        "icon-down": "@/assets/arrow-down.svg",
+        "icon-up": "@/assets/arrow-up.svg",
+        "subTitles": ["Contact List", "Contact Details"]
       },
       {
         "title": "Planning",
-        "icon": "@/assets/calender-icon.svg",
-        "contents": ["Task List", "Task Details", "Scheduler"]
+        "prepend-icon": "@/assets/calender-icon.svg",
+        "icon-down": "@/assets/arrow-down.svg",
+        "icon-up": "@/assets/arrow-up.svg",
+        "subTitles": ["Task List", "Task Details", "Scheduler"]
       },
       {
         "title": "Analytics",
-        "icon": "@/assets/analytics-icon.svg",
-        "contents": ["Dashboard", "Sales Report", "Geography"]
+        "prepend-icon": "@/assets/analytics-icon.svg",
+        "icon-down": "@/assets/arrow-down.svg",
+        "icon-up": "@/assets/arrow-up.svg",
+        "subTitles": ["Dashboard", "Sales Report", "Geography"]
       },
       {
         "title": "Authentication",
-        "icon": "@/assets/authentication-icon.svg",
-        "contents": ["Sign In Form", "Sign Up Form", "Reset Password Form"]
+        "prepend-icon": "@/assets/authentication-icon.svg",
+        "icon-down": "@/assets/arrow-down.svg",
+        "icon-up": "@/assets/arrow-up.svg",
+        "subTitles": ["Sign In Form", "Sign Up Form", "Reset Password Form"]
       },
       {
         "title": "Common",
-        "icon": "@/assets/common-icon.svg",
-        "contents": ["User Profile"]
+        "prepend-icon": "@/assets/common-icon.svg",
+        "icon-down": "@/assets/arrow-down.svg",
+        "icon-up": "@/assets/arrow-up.svg",
+        "subTitles": ["User Profile"]
       }
     ]
   },
-  "contactList": {
+  "contactListPage": {
     "title": "Contacts",
     "allButton": {
       "title": "ALL",
       "icon-down": "@/assets/arrow-down.svg",
       "icon-up": "@/assets/arrow-up.svg",
-      "contents": ["All", "Salaried", "Commission", "Terminated"]
+      "subTitles": ["All", "Salaried", "Commission", "Terminated"]
     },
     "addContactButton": {
       "title": "ADD CONTACT",
@@ -75,15 +85,15 @@
       "icon": "@/assets/rowChooser-icon.svg"
     },
     "searchBoxLabel": "Contact Search",
-    "individualUser": {
-      "actionButton": {
+    "userData": {
+      "actionsButton": {
         "title": "ACTIONS",
-        "contents": ["Call", "Send Fax", "Send Email", "Make a Meeting"]
+        "subTitles": ["Call", "Send Fax", "Send Email", "Make a Meeting"]
       },
       "editButtonTitle": "EDIT",
       "detailsButtonTitle": "DETAILS",
-      "opertunitiesTitle": "Opertunities",
-      "activities": "Activities"
+      "userOpportunitiesTitle": "Opportunities",
+      "userActivitiesTitle": "Activities"
     }
   }
 }

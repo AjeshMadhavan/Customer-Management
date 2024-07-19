@@ -11,7 +11,7 @@
         "phone": "+1(213)555-4276",
         "email": "ameliah@dx-email.com",
         "address": "527 W 7th St",
-        "oppertunities": [
+        "userOpportunities": [
           {
             "text": "incoming Request for conference Room",
             "price": "$2,115"
@@ -21,26 +21,26 @@
             "price": "$1,645"
           }
         ],
-        "activities": [
+        "userActivities": [
           {
-            "title": "Qualified",
+            "activity": "Qualified",
             "date": "05/19/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           },
           {
-            "title": "Disqualified",
+            "activity": "Disqualified",
             "date": "05/19/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           },
           {
-            "title": "Call planned",
+            "activity": "Call planned",
             "date": "05/20/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           },
           {
-            "title": "Message Sent",
+            "activity": "Message Sent",
             "date": "02/28/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           }
         ]
       },
@@ -53,7 +53,7 @@
         "phone": "+1(310)555-6625",
         "email": "anthonyr@dx-email.com",
         "address": "1542 S Beacon St",
-        "oppertunities": [
+        "userOpportunities": [
           {
             "text": "incoming Request for conference Room",
             "price": "$2,115"
@@ -63,26 +63,26 @@
             "price": "$1,645"
           }
         ],
-        "activities": [
+        "userActivities": [
           {
-            "title": "Qualified",
+            "activity": "Qualified",
             "date": "06/10/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           },
           {
-            "title": "Incoming call logged",
+            "activity": "Incoming call logged",
             "date": "06/11/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           },
           {
-            "title": "Outbound call logged",
+            "activity": "Outbound call logged",
             "date": "06/11/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           },
           {
-            "title": "Message Sent",
+            "activity": "Message Sent",
             "date": "06/12/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           }
         ]
       },
@@ -95,7 +95,7 @@
         "phone": "+1(714)555-8882",
         "email": "arnolds@dx-email.com",
         "address": "125 W Elm St",
-        "oppertunities": [
+        "userOpportunities": [
           {
             "text": "incoming Request for conference Room",
             "price": "$2,115"
@@ -105,26 +105,26 @@
             "price": "$1,645"
           }
         ],
-        "activities": [
+        "userActivities": [
           {
-            "title": "Qualified",
+            "activity": "Qualified",
             "date": "05/19/2020",
-            "user": "John Heart"
+            "assignedUser": "John Heart"
           },
           {
-            "title": "Disqualified",
+            "activity": "Disqualified",
             "date": "05/19/2020",
-            "user": "John Heart"
+            "assignedUser": "John Heart"
           },
           {
-            "title": "Call planned",
+            "activity": "Call planned",
             "date": "05/20/2020",
-            "user": "John Heart"
+            "assignedUser": "John Heart"
           },
           {
-            "title": "Message Sent",
+            "activity": "Message Sent",
             "date": "02/28/2020",
-            "user": "John Heart"
+            "assignedUser": "John Heart"
           }
         ]
       },
@@ -137,7 +137,7 @@
         "phone": "+1(310)555-8583",
         "email": "arthurm@dx-email.com",
         "address": "3800 Horner St.",
-        "oppertunities": [
+        "userOpportunities": [
           {
             "text": "incoming Request for conference Room",
             "price": "$2,115"
@@ -147,26 +147,26 @@
             "price": "$1,645"
           }
         ],
-        "activities": [
+        "userActivities": [
           {
-            "title": "Qualified",
+            "activity": "Qualified",
             "date": "05/05/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           },
           {
-            "title": "Disqualified",
+            "activity": "Disqualified",
             "date": "05/06/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           },
           {
-            "title": "Call planned",
+            "activity": "Call planned",
             "date": "05/06/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           },
           {
-            "title": "Message Sent",
+            "activity": "Message Sent",
             "date": "05/07/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           }
         ]
       },
@@ -179,7 +179,7 @@
         "phone": "+1(310)555-3355",
         "email": "barbarab@dx-email.com",
         "address": "17985 Pacific Coast Hwy",
-        "oppertunities": [
+        "userOpportunities": [
           {
             "text": "incoming Request for conference Room",
             "price": "$2,115"
@@ -189,26 +189,26 @@
             "price": "$1,645"
           }
         ],
-        "activities": [
+        "userActivities": [
           {
-            "title": "Qualified",
+            "activity": "Qualified",
             "date": "05/19/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           },
           {
-            "title": "Disqualified",
+            "activity": "Disqualified",
             "date": "05/19/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           },
           {
-            "title": "Call planned",
+            "activity": "Call planned",
             "date": "05/20/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           },
           {
-            "title": "Message Sent",
+            "activity": "Message Sent",
             "date": "05/21/2020",
-            "user": "Samantha Bright"
+            "assignedUser": "Samantha Bright"
           }
         ]
       }
