@@ -46,10 +46,10 @@
       "title": "ADD CONTACT",
       "icon": "@/assets/plus-icon.svg"
     },
-    "refreshButton": {
+    "refreshDataButton": {
       "icon": "@/assets/refresh-icon.svg"
     },
-    "exportButton": {
+    "exportDataButton": {
       "icon-down": "@/assets/arrow-down.svg",
       "icon-up": "@/assets/arrow-up.svg",
       "contents": [
