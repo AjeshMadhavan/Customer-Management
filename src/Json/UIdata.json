@@ -10,36 +10,26 @@
       {
         "title": "CRM",
         "prepend-icon": "@/assets/crm-icon.svg",
-        "icon-down": "@/assets/arrow-down.svg",
-        "icon-up": "@/assets/arrow-up.svg",
         "subTitles": ["Contact List", "Contact Details"]
       },
       {
         "title": "Planning",
         "prepend-icon": "@/assets/calender-icon.svg",
-        "icon-down": "@/assets/arrow-down.svg",
-        "icon-up": "@/assets/arrow-up.svg",
         "subTitles": ["Task List", "Task Details", "Scheduler"]
       },
       {
         "title": "Analytics",
         "prepend-icon": "@/assets/analytics-icon.svg",
-        "icon-down": "@/assets/arrow-down.svg",
-        "icon-up": "@/assets/arrow-up.svg",
         "subTitles": ["Dashboard", "Sales Report", "Geography"]
       },
       {
         "title": "Authentication",
         "prepend-icon": "@/assets/authentication-icon.svg",
-        "icon-down": "@/assets/arrow-down.svg",
-        "icon-up": "@/assets/arrow-up.svg",
         "subTitles": ["Sign In Form", "Sign Up Form", "Reset Password Form"]
       },
       {
         "title": "Common",
         "prepend-icon": "@/assets/common-icon.svg",
-        "icon-down": "@/assets/arrow-down.svg",
-        "icon-up": "@/assets/arrow-up.svg",
         "subTitles": ["User Profile"]
       }
     ]
@@ -48,8 +38,6 @@
     "title": "Contacts",
     "allButton": {
       "title": "ALL",
-      "icon-down": "@/assets/arrow-down.svg",
-      "icon-up": "@/assets/arrow-up.svg",
       "subTitles": ["All", "Salaried", "Commission", "Terminated"]
     },
     "addContactButton": {
@@ -60,8 +48,6 @@
       "icon": "@/assets/refresh-icon.svg"
     },
     "exportDataButton": {
-      "icon-down": "@/assets/arrow-down.svg",
-      "icon-up": "@/assets/arrow-up.svg",
       "contents": [
         {
           "text": "Export all data into Excel",
