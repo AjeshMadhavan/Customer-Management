@@ -1,7 +1,13 @@
 {
   "topPanel": {
     "title": "UI Template Gallery",
-    "searchBoxLabel": "Search"
+    "searchBoxLabel": "Search",
+    "icons": {
+      "hamburgerIcon": "@/assets/hamburgerIcon.svg",
+      "themeSwitchingIcon": "@/assets/themeIcon.svg",
+      "notificationIcon": "@/assets/notificationIcon.svg",
+      "profileImage": "@/assets/profileImage.svg"
+    }
   },
   "sidebar": {
     "copyrightText": "Copyright © 2024",
@@ -9,34 +15,34 @@
     "sidebarContents": [
       {
         "title": "CRM",
-        "prepend-icon": "@/assets/crm-icon.svg",
+        "icon": "@/assets/crm-icon.svg",
         "subTitles": ["Contact List", "Contact Details"]
       },
       {
         "title": "Planning",
-        "prepend-icon": "@/assets/calender-icon.svg",
+        "icon": "@/assets/calender-icon.svg",
         "subTitles": ["Task List", "Task Details", "Scheduler"]
       },
       {
         "title": "Analytics",
-        "prepend-icon": "@/assets/analytics-icon.svg",
+        "icon": "@/assets/analytics-icon.svg",
         "subTitles": ["Dashboard", "Sales Report", "Geography"]
       },
       {
         "title": "Authentication",
-        "prepend-icon": "@/assets/authentication-icon.svg",
+        "icon": "@/assets/authentication-icon.svg",
         "subTitles": ["Sign In Form", "Sign Up Form", "Reset Password Form"]
       },
       {
         "title": "Common",
-        "prepend-icon": "@/assets/common-icon.svg",
+        "icon": "@/assets/common-icon.svg",
         "subTitles": ["User Profile"]
       }
     ]
   },
   "contactListPage": {
     "title": "Contacts",
-    "allButton": {
+    "categoryOptions": {
       "title": "ALL",
       "subTitles": ["All", "Salaried", "Commission", "Terminated"]
     },
@@ -47,8 +53,9 @@
     "refreshDataButton": {
       "icon": "@/assets/refresh-icon.svg"
     },
-    "exportDataButton": {
-      "contents": [
+    "exportOptions": {
+      "icon": "@/assets/export-icon.svg",
+      "options": [
         {
           "text": "Export all data into Excel",
           "icon": "@/assets/excelData-icon.svg"
@@ -67,7 +74,7 @@
         }
       ]
     },
-    "rowChooserButton": {
+    "columnChooserButton": {
       "icon": "@/assets/rowChooser-icon.svg"
     },
     "searchBoxLabel": "Contact Search",
