@@ -1,25 +1,17 @@
 <template>
   <button
     :class="{
-      btn: true,
-      'icon-left': props.iconPositionLeft,
-      'apply-border': props.addBorder,
-      'dropdown-title': props.dropdownTitle,
-      'dropdown-title-bold': props.dropdownTitleBold,
-      'bg-blue': props.bgBlue,
-      'show-lighter': props.showLight,
-      'show-bolder': props.showBolder,
-      'table-btn': props.tableHeadBtn,
-      'showas-icon': props.showAsIcon,
-      'icon-btn': props.iconBtn,
+      button: true,
+      [props.className]: true,
     }"
-    @click="handleBtnClick"
+    @click="handleButtonClick"
+    :style="buttonStyles"
   >
     <div
       :class="{
         'icon-text-wrapper': true,
       }"
-      v-if="props.text || props.iconBtn"
+      v-if="props.text || props.icon"
     >
       <div v-if="props.prependIcon" class="prepend-icon-wrapper">
         <img :src="props.prependIcon" class="prepend-icon" />
@@ -27,12 +19,12 @@
       <span v-if="props.text" class="btn__text">
         {{ props.text }}
       </span>
-      <img v-if="props.iconBtn" :src="props.iconBtn" class="icon" />
+      <img v-if="props.icon" :src="props.icon" class="icon" />
     </div>
-    <div v-if="props.icon" class="btn-icon-wrapper">
-      <img :src="props.icon" />
+    <div v-if="props.appendIcon" class="append-icon-wrapper">
+      <img :src="props.appendIcon" />
     </div>
-    <div v-if="props.tableHeadBtn" class="table-btn-icons">
+    <div v-if="props.tableHeadButton" class="table-button-icons">
       <img :src="props.sortIcon" class="sort-icon" />
       <img :src="props.filterIcon" class="filter-icon" />
     </div>
@@ -40,79 +32,60 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits, defineProps } from "vue";
+import { defineEmits, defineProps, reactive } from "vue";
 
-const emits = defineEmits(["handleBtnClick"]);
+const emits = defineEmits(["handleButtonClick"]);
 const props = defineProps({
   text: {
     type: String,
-    default: undefined,
+    default: "",
   },
-  showAsIcon: {
-    type: Boolean,
-    default: false,
-  },
-  iconBtn: {
+  className: {
     type: String,
-    default: undefined,
+    default: "",
+  },
+  buttonBackgroundColor: {
+    type: String,
+    default: "transparent",
+  },
+  buttonFontWeight: {
+    type: Number,
+    default: 500,
   },
   icon: {
     type: String,
-    defalut: undefined,
+    default: "",
+  },
+  appendIcon: {
+    type: String,
+    defalut: "",
   },
   prependIcon: {
     type: String,
-    default: undefined,
+    default: "",
   },
   sortIcon: {
     type: String,
-    default: undefined,
+    default: "",
   },
   filterIcon: {
     type: String,
-    default: undefined,
-  },
-  iconPositionLeft: {
-    type: Boolean,
-    defalut: false,
-  },
-  bgBlue: {
-    type: Boolean,
-    default: false,
-  },
-  showLight: {
-    type: Boolean,
-    defalut: false,
-  },
-  showBolder: {
-    type: Boolean,
-    defalut: false,
-  },
-  addBorder: {
-    type: Boolean,
-    defalut: false,
-  },
-  dropdownTitle: {
-    type: Boolean,
-    default: false,
-  },
-  dropdownTitleBold: {
-    type: Boolean,
-    default: false,
-  },
-  tableHeadBtn: {
-    type: Boolean,
-    default: false,
+    default: "",
   },
 });
 
-const handleBtnClick = () => {
-  emits("handleBtnClick");
+const buttonStyles = reactive({
+  backgroundColor: props.buttonBackgroundColor,
+  fontWeight: props.buttonFontWeight,
+});
+
+const handleButtonClick = () => {
+  emits("handleButtonClick");
 };
 </script>
 
 <style lang="scss" scoped>
-.btn {
+.button {
   border: none;
   outline: none;
   display: flex;
@@ -134,18 +107,6 @@ const handleBtnClick = () => {
   }
 }
 
-.showas-icon {
-  padding: 5px;
-
-  &:hover {
-    border-radius: 50%;
-  }
-}
-
-.icon-btn {
-  padding: 5px 8px;
-}
-
 .icon-text-wrapper {
   display: flex;
   align-items: center;
@@ -162,7 +123,7 @@ const handleBtnClick = () => {
   align-items: center;
 }
 
-.btn-icon-wrapper {
+.append-icon-wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -181,21 +142,9 @@ const handleBtnClick = () => {
   height: 15px;
 }
 
-.icon-left {
-  flex-direction: row-reverse;
-}
-
-.apply-border {
-  padding: 5px 12px;
-  border: 1px solid rgba(0, 0, 0, 0.24);
-}
-
-.show-lighter {
-  font-weight: 400;
-}
-
-.show-bolder {
-  font-weight: 700;
+.table-button-icons {
+  display: flex;
+  align-items: center;
 }
 
 .bg-blue {
@@ -204,29 +153,31 @@ const handleBtnClick = () => {
   border-radius: 2px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
   padding: 5px 12px 5px 8px;
+  flex-direction: row-reverse;
 
   &:hover {
     background-color: rgb(2, 139, 201);
   }
 }
 
-.dropdown-title {
-  padding: 6px 10px 6px 11px;
-  justify-content: space-between;
-  font-weight: 400;
+.text-with-icon {
+  padding: 5px 8px 5px 12px;
 
   &:hover {
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: rgba(0, 0, 0, 0.08);
+    border-radius: 2px;
   }
 }
 
-.dropdown-title-bold {
-  justify-content: space-between;
-  padding: 9px 16px 9px 0;
-  font-weight: 700;
+.icon-with-text {
+  padding: 5px 12px 5px 8px;
 }
 
-.table-btn {
+.icon-icon {
+  padding: 5px 8px;
+}
+
+.table-head-button {
   padding: 12px 11px;
 
   &:hover {
@@ -234,7 +185,26 @@ const handleBtnClick = () => {
   }
 }
 
-.table-btn-icons {
-  display: flex;
+.dropdown-icon-text-icon {
+  padding: 9px 16px 9px 0;
+  justify-content: space-between;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.dropdown-text-icon {
+  padding: 6px 10px 6px 11px;
+  justify-content: space-between;
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
+.outlined {
+  padding: 5px 12px;
+  border: 1px solid rgba(0, 0, 0, 0.24);
 }
 </style>
