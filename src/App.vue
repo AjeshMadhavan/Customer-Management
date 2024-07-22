@@ -1,17 +1,8 @@
 <template>
-  <div id="app">
-    <button-tag  icon="mdi-magnify" text="add contact" :variant="ButtonVariants.backgroundColor"/>
-    <button-tag  icon="mdi-magnify"  :variant="ButtonVariants.icon"/>
-    <button-tag   text="add contact" :variant="ButtonVariants.outlined"/>
-  </div>
+  <div id="app"></div>
 </template>
 
-<script lang="ts" setup>
-import ButtonTag from './components/ButtonTag.vue'
-import Plus from './assets/plus-solid.svg'
-
-import {ButtonVariants} from '@/Types/Enums'
-</script>
+<script lang="ts" setup></script>
 
 <style>
 #app {
