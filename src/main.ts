@@ -1,10 +1,15 @@
-import Vue from 'vue'
+import "vuetify/dist/vuetify.min.css";
+import Vue from "vue";
+import Vuetify from "vuetify";
 
-import vuetify from './plugins/vuetify'
 import App from './App.vue'
 import './index.css'
 
-Vue.config.productionTip = false
+Vue.use(Vuetify);
+
+const vuetify = new Vuetify();
+
+Vue.config.productionTip = false;
 
 new Vue({
   vuetify,
