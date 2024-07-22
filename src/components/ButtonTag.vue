@@ -89,7 +89,7 @@ const handleButtonClick = () => {
   }
 }
 
-.v-btn.backgroundColor {
+.v-btn.primary {
   padding: 5px 12px 5px 8px;
   color: #fff;
   background-color: #03a9f4;

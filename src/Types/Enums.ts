@@ -1,5 +1,5 @@
 export enum ButtonVariants {
-    outlined = 'outlined',
-    icon = 'icon',    
-    backgroundColor = 'backgroundColor'
+  outlined = "outlined",
+  icon = "icon",
+  primary = "primary",
 }
