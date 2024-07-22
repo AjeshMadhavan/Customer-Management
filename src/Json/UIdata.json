@@ -15,27 +15,27 @@
     "sidebarContents": [
       {
         "title": "CRM",
-        "icon": "@/assets/crm-icon.svg",
+        "icon": "mdi-account",
         "subTitles": ["Contact List", "Contact Details"]
       },
       {
         "title": "Planning",
-        "icon": "@/assets/calender-icon.svg",
+        "icon": "mdi-calendar",
         "subTitles": ["Task List", "Task Details", "Scheduler"]
       },
       {
         "title": "Analytics",
-        "icon": "@/assets/analytics-icon.svg",
+        "icon": "mdi-chart-box-outline",
         "subTitles": ["Dashboard", "Sales Report", "Geography"]
       },
       {
         "title": "Authentication",
-        "icon": "@/assets/authentication-icon.svg",
+        "icon": "mdi-account-box",
         "subTitles": ["Sign In Form", "Sign Up Form", "Reset Password Form"]
       },
       {
         "title": "Common",
-        "icon": "@/assets/common-icon.svg",
+        "icon": "mdi-package",
         "subTitles": ["User Profile"]
       }
     ]
@@ -51,7 +51,7 @@
       "icon": "mdi-plus"
     },
     "refreshDataButton": {
-      "icon": "@/assets/refresh-icon.svg"
+      "icon": "mdi-sync"
     },
     "exportOptions": {
       "icon": "@/assets/export-icon.svg",
