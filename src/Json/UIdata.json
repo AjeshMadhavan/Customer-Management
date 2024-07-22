@@ -3,9 +3,9 @@
     "title": "UI Template Gallery",
     "searchBoxLabel": "Search",
     "icons": {
-      "hamburgerIcon": "@/assets/hamburgerIcon.svg",
+      "hamburgerIcon": "mdi-menu",
       "themeSwitchingIcon": "@/assets/themeIcon.svg",
-      "notificationIcon": "@/assets/notificationIcon.svg",
+      "notificationIcon": "mdi-bell-outline",
       "profileImage": "@/assets/profileImage.svg"
     }
   },
@@ -48,7 +48,7 @@
     },
     "addContactButton": {
       "title": "ADD CONTACT",
-      "icon": "@/assets/plus-icon.svg"
+      "icon": "mdi-plus"
     },
     "refreshDataButton": {
       "icon": "@/assets/refresh-icon.svg"
