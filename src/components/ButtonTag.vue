@@ -73,12 +73,14 @@ const handleButtonClick = () => {
   font-size: 16px;
 }
 
+/**outlined varient */
 .v-btn.outlined {
   padding: 5px 12px;
   height: 28px;
   border-radius: 2px;
 }
 
+/**icon varient */
 .v-btn.icon {
   padding: 5px;
   width: 28px;
@@ -89,6 +91,7 @@ const handleButtonClick = () => {
   }
 }
 
+/**primary varient */
 .v-btn.primary {
   padding: 5px 12px 5px 8px;
   color: #fff;
