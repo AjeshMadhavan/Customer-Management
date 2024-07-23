@@ -1,13 +1,8 @@
 <template>
-  <div id="app">
-    <sidebar-dropdown variant="primary" prependIcon="mdi-account" />
-    <sidebar-dropdown variant="secondary" prependIcon="mdi-account" />
-  </div>
+  <div id="app"></div>
 </template>
 
-<script lang="ts" setup>
-import SidebarDropdown from "@/components/SidebarDropdown.vue";
-</script>
+<script lang="ts" setup></script>
 
 <style>
 #app {

@@ -2,7 +2,10 @@
   <div :class="['dropdown-menu', props.variant]">
     <button class="toggle-button" @click="toggleDropdownItems">
       <div class="toggle-button__title">
-        <v-icon v-if="props.variant === 'primary'" class="prepend-icon">
+        <v-icon
+          v-if="props.variant === DropdownVariants.primary"
+          class="prepend-icon"
+        >
           {{ props.prependIcon }}
         </v-icon>
         <span>{{ props.title }}</span>
@@ -10,9 +13,27 @@
       <v-icon class="append-icon"> {{ dropdownArrow }} </v-icon>
     </button>
     <ul v-if="showDropdownItems" class="dropdown-items">
-      <li v-for="item in contents" :key="item" class="dropdown-item">
-        {{ item }}
-      </li>
+      <div v-if="variant === DropdownVariants.primary">
+        <li
+          v-for="item in props.dropdownContents"
+          :key="item"
+          class="dropdown-item"
+        >
+          {{ item }}
+        </li>
+      </div>
+      <div v-if="variant === DropdownVariants.secondary">
+        <li
+          v-for="item in props.dropdownContents"
+          :key="item.text"
+          class="dropdown-item"
+        >
+          <span>
+            {{ item.text }} <br />
+            {{ item.price }}
+          </span>
+        </li>
+      </div>
     </ul>
   </div>
 </template>
@@ -20,18 +41,23 @@
 <script lang="ts" setup>
 import { ref, computed, defineProps } from "vue";
 
+import { DropdownVariants } from "@/Type/Enums";
+
 const props = defineProps({
   variant: {
     type: String,
-    default: "primary",
+    default: DropdownVariants.primary,
   },
   title: {
     type: String,
-    default: "CRM",
+    default: "",
   },
   prependIcon: {
     type: String,
     default: "",
+  },
+  dropdownContents: {
+    default: [],
   },
 });
 
@@ -41,10 +67,8 @@ const toggleDropdownItems = () => {
   showDropdownItems.value = !showDropdownItems.value;
 };
 
-const contents = ["Apple", "Mango fruit", "Grapes"];
-
 const dropdownArrow = computed(() => {
-  if (props.variant === "primary") {
+  if (props.variant === DropdownVariants.primary) {
     return showDropdownItems.value ? "mdi-chevron-down" : "mdi-chevron-right";
   } else {
     return showDropdownItems.value ? "mdi-chevron-up" : "mdi-chevron-down";
@@ -56,6 +80,7 @@ const dropdownArrow = computed(() => {
 .dropdown-menu {
   width: 100%;
   transition: all 1s ease;
+  height: max-content;
 
   .toggle-button {
     display: flex;
@@ -88,6 +113,8 @@ const dropdownArrow = computed(() => {
 
 /**primary dropdown menu */
 .primary {
+  background-color: transparent;
+
   .toggle-button {
     padding: 9px 16px 9px 0;
 
