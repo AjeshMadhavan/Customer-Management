@@ -2,7 +2,7 @@
   <v-btn
     v-bind="buttonAttributes"
     elevation="1"
-    :class="[props.variant]"
+    :class="[className]"
     :style="buttonStyles"
     @click="handleButtonClick"
   >
@@ -53,9 +53,21 @@ const buttonStyles = computed(() => {
 
 const buttonAttributes = computed(() => {
   return {
-    outlined: props.variant === ButtonVariants.outlined,
-    icon: props.variant === ButtonVariants.icon,
+    outlined: props.variant === ButtonVariants.Outlined,
+    icon: props.variant === ButtonVariants.Icon,
   };
+});
+
+const className = computed(() => {
+  if (props.variant === ButtonVariants.Primary) {
+    return "primary";
+  } else if (props.variant === ButtonVariants.Outlined) {
+    return "outlined";
+  } else if (props.variant === ButtonVariants.Icon) {
+    return "icon";
+  } else {
+    return "";
+  }
 });
 
 const handleButtonClick = () => {
