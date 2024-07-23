@@ -4,9 +4,21 @@
     "searchBoxLabel": "Search",
     "icons": {
       "hamburgerIcon": "mdi-menu",
-      "themeSwitchingIcon": "@/assets/themeIcon.svg",
-      "notificationIcon": "mdi-bell-outline",
-      "profileImage": "@/assets/profileImage.svg"
+      "themeSwitchingIcon": "mdi-weather-night",
+      "notificationIcon": "mdi-bell-outline"
+    },
+    "userProfile": {
+      "icon": "",
+      "options": [
+        {
+          "text": "John Heart"
+        },
+        {
+          "text": "Logout",
+          "icon": "mdi-run",
+          "path": "#"
+        }
+      ]
     }
   },
   "sidebar": {
@@ -16,27 +28,80 @@
       {
         "title": "CRM",
         "icon": "mdi-account",
-        "subTitles": ["Contact List", "Contact Details"]
+        "options": [
+          {
+            "text": "Contact List",
+            "path": "#"
+          },
+          {
+            "text": "Contact Details",
+            "path": "#"
+          }
+        ]
       },
       {
         "title": "Planning",
         "icon": "mdi-calendar",
-        "subTitles": ["Task List", "Task Details", "Scheduler"]
+        "options": [
+          {
+            "text": "Task List",
+            "path": "#"
+          },
+          {
+            "text": "Task Details",
+            "path": "#"
+          },
+          {
+            "text": "Scheduler",
+            "path": "#"
+          }
+        ]
       },
       {
         "title": "Analytics",
         "icon": "mdi-chart-box-outline",
-        "subTitles": ["Dashboard", "Sales Report", "Geography"]
+        "options": [
+          {
+            "text": "Dashboard",
+            "path": "#"
+          },
+          {
+            "text": "Sales Report",
+            "path": "#"
+          },
+          {
+            "text": "Geography",
+            "path": "#"
+          }
+        ]
       },
       {
         "title": "Authentication",
         "icon": "mdi-account-box",
-        "subTitles": ["Sign In Form", "Sign Up Form", "Reset Password Form"]
+        "options": [
+          {
+            "text": "Sign In Form",
+            "path": "#"
+          },
+          {
+            "text": "Sign Up Form",
+            "path": "#"
+          },
+          {
+            "text": "Reset Password Form",
+            "path": "#"
+          }
+        ]
       },
       {
         "title": "Common",
         "icon": "mdi-package",
-        "subTitles": ["User Profile"]
+        "options": [
+          {
+            "text": "User Profile",
+            "path": "#"
+          }
+        ]
       }
     ]
   },
@@ -44,7 +109,20 @@
     "title": "Contacts",
     "categoryOptions": {
       "title": "ALL",
-      "subTitles": ["All", "Salaried", "Commission", "Terminated"]
+      "options": [
+        {
+          "text": "All"
+        },
+        {
+          "text": "Salaried"
+        },
+        {
+          "text": "Commission"
+        },
+        {
+          "text": "Terminated"
+        }
+      ]
     },
     "addContactButton": {
       "title": "ADD CONTACT",
@@ -54,39 +132,74 @@
       "icon": "mdi-sync"
     },
     "exportOptions": {
-      "icon": "@/assets/export-icon.svg",
+      "icon": "mdi-file-move-outline",
       "options": [
         {
           "text": "Export all data into Excel",
-          "icon": "@/assets/excelData-icon.svg"
+          "icon": "mdi-file-excel-outline"
         },
         {
           "text": "Export selected rows to Excel",
-          "icon": "@/assets/selectedExcel-icon.svg"
+          "icon": "mdi-file-document-arrow-right-outline"
         },
         {
           "text": "Export all data to PDF",
-          "icon": "@/assets/pdf-icon.svg"
+          "icon": "mdi-file"
         },
         {
           "text": "Export selected rows to PDF",
-          "icon": "@/assets/selectedPDF-icon.svg"
+          "icon": "mdi-file-document-arrow-right-outline"
         }
       ]
     },
     "columnChooserButton": {
-      "icon": "@/assets/rowChooser-icon.svg"
+      "icon": "mdi-file-table-box-outline"
     },
     "searchBoxLabel": "Contact Search",
     "userData": {
+      "icons": {
+        "closeIcon": "mdi-close",
+        "phoneIcon": "mdi-phone",
+        "emailIcon": "mdi-email",
+        "homeIcon": "mdi-home"
+      },
       "actionsButton": {
         "title": "ACTIONS",
-        "subTitles": ["Call", "Send Fax", "Send Email", "Make a Meeting"]
+        "options": [
+          {
+            "text": "Call"
+          },
+          {
+            "text": "Send Fax"
+          },
+          {
+            "text": "Send Email"
+          },
+          {
+            "text": "Make a Meeting"
+          }
+        ]
       },
-      "editButtonTitle": "EDIT",
+      "editButtonTitle": {
+        "title": "EDIT",
+        "icon": "mdi-pencil"
+      },
       "detailsButtonTitle": "DETAILS",
       "userOpportunitiesTitle": "Opportunities",
-      "userActivitiesTitle": "Activities"
+      "userActivities": {
+        "title": "Activities",
+        "activitiesMenu": {
+          "icon": "mdi-dots-vertical",
+          "options": [
+            {
+              "text": "View Details"
+            },
+            {
+              "text": "Delete"
+            }
+          ]
+        }
+      }
     }
   }
 }
