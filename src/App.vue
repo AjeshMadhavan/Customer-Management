@@ -1,7 +1,15 @@
 <template>
+<<<<<<< HEAD
   <div id="app" />
 </template>
 
+=======
+  <div id="app"></div>
+</template>
+
+<script lang="ts" setup></script>
+
+>>>>>>> 6342ea2 (feat: created status text with varients)
 <style>
 #app {
   width: 650px;
