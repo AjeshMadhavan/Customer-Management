@@ -1,13 +1,17 @@
 <template>
   <div id="app">
+    <sidebar-dropdown variant="primary" prependIcon="mdi-account" />
+    <sidebar-dropdown variant="secondary" prependIcon="mdi-account" />
   </div>
 </template>
 
 <script lang="ts" setup>
+import SidebarDropdown from "@/components/SidebarDropdown.vue";
 </script>
 
 <style>
 #app {
+  width: 250px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
