@@ -1,5 +1,5 @@
-export enum StatusTextVarients {
-  salaried = "salaried",
-  commission = "commission",
-  terminated = "terminated",
+export enum StatusTextVariants {
+  Salaried = "salaried",
+  Commission = "commission",
+  Terminated = "terminated",
 }

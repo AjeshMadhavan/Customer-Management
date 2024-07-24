@@ -1,5 +1,5 @@
 <template>
-  <span :class="['status-text', className]" :style="statusTextStyle">
+  <span :class="['status-text', textVariant]" :style="statusTextStyle">
     {{ props.statusText }}
   </span>
 </template>
@@ -7,14 +7,14 @@
 <script lang="ts" setup>
 import { defineProps, computed } from "vue";
 
-import { StatusTextVarients } from "@/Type/Enums";
+import { StatusTextVariants } from "@/Type/Enums";
 
 const props = defineProps({
   statusText: {
     type: String,
     default: "",
   },
-  varient: {
+  variant: {
     type: String,
     default: "",
   },
@@ -30,15 +30,16 @@ const statusTextStyle = computed(() => {
   };
 });
 
-const className = computed(() => {
-  if (props.varient === StatusTextVarients.salaried) {
-    return "salaried";
-  } else if (props.varient === StatusTextVarients.commission) {
-    return "commision";
-  } else if (props.varient === StatusTextVarients.terminated) {
-    return "terminated";
-  } else {
-    return "";
+const textVariant = computed(() => {
+  switch (props.variant) {
+    case StatusTextVariants.Salaried:
+      return "salaried";
+    case StatusTextVariants.Commission:
+      return "commision";
+    case StatusTextVariants.Terminated:
+      return "terminated";
+    default:
+      return "";
   }
 });
 </script>
