@@ -1,39 +1,37 @@
 <template>
-  <div :class="['dropdown-menu', props.variant]">
+  <div :class="['dropdown-menu', dropdownVariant]">
     <button class="toggle-button" @click="toggleDropdownItems">
       <div class="toggle-button__title">
         <v-icon
-          v-if="props.variant === DropdownVariants.primary"
+          v-if="props.variant === SidebarDropdownVariants.SidebarDropdown"
           class="prepend-icon"
         >
-          {{ props.prependIcon }}
+          {{ props.dropdownContents.icon }}
         </v-icon>
-        <span>{{ props.title }}</span>
+        <span>{{ props.dropdownContents.title }}</span>
+        <v-icon
+          v-if="props.variant === SidebarDropdownVariants.PrimaryDropdown"
+          class="append-icon"
+        >
+          {{ props.dropdownContents.icon }}
+        </v-icon>
       </div>
       <v-icon class="append-icon"> {{ dropdownArrow }} </v-icon>
     </button>
     <ul v-if="showDropdownItems" class="dropdown-items">
-      <div v-if="variant === DropdownVariants.primary">
-        <li
-          v-for="item in props.dropdownContents"
-          :key="item"
-          class="dropdown-item"
-        >
-          {{ item }}
-        </li>
-      </div>
-      <div v-if="variant === DropdownVariants.secondary">
-        <li
-          v-for="item in props.dropdownContents"
-          :key="item.text"
-          class="dropdown-item"
-        >
-          <span>
-            {{ item.text }} <br />
-            {{ item.price }}
-          </span>
-        </li>
-      </div>
+      <li
+        v-for="option in dropdownOptions"
+        :key="option.text"
+        class="dropdown-item"
+      >
+        <span v-if="showText_Price">
+          {{ option.text }} <br />
+          {{ option.price }}
+        </span>
+        <span v-else>
+          {{ option.text }}
+        </span>
+      </li>
     </ul>
   </div>
 </template>
@@ -41,23 +39,15 @@
 <script lang="ts" setup>
 import { ref, computed, defineProps } from "vue";
 
-import { DropdownVariants } from "@/Type/Enums";
+import { SidebarDropdownVariants } from "@/Type/Enums";
 
 const props = defineProps({
   variant: {
     type: String,
-    default: DropdownVariants.primary,
-  },
-  title: {
-    type: String,
-    default: "",
-  },
-  prependIcon: {
-    type: String,
-    default: "",
+    default: SidebarDropdownVariants.SidebarDropdown,
   },
   dropdownContents: {
-    default: [],
+    default: Object,
   },
 });
 
@@ -68,10 +58,31 @@ const toggleDropdownItems = () => {
 };
 
 const dropdownArrow = computed(() => {
-  if (props.variant === DropdownVariants.primary) {
+  if (props.variant === SidebarDropdownVariants.SidebarDropdown) {
     return showDropdownItems.value ? "mdi-chevron-down" : "mdi-chevron-right";
+  } else if (props.variant === SidebarDropdownVariants.PrimaryDropdown) {
+    return "mdi-chevron-down";
   } else {
     return showDropdownItems.value ? "mdi-chevron-up" : "mdi-chevron-down";
+  }
+});
+
+const dropdownOptions = computed(() => props.dropdownContents?.options);
+
+const showText_Price = computed(() => {
+  return props.variant === SidebarDropdownVariants.UserOppertunitiesDropdown;
+});
+
+const dropdownVariant = computed(() => {
+  switch (props.variant) {
+    case SidebarDropdownVariants.SidebarDropdown:
+      return "sidebar-dropdown";
+    case SidebarDropdownVariants.UserOppertunitiesDropdown:
+      return "user-oppertunities-dropdown";
+    case SidebarDropdownVariants.PrimaryDropdown:
+      return "primary-dropdown";
+    default:
+      return "";
   }
 });
 </script>
@@ -79,8 +90,8 @@ const dropdownArrow = computed(() => {
 <style lang="scss" scoped>
 .dropdown-menu {
   width: 100%;
-  transition: all 1s ease;
   height: max-content;
+  font-family: "roboto", sans-serif;
 
   .toggle-button {
     display: flex;
@@ -111,8 +122,8 @@ const dropdownArrow = computed(() => {
   }
 }
 
-/**primary dropdown menu */
-.primary {
+/**sidebar dropdown menu */
+.sidebar-dropdown {
   background-color: transparent;
 
   .toggle-button {
@@ -150,8 +161,8 @@ const dropdownArrow = computed(() => {
   }
 }
 
-/**secondary dropdown menu*/
-.secondary {
+/**user oppertunities dropdown menu*/
+.user-oppertunities-dropdown {
   background-color: #fff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
 
@@ -172,6 +183,60 @@ const dropdownArrow = computed(() => {
     padding: 0;
     padding-bottom: 10px;
     cursor: default;
+  }
+}
+
+/*Primary Dropdown */
+.primary-dropdown {
+  width: 70px;
+  position: relative;
+
+  .toggle-button {
+    padding: 5px 8px 5px 12px;
+    height: 28px;
+
+    &__title {
+      font-weight: 600;
+      letter-spacing: 0.52px;
+
+      .append-icon {
+        margin-left: 4px;
+      }
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.08);
+    }
+  }
+
+  .dropdown-items {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border-radius: 2px;
+    padding: 1px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: max-content;
+    transform: translate(0, 28px);
+    box-sizing: content-box;
+  }
+
+  .dropdown-item {
+    padding: 10px 11px 9px 11px;
+    white-space: nowrap;
+
+    &:first-child {
+      margin-top: 4px;
+    }
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
   }
 }
 </style>

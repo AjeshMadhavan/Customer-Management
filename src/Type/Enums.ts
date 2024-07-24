@@ -1,4 +1,5 @@
-export enum DropdownVariants {
-  primary = "primary",
-  secondary = "secondary",
+export enum SidebarDropdownVariants {
+  PrimaryDropdown = "primaryDropdown",
+  SidebarDropdown = "sidebarDropdown",
+  UserOppertunitiesDropdown = "userOppertunitiesDropdown",
 }
