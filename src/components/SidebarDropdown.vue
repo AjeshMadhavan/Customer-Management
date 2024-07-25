@@ -1,6 +1,17 @@
 <template>
   <div :class="['dropdown-menu', dropdownVariant]">
-    <button class="toggle-button" @click="toggleDropdownItems">
+    <button
+      :class="[
+        'toggle-button',
+        {
+          'hover-effect': shouldAddHoverClass,
+        },
+      ]"
+      @click="toggleDropdownItems"
+      @focusout="hideDropdownItems"
+      @mouseover="toggleHoverClass(ToggleHoverClassPatameters.MouseOver)"
+      @mouseout="toggleHoverClass(ToggleHoverClassPatameters.MouseOut)"
+    >
       <div class="toggle-button__title">
         <v-icon
           v-if="props.variant === SidebarDropdownVariants.SidebarDropdown"
@@ -17,29 +28,38 @@
         </v-icon>
       </div>
       <v-icon class="append-icon"> {{ dropdownArrow }} </v-icon>
-    </button>
-    <ul v-if="showDropdownItems" class="dropdown-items">
-      <li
-        v-for="option in dropdownOptions"
-        :key="option.text"
-        class="dropdown-item"
+      <ul
+        v-if="showDropdownItems"
+        class="dropdown-items"
+        @click.stop
+        @mouseover.stop
+        @mouseout.stop
       >
-        <span v-if="showText_Price">
-          {{ option.text }} <br />
-          {{ option.price }}
-        </span>
-        <span v-else>
-          {{ option.text }}
-        </span>
-      </li>
-    </ul>
+        <li
+          v-for="option in dropdownOptions"
+          :key="option.text"
+          class="dropdown-item"
+        >
+          <span v-if="isUserOpertunitiesVariant">
+            {{ option.text }} <br />
+            {{ option.price }}
+          </span>
+          <span v-else>
+            {{ option.text }}
+          </span>
+        </li>
+      </ul>
+    </button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { ref, computed, defineProps } from "vue";
 
-import { SidebarDropdownVariants } from "@/Type/Enums";
+import {
+  SidebarDropdownVariants,
+  ToggleHoverClassPatameters,
+} from "@/Type/Enums";
 
 const props = defineProps({
   variant: {
@@ -52,9 +72,27 @@ const props = defineProps({
 });
 
 const showDropdownItems = ref<boolean>(false);
+const shouldAddHoverClass = ref<boolean>(false);
 
 const toggleDropdownItems = () => {
   showDropdownItems.value = !showDropdownItems.value;
+};
+
+const hideDropdownItems = () => {
+  if (!isUserOpertunitiesVariant.value) {
+    showDropdownItems.value = false;
+  }
+};
+
+const toggleHoverClass = (mouseEvent: string) => {
+  if (
+    mouseEvent === ToggleHoverClassPatameters.MouseOver &&
+    props.variant === SidebarDropdownVariants.SidebarDropdown
+  ) {
+    shouldAddHoverClass.value = true;
+  } else {
+    shouldAddHoverClass.value = false;
+  }
 };
 
 const dropdownArrow = computed(() => {
@@ -69,7 +107,7 @@ const dropdownArrow = computed(() => {
 
 const dropdownOptions = computed(() => props.dropdownContents?.options);
 
-const showText_Price = computed(() => {
+const isUserOpertunitiesVariant = computed(() => {
   return props.variant === SidebarDropdownVariants.UserOppertunitiesDropdown;
 });
 
@@ -98,6 +136,7 @@ const dropdownVariant = computed(() => {
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    position: relative;
 
     &__title {
       width: 100%;
@@ -110,6 +149,13 @@ const dropdownVariant = computed(() => {
     .append-icon {
       font-size: 18px;
     }
+  }
+
+  .dropdown-items {
+    position: absolute;
+    top: 36px;
+    left: 0;
+    width: 100%;
   }
 
   .dropdown-item {
@@ -129,10 +175,6 @@ const dropdownVariant = computed(() => {
   .toggle-button {
     padding: 9px 16px 9px 0;
 
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.04);
-    }
-
     .prepend-icon {
       min-width: 48px;
       font-size: 18px;
@@ -142,6 +184,10 @@ const dropdownVariant = computed(() => {
     &__title {
       font-size: 13px;
       font-weight: 700;
+    }
+
+    &.hover-effect {
+      background-color: rgba(0, 0, 0, 0.04);
     }
   }
 
@@ -154,9 +200,14 @@ const dropdownVariant = computed(() => {
     font-size: 13px;
     font-weight: 400;
     text-align: left;
+    background-color: #fff;
 
     &:hover {
       background-color: rgba(0, 0, 0, 0.04);
+
+      .toggle-button:hover {
+        background-color: red !important;
+      }
     }
   }
 }
@@ -169,6 +220,14 @@ const dropdownVariant = computed(() => {
   .toggle-button {
     padding: 6px 10px 6px 11px;
     min-height: 40px;
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
+
+    &:focus {
+      background-color: rgba(0, 0, 0, 0.04);
+    }
 
     &__title {
       font-weight: 400;
