@@ -1,23 +1,22 @@
 <template>
   <div id="app">
-    <sidebar-dropdown
-      :dropdownContents="content"
-      :variant="SidebarDropdownVariants.SidebarDropdown"
-    />
-    <sidebar-dropdown
-      :dropdownContents="content2"
-      :variant="SidebarDropdownVariants.UserOppertunitiesDropdown"
-    />
-    <sidebar-dropdown
-      :dropdownContents="content3"
-      :variant="SidebarDropdownVariants.PrimaryDropdown"
-    />
+    <dropdown-component :dropdownStyle="DropdownStyles.DropdownWithIcon" text="CRM" prependIcon="mdi-magnify">
+      <template v-slot:item-slot>
+        <li
+          v-for="option in content.options"
+          :key="option.text"
+          class="dropdown-item"
+        >
+          {{ option.text }}
+        </li>
+      </template>
+    </dropdown-component>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { SidebarDropdownVariants } from "@/Type/Enums";
-import SidebarDropdown from "@/components/SidebarDropdown.vue";
+import { DropdownStyles } from "@/Type/Enums";
+import DropdownComponent from "@/components/DropdownComponent.vue";
 
 const content = {
   title: "Fruits",
