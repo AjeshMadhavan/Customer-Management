@@ -1,81 +1,8 @@
 <template>
-  <div id="app">
-    <dropdown-component
-      :dropdownStyle="DropdownStyles.DropdownWithIcon"
-      text="CRM"
-      prependIcon="mdi-magnify"
-    >
-      <template v-slot:item-slot>
-        <ul>
-          <li
-            v-for="option in content.options"
-            :key="option.text"
-            class="dropdown-item pt-[9px] pr-4 pb-[9px] pl-12 cursor-pointer"
-          >
-            {{ option.text }}
-          </li>
-        </ul>
-      </template>
-    </dropdown-component>
-    <dropdown-component
-      :dropdownStyle="DropdownStyles.DropdownWithoutIcon"
-      text="excuse me"
-    >
-      <template v-slot:item-slot>
-        <ul class="p-[11px]">
-          <li
-            v-for="option in content2.options"
-            :key="option.text"
-            class="dropdown-item pb-2.5"
-          >
-            {{ option.text }} <br />
-            {{ option.price }}
-          </li>
-        </ul>
-      </template>
-    </dropdown-component>
-  </div>
+  <div id="app"></div>
 </template>
 
-<script lang="ts" setup>
-import { DropdownStyles } from "@/Type/Enums";
-import DropdownComponent from "@/components/DropdownComponent.vue";
-
-const content = {
-  title: "Fruits",
-  icon: "mdi-account",
-  options: [
-    {
-      text: "Apple",
-    },
-    {
-      text: "Mango",
-    },
-    {
-      text: "Grapes",
-    },
-  ],
-};
-
-const content2 = {
-  title: "Jackie Chan",
-  icon: "mdi-account",
-  options: [
-    {
-      text: "Jackie",
-      price: "$1200",
-    },
-    {
-      text: "Jooly",
-      price: "$1200",
-    },
-    {
-      text: "Uncle",
-      price: "$1200",
-    },
-  ],
-};
-</script>
+<script lang="ts" setup></script>
 
 <style>
 #app {

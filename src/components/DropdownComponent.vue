@@ -1,7 +1,18 @@
 <template>
-  <div :class="['dropdown-menu', className]">
-    <button class="toggle-button flex justify-between items-center" @click="toggleDropdownItems">
-      <div class="toggle-button__title flex justify-start items-center ">
+  <div :class="['dropdown-menu', props.dropdownContainerStyle]">
+    <button
+      @click="toggleDropdownItems"
+      :class="[
+        'toggle-button',
+        'flex',
+        'justify-between',
+        'items-center',
+        'text-[13px]',
+        'leading-4',
+        props.dropdownButtonStyle,
+      ]"
+    >
+      <div class="toggle-button__title flex justify-start items-center">
         <v-icon v-if="props.prependIcon" class="prepend-icon">
           {{ props.prependIcon }}
         </v-icon>
@@ -16,10 +27,9 @@
 <script lang="ts" setup>
 import { ref, computed, defineProps } from "vue";
 
-import { DropdownStyles } from "@/Type/Enums";
-
 interface Props {
-  dropdownStyle?: string;
+  dropdownButtonStyle?: string;
+  dropdownContainerStyle?: string;
   prependIcon?: string;
   text: string;
 }
@@ -39,45 +49,22 @@ const dropdownArrow = computed(() => {
     return showDropdownItems.value ? "mdi-chevron-up" : "mdi-chevron-down";
   }
 });
-
-const className = computed(() => {
-  switch (props.dropdownStyle) {
-    case DropdownStyles.DropdownWithIcon:
-      return "dropdown-with-icon";
-    case DropdownStyles.DropdownWithoutIcon:
-      return "dropdown-without-icon";
-    default:
-      return "";
-  }
-});
 </script>
 
 <style lang="scss" scoped>
 .dropdown-menu {
-  width: 100%;
+  width: 100% !important;
   height: max-content;
-  font-family: "roboto", sans-serif;
 
   .toggle-button {
     width: 100%;
 
     &__title {
       width: 100%;
-      font-size: 13px;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: inherit;
     }
-
-    .arrow-icon {
-      font-size: 18px;
-    }
-  }
-}
-
-/**sidebar dropdown menu */
-.dropdown-with-icon {
-  background-color: transparent;
-
-  .toggle-button {
-    padding: 9px 16px 9px 0;
 
     .prepend-icon {
       min-width: 48px;
@@ -85,37 +72,32 @@ const className = computed(() => {
       color: rgba(0, 0, 0, 0.87);
     }
 
-    &__title {
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    &.hover-effect {
-      background-color: rgba(0, 0, 0, 0.04);
+    .arrow-icon {
+      font-size: 18px;
     }
   }
 }
+/**
+<dropdown-component
+  text="CRM"
+  prependIcon="mdi-magnify"
+  :dropdownButtonStyle="buttonStyle1"
+  :dropdownContainerStyle="container1"
+>
+  <template v-slot:item-slot>
+    <ul>
+      <li
+        v-for="option in content.options"
+        :key="option.text"
+        class="dropdown-item pt-[9px] pr-4 pb-[9px] pl-12 cursor-pointer"
+      >
+        {{ option.text }}
+      </li>
+    </ul>
+  </template>
+</dropdown-component>
 
-/**user oppertunities dropdown menu*/
-.dropdown-without-icon {
-  background-color: #fff;
-  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
-
-  .toggle-button {
-    padding: 6px 10px 6px 11px;
-    min-height: 40px;
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.04);
-    }
-
-    &:focus {
-      background-color: rgba(0, 0, 0, 0.04);
-    }
-
-    &__title {
-      font-weight: 400;
-    }
-  }
-}
+const buttonStyle1 = '!font-bold pt-[9px] pr-[16px] pb-[9px]'
+const container2 = 'bg-white shadow-[0_2px_4px_0_rgba(0,0,0,0.2)]'
+*/
 </style>
