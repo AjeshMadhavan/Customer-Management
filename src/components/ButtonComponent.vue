@@ -59,14 +59,15 @@ const buttonAttributes = computed(() => {
 });
 
 const className = computed(() => {
-  if (props.variant === ButtonVariants.Primary) {
-    return "primary";
-  } else if (props.variant === ButtonVariants.Outlined) {
-    return "outlined";
-  } else if (props.variant === ButtonVariants.Icon) {
-    return "icon";
-  } else {
-    return "";
+  switch (props.variant) {
+    case ButtonVariants.Primary:
+      return "primary";
+    case ButtonVariants.Outlined:
+      return "outlined";
+    case ButtonVariants.Icon:
+      return "icon";
+    default:
+      return "";
   }
 });
 
