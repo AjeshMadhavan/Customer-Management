@@ -8,7 +8,7 @@
 
 <script lang="ts" setup>
 import ButtonComponent from '@/components/ButtonComponent.vue'
-import { ButtonVariants } from './Types/Enums'
+import { ButtonVariants } from './Type/Enums'
 </script>
 
 <style>

@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import { defineEmits, defineProps, computed } from "vue";
 
-import { ButtonVariants } from "@/Types/Enums";
+import { ButtonVariants } from "@/Type/Enums";
 
 const emits = defineEmits(["handleButtonClick"]);
 const props = defineProps({
