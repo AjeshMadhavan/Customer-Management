@@ -2,7 +2,7 @@
   <v-btn
     v-bind="buttonAttributes"
     elevation="1"
-    :class="[className]"
+    :class="className"
     :style="buttonStyles"
     @click="handleButtonClick"
   >
