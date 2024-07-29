@@ -1,7 +1,7 @@
 <template>
   <div :class="['dropdown-menu', className]">
-    <button class="toggle-button" @click="toggleDropdownItems">
-      <div class="toggle-button__title">
+    <button class="toggle-button flex justify-between items-center" @click="toggleDropdownItems">
+      <div class="toggle-button__title flex justify-start items-center ">
         <v-icon v-if="props.prependIcon" class="prepend-icon">
           {{ props.prependIcon }}
         </v-icon>
@@ -9,9 +9,7 @@
       </div>
       <v-icon class="arrow-icon"> {{ dropdownArrow }} </v-icon>
     </button>
-    <ul v-if="showDropdownItems" class="dropdown-items">
-      <slot name="item-slot" />
-    </ul>
+    <slot name="item-slot" v-if="showDropdownItems" />
   </div>
 </template>
 
@@ -61,32 +59,16 @@ const className = computed(() => {
   font-family: "roboto", sans-serif;
 
   .toggle-button {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     width: 100%;
-    position: relative;
 
     &__title {
       width: 100%;
       font-size: 13px;
-      display: flex;
-      justify-self: start;
-      align-items: center;
     }
 
     .arrow-icon {
       font-size: 18px;
     }
-  }
-
-  .dropdown-item {
-    font-size: 13px;
-    font-weight: 400;
-    text-align: left;
-    text-transform: capitalize;
-    cursor: pointer;
-    list-style-type: none;
   }
 }
 
@@ -112,10 +94,6 @@ const className = computed(() => {
       background-color: rgba(0, 0, 0, 0.04);
     }
   }
-
-  .dropdown-item {
-    padding: 9px 16px 9px 48px;
-  }
 }
 
 /**user oppertunities dropdown menu*/
@@ -138,14 +116,6 @@ const className = computed(() => {
     &__title {
       font-weight: 400;
     }
-  }
-
-  .dropdown-items {
-    padding: 11px;
-  }
-
-  .dropdown-item {
-    padding-bottom: 10px;
   }
 }
 </style>

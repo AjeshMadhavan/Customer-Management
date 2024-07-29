@@ -1,14 +1,37 @@
 <template>
   <div id="app">
-    <dropdown-component :dropdownStyle="DropdownStyles.DropdownWithIcon" text="CRM" prependIcon="mdi-magnify">
+    <dropdown-component
+      :dropdownStyle="DropdownStyles.DropdownWithIcon"
+      text="CRM"
+      prependIcon="mdi-magnify"
+    >
       <template v-slot:item-slot>
-        <li
-          v-for="option in content.options"
-          :key="option.text"
-          class="dropdown-item"
-        >
-          {{ option.text }}
-        </li>
+        <ul>
+          <li
+            v-for="option in content.options"
+            :key="option.text"
+            class="dropdown-item pt-[9px] pr-4 pb-[9px] pl-12 cursor-pointer"
+          >
+            {{ option.text }}
+          </li>
+        </ul>
+      </template>
+    </dropdown-component>
+    <dropdown-component
+      :dropdownStyle="DropdownStyles.DropdownWithoutIcon"
+      text="excuse me"
+    >
+      <template v-slot:item-slot>
+        <ul class="p-[11px]">
+          <li
+            v-for="option in content2.options"
+            :key="option.text"
+            class="dropdown-item pb-2.5"
+          >
+            {{ option.text }} <br />
+            {{ option.price }}
+          </li>
+        </ul>
       </template>
     </dropdown-component>
   </div>
@@ -52,21 +75,6 @@ const content2 = {
     },
   ],
 };
-
-const content3 = {
-  title: "ALL",
-  options: [
-    {
-      text: "Bus",
-    },
-    {
-      text: "Heavy Load Truck",
-    },
-    {
-      text: "Car",
-    },
-  ],
-};
 </script>
 
 <style>
@@ -81,5 +89,13 @@ const content3 = {
   display: flex;
   margin-left: 20px;
   column-gap: 10px;
+}
+
+.dropdown-item {
+  text-align: left;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
 }
 </style>
