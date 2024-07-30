@@ -46,7 +46,7 @@ const toggleOptions = () => {
 /**
  * ---------- using this component --------
  * <options-dropdown
-      text="hi mone"
+      text="Options"
       optionButtonStyle="!py-[5px] !pr-2 !pl-3 font-medium focus:bg-[rgba(0,0,0,0.08)] hover:bg-[rgba(0,0,0,0.08)]"
     >
       <template v-slot:options-slot>
