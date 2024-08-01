@@ -1,14 +1,9 @@
 <template>
   <div id="app">
-    <button-component text="ADD CONTACT" icon="mdi-plus" :variant="ButtonVariants.Primary"/>
-    <button-component text="DETAILS" :variant="ButtonVariants.Outlined" />
-    <button-component icon="mdi-menu" :variant="ButtonVariants.Icon" />
   </div>
 </template>
 
 <script lang="ts" setup>
-import ButtonComponent from '@/components/ButtonComponent.vue'
-import { ButtonVariants } from './Type/Enums'
 </script>
 
 <style>

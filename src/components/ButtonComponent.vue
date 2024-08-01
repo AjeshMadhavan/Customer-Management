@@ -2,7 +2,7 @@
   <v-btn
     v-bind="buttonAttributes"
     elevation="1"
-    :class="className"
+    :class="buttonStyleVariant"
     :style="buttonStyles"
     @click="handleButtonClick"
   >
@@ -53,18 +53,18 @@ const buttonStyles = computed(() => {
 
 const buttonAttributes = computed(() => {
   return {
-    outlined: props.variant === ButtonVariants.Outlined,
-    icon: props.variant === ButtonVariants.Icon,
+    outlined: props.variant === ButtonVariants.OUTLINED,
+    icon: props.variant === ButtonVariants.ICON,
   };
 });
 
-const className = computed(() => {
+const buttonStyleVariant = computed(() => {
   switch (props.variant) {
-    case ButtonVariants.Primary:
+    case ButtonVariants.PRIMARY:
       return "primary";
-    case ButtonVariants.Outlined:
+    case ButtonVariants.OUTLINED:
       return "outlined";
-    case ButtonVariants.Icon:
+    case ButtonVariants.ICON:
       return "icon";
     default:
       return "";
@@ -121,4 +121,10 @@ const handleButtonClick = () => {
     margin-right: 4px;
   }
 }
+
+/**
+<button-component text="ADD CONTACT" icon="mdi-plus" :variant="ButtonVariants.Primary"/>
+<button-component text="DETAILS" :variant="ButtonVariants.OUTLINED" />
+<button-component icon="mdi-menu" :variant="ButtonVariants.ICON" />
+*/
 </style>
