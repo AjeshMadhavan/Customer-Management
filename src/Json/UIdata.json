@@ -1,0 +1,204 @@
+{
+  "topPanel": {
+    "title": "UI Template Gallery",
+    "searchBoxLabel": "Search",
+    "icons": {
+      "hamburgerIcon": "mdi-menu",
+      "themeSwitchingIcon": "mdi-weather-night",
+      "notificationIcon": "mdi-bell-outline"
+    },
+    "userProfile": {
+      "options": [
+        {
+          "text": "John Heart"
+        },
+        {
+          "text": "Logout",
+          "icon": "mdi-run",
+          "path": "#"
+        }
+      ]
+    }
+  },
+  "sidebar": {
+    "copyrightText": "Copyright © 2024",
+    "companyName": "Developer Express Inc.",
+    "sidebarContents": [
+      {
+        "title": "CRM",
+        "icon": "mdi-account",
+        "options": [
+          {
+            "text": "Contact List",
+            "path": "#"
+          },
+          {
+            "text": "Contact Details",
+            "path": "#"
+          }
+        ]
+      },
+      {
+        "title": "Planning",
+        "icon": "mdi-calendar",
+        "options": [
+          {
+            "text": "Task List",
+            "path": "#"
+          },
+          {
+            "text": "Task Details",
+            "path": "#"
+          },
+          {
+            "text": "Scheduler",
+            "path": "#"
+          }
+        ]
+      },
+      {
+        "title": "Analytics",
+        "icon": "mdi-chart-box-outline",
+        "options": [
+          {
+            "text": "Dashboard",
+            "path": "#"
+          },
+          {
+            "text": "Sales Report",
+            "path": "#"
+          },
+          {
+            "text": "Geography",
+            "path": "#"
+          }
+        ]
+      },
+      {
+        "title": "Authentication",
+        "icon": "mdi-account-box",
+        "options": [
+          {
+            "text": "Sign In Form",
+            "path": "#"
+          },
+          {
+            "text": "Sign Up Form",
+            "path": "#"
+          },
+          {
+            "text": "Reset Password Form",
+            "path": "#"
+          }
+        ]
+      },
+      {
+        "title": "Common",
+        "icon": "mdi-package",
+        "options": [
+          {
+            "text": "User Profile",
+            "path": "#"
+          }
+        ]
+      }
+    ]
+  },
+  "contactListPage": {
+    "title": "Contacts",
+    "categoryOptions": {
+      "title": "ALL",
+      "options": [
+        {
+          "text": "All"
+        },
+        {
+          "text": "Salaried"
+        },
+        {
+          "text": "Commission"
+        },
+        {
+          "text": "Terminated"
+        }
+      ]
+    },
+    "addContactButton": {
+      "title": "ADD CONTACT",
+      "icon": "mdi-plus"
+    },
+    "refreshDataButton": {
+      "icon": "mdi-sync"
+    },
+    "exportOptions": {
+      "icon": "mdi-file-move-outline",
+      "options": [
+        {
+          "text": "Export all data into Excel",
+          "icon": "mdi-file-excel-outline"
+        },
+        {
+          "text": "Export selected rows to Excel",
+          "icon": "mdi-file-document-arrow-right-outline"
+        },
+        {
+          "text": "Export all data to PDF",
+          "icon": "mdi-file"
+        },
+        {
+          "text": "Export selected rows to PDF",
+          "icon": "mdi-file-document-arrow-right-outline"
+        }
+      ]
+    },
+    "columnChooserButton": {
+      "icon": "mdi-file-table-box-outline"
+    },
+    "searchBoxLabel": "Contact Search",
+    "userData": {
+      "icons": {
+        "closeIcon": "mdi-close",
+        "phoneIcon": "mdi-phone",
+        "emailIcon": "mdi-email",
+        "homeIcon": "mdi-home"
+      },
+      "actionsButton": {
+        "title": "ACTIONS",
+        "options": [
+          {
+            "text": "Call"
+          },
+          {
+            "text": "Send Fax"
+          },
+          {
+            "text": "Send Email"
+          },
+          {
+            "text": "Make a Meeting"
+          }
+        ]
+      },
+      "editButtonTitle": {
+        "title": "EDIT",
+        "icon": "mdi-pencil"
+      },
+      "detailsButtonTitle": "DETAILS",
+      "userOpportunitiesTitle": "Opportunities",
+      "userActivities": {
+        "title": "Activities",
+        "activitiesMenu": {
+          "icon": "mdi-dots-vertical",
+          "options": [
+            {
+              "text": "View Details"
+            },
+            {
+              "text": "Delete"
+            }
+          ]
+        }
+      }
+    }
+  }
+}
