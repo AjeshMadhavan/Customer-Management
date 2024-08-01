@@ -77,27 +77,26 @@ const dropdownArrow = computed(() => {
     }
   }
 }
-/**
-<dropdown-component
-  text="CRM"
-  prependIcon="mdi-magnify"
-  :dropdownButtonStyle="buttonStyle1"
-  :dropdownContainerStyle="container1"
->
-  <template v-slot:item-slot>
-    <ul>
-      <li
-        v-for="option in content.options"
-        :key="option.text"
-        class="dropdown-item pt-[9px] pr-4 pb-[9px] pl-12 cursor-pointer"
-      >
-        {{ option.text }}
-      </li>
-    </ul>
-  </template>
-</dropdown-component>
 
-const buttonStyle1 = '!font-bold pt-[9px] pr-[16px] pb-[9px]'
-const container2 = 'bg-white shadow-[0_2px_4px_0_rgba(0,0,0,0.2)]'
-*/
+// <dropdown-component
+//   text="CRM"
+//   prependIcon="mdi-magnify"
+//   :dropdownButtonStyle="buttonStyle1"
+//   :dropdownContainerStyle="container1"
+// >
+//   <template v-slot:item-slot>
+//     <ul>
+//       <li
+//         v-for="option in content.options"
+//         :key="option.text"
+//         class="dropdown-item pt-[9px] pr-4 pb-[9px] pl-12 cursor-pointer"
+//       >
+//         {{ option.text }}
+//       </li>
+    // </ul>
+//   </template>
+// </dropdown-component>
+
+// const buttonStyle1 = '!font-bold pt-[9px] pr-[16px] pb-[9px]'
+// const container2 = 'bg-white shadow-[0_2px_4px_0_rgba(0,0,0,0.2)]'
 </style>
