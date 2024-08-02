@@ -1,0 +1,22 @@
+npm ERR! code ERESOLVE
+npm ERR! ERESOLVE unable to resolve dependency tree
+npm ERR! 
+npm ERR! While resolving: customer-management@0.1.0
+npm ERR! Found: vue@2.7.16
+npm ERR! node_modules/vue
+npm ERR!   vue@"^2.6.14" from the root project
+npm ERR! 
+npm ERR! Could not resolve dependency:
+npm ERR! peer vue@"^3.0.0" from @storybook/vue3@8.2.6
+npm ERR! node_modules/@storybook/vue3
+npm ERR!   dev @storybook/vue3@"*" from the root project
+npm ERR! 
+npm ERR! Fix the upstream dependency conflict, or retry
+npm ERR! this command with --force or --legacy-peer-deps
+npm ERR! to accept an incorrect (and potentially broken) dependency resolution.
+npm ERR! 
+npm ERR! 
+npm ERR! For a full report see:
+npm ERR! /home/ajesh/.npm/_logs/2024-08-01T07_27_46_264Z-eresolve-report.txt
+
+npm ERR! A complete log of this run can be found in: /home/ajesh/.npm/_logs/2024-08-01T07_27_46_264Z-debug-0.log
