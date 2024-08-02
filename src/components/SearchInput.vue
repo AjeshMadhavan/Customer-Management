@@ -1,44 +1,42 @@
 <template>
-  <div class="search-field h-8 flex">
-    <v-text-field
-      v-model="inputValue"
-      filled
-      :placeholder="props.placeholderText"
-      hide-details
-      dense
-      min-height="38"
-      loader-height="3"
-      class="!text-red-400 min-h-8"
-    >
-      <template v-slot:prepend-inner>
-        <v-icon class="mr-2.5">mdi-magnify</v-icon>
-      </template>
-
-      <template v-if="inputValue" v-slot:append>
-        <v-icon
-          @click="clearText"
-          class="clear-icon w-4 h-4 !text-base rounded-full bg-[#c2c2c2de] text-[#757575de] translate-y-[20%]"
-        >
-          mdi-close
-        </v-icon>
-      </template>
-    </v-text-field>
-  </div>
+  <v-text-field
+    v-model="inputValue"
+    filled
+    :placeholder="props.placeholderText"
+    hide-details
+    loader-height="3"
+    :class="[
+      '!text-[rgb(3,169,244)]',
+      'text-xs',
+      'text-input',
+      props.inputStyles,
+    ]"
+  >
+    <template v-if="props.prependIcon" v-slot:prepend-inner>
+      <v-icon class="mr-2.5 !text-base">{{ props.prependIcon }}</v-icon>
+    </template>
+    <template v-if="inputValue && props.appendIcon" v-slot:append>
+      <v-icon
+        @click="clearText"
+        class="w-4 h-4 !text-base rounded-full bg-[#c2c2c2de] text-[#757575de] translate-y-[20%]"
+      >
+        {{ props.appendIcon }}
+      </v-icon>
+    </template>
+  </v-text-field>
 </template>
 
 <script lang="ts" setup>
 import { defineProps, ref } from "vue";
 
-const props = defineProps({
-  placeholderText: {
-    type: String,
-    default: "Search",
-  },
-  prependIcon: {
-    type: String,
-    default: "mdi-magnify",
-  },
-});
+interface Props {
+  placeholderText: string;
+  prependIcon: string;
+  inputStyle: string;
+  appendIcon: string;
+}
+
+const props = defineProps<Props>();
 
 const inputValue = ref<string>("");
 
@@ -46,12 +44,22 @@ const clearText = () => {
   inputValue.value = "";
 };
 </script>
+
 <style lang="scss" scoped>
-.v-text-field .v-input__control .v-input__slot {
-  min-height: 30px !important;
+.text-input {
+  &::v-deep .v-input__slot {
+    min-height: 32px;
+  }
+
+  &::v-deep .v-input__prepend-inner {
+    margin-top: 4px;
+  }
+
+  &::v-deep .v-input__append-inner {
+    margin-top: 5px;
+    padding-left: 12px;
+  }
 }
 
-.v-text-field .v-input__slot {
-  min-height: 38px !important;
-}
+// <search-input prependIcon="mdi-magnify" appendIcon="mdi-close" placeholderText="Search"/>
 </style>
