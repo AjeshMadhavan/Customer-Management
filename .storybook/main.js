@@ -1,6 +1,4 @@
-import type { StorybookConfig } from "@storybook/vue-webpack5";
-
-const config: StorybookConfig = {
+const config = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
     "@storybook/addon-links",
