@@ -1,14 +1,5 @@
 <template>
-  <span
-    :class="[
-      'status-text',
-      'text-[13px]',
-      'capitalize',
-      'text-left',
-      'font-normal',
-      props.textStyle,
-    ]"
-  >
+  <span :class="['status-text', props.textStyle]">
     {{ props.statusText }}
   </span>
 </template>
@@ -31,6 +22,10 @@ const props = defineProps({
 <style lang="scss" scoped>
 .status-text {
   width: 100%;
+  font-size: 13px;
+  text-transform: capitalize;
+  text-align: left;
+  font-weight: 400;
 
   &:before {
     content: "";
