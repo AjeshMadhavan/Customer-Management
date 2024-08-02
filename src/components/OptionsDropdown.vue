@@ -15,9 +15,10 @@
       @click="toggleOptions"
       @focusout="toggleOptions"
     >
-      <span class="uppercase">{{ props.text }}</span>
-      <v-icon class="!text-[16px] ml-1">
-        {{ props.icon }}
+      <span v-if="props.text" class="uppercase">{{ props.text }}</span>
+      <img v-if="props.imageUrl" :src="props.imageUrl" class="w-[28px] h-[28px] object-cover bg-top rounded-full">
+      <v-icon v-if="props.prependIcon" class="!text-[16px] ml-1">
+        {{ props.prependIcon }}
       </v-icon>
     </button>
     <slot name="options-slot" v-if="shouldShowOptions" />
@@ -29,13 +30,12 @@ import { ref, defineProps, withDefaults } from "vue";
 
 interface Props {
   optionButtonStyle?: string;
-  icon?: string;
+  prependIcon?: string;
   text?: string;
+  imageUrl?: string;
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  icon: "mdi-menu-down",
-});
+const props = defineProps<Props>();
 
 const shouldShowOptions = ref<boolean>(false);
 
