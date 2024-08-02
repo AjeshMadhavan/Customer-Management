@@ -2,15 +2,7 @@
   <div :class="['dropdown-menu', props.dropdownContainerStyle]">
     <button
       @click="toggleDropdownItems"
-      :class="[
-        'toggle-button',
-        'flex',
-        'justify-between',
-        'items-center',
-        'text-[13px]',
-        'leading-4',
-        props.dropdownButtonStyle,
-      ]"
+      :class="['toggle-button', props.dropdownButtonStyle]"
     >
       <div class="toggle-button__title flex justify-start items-center">
         <v-icon v-if="props.prependIcon" class="prepend-icon">
@@ -58,6 +50,11 @@ const dropdownArrow = computed(() => {
 
   .toggle-button {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    line-height: 16px;
 
     &__title {
       width: 100%;
@@ -93,7 +90,7 @@ const dropdownArrow = computed(() => {
 //       >
 //         {{ option.text }}
 //       </li>
-    // </ul>
+// </ul>
 //   </template>
 // </dropdown-component>
 
