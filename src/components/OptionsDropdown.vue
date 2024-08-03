@@ -1,22 +1,13 @@
 <template>
-  <div class="relative">
+  <div class="relative w-max">
     <button
-      :class="[
-        'text-[13px]',
-        'tracking-[.52px]',
-        'rounded-sm',
-        'min-w-max',
-        'h-fit',
-        'flex',
-        'items-center',
-        props.optionButtonStyle,
-      ]"
+      :class="['dropdown-button', props.optionButtonStyle]"
       text
       @click="toggleOptions"
       @focusout="toggleOptions"
     >
       <span v-if="props.text" class="uppercase">{{ props.text }}</span>
-      <img v-if="props.imageUrl" :src="props.imageUrl" class="w-[28px] h-[28px] object-cover bg-top rounded-full">
+      <img v-if="props.imageUrl" :src="props.imageUrl" class="profile-image" />
       <v-icon v-if="props.prependIcon" class="!text-[16px] ml-1">
         {{ props.prependIcon }}
       </v-icon>
@@ -63,3 +54,25 @@ const toggleOptions = () => {
     </options-dropdown>
  */
 </script>
+
+<style lang="scss" scoped>
+.dropdown-button {
+  font-size: 13px;
+  letter-spacing: 0.52px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgb(224, 224, 224);
+  object-fit: cover;
+  object-position: 50% 0%;
+  border-radius: 50%;
+
+  &:hover {
+    border-color: rgb(3, 169, 244);
+  }
+}
+</style>
