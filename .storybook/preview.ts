@@ -1,4 +1,7 @@
-const preview = {
+import type { Preview } from "@storybook/vue";
+import '../src/index.css'
+
+const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
