@@ -1,7 +1,11 @@
 import type { Preview } from "@storybook/vue";
-import '../src/index.css'
+
+import "vuetify/dist/vuetify.min.css";
+import { withVuetify } from "./addon-vuetify";
+import "../src/index.css";
 
 const preview: Preview = {
+  decorators: [withVuetify],
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
     controls: {
