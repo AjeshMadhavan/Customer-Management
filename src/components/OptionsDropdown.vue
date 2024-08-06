@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, defineProps, withDefaults } from "vue";
+import { ref, defineProps } from "vue";
 
 interface Props {
   optionButtonStyle?: string;
