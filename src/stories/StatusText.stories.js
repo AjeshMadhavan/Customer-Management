@@ -29,7 +29,7 @@ export const Salaried = {
 export const Commisioned = {
   args: {
     statusText: "Commissioned",
-    textStyle: "text-orange-400",
+    textStyle: "text-blue-400",
   },
 };
 
