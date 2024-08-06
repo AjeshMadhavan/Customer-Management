@@ -8,8 +8,8 @@
     >
       <span v-if="props.text" class="uppercase">{{ props.text }}</span>
       <img v-if="props.imageUrl" :src="props.imageUrl" class="profile-image" />
-      <v-icon v-if="props.prependIcon" class="!text-[16px] ml-1">
-        {{ props.prependIcon }}
+      <v-icon v-if="props.appendIcon" class="!text-[16px] ml-1">
+        {{ props.appendIcon }}
       </v-icon>
     </button>
     <slot name="options-slot" v-if="shouldShowOptions" />
@@ -21,7 +21,7 @@ import { ref, defineProps, withDefaults } from "vue";
 
 interface Props {
   optionButtonStyle?: string;
-  prependIcon?: string;
+  appendIcon?: string;
   text?: string;
   imageUrl?: string;
 }
