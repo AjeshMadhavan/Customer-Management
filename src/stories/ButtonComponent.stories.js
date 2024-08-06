@@ -1,5 +1,5 @@
-import ButtonComponent from "../components/ButtonComponent.vue";
 import { ButtonVariants } from "../Type/Enums";
+import ButtonComponent from "../components/ButtonComponent.vue";
 
 export default {
   component: ButtonComponent,
@@ -14,12 +14,20 @@ export default {
     variant: {
       control: "text",
     },
+    buttonStyles: {
+      control: "text",
+    },
   },
   render: (args, { argTypes }) => ({
     components: { ButtonComponent },
     props: Object.keys(argTypes),
-    template:
-      '<button-component :text="text" :prependIcon="icon" :buttonBackgroundColor="buttonBackgroundColor" :icon="icon" :variant="variant" />',
+    template: `<button-component 
+        :text="text" 
+        :prependIcon="icon" 
+        :buttonStyles="buttonStyles" 
+        :icon="icon" 
+        :variant="variant" 
+    />`,
   }),
 };
 

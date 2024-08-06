@@ -18,8 +18,8 @@ export default makeDecorator({
       vuetify,
       components: { WrappedComponent },
       template: `
-        <v-app>
-          <v-container fluid>
+        <v-app full-height="fales">
+          <v-container fluid dense>
             <wrapped-component />
           </v-container>
         </v-app>
