@@ -9,7 +9,7 @@ export default {
     text: {
       control: "text",
     },
-    prependIcon: {
+    appendIcon: {
       control: "text",
     },
     optionButtonStyle: {
@@ -19,20 +19,33 @@ export default {
   render: (args, { argTypes }) => ({
     props: Object.keys(argTypes),
     components: { OptionsDropdown },
-    template: '<options-dropdown v-bind="$props" />',
+    template: `<options-dropdown v-bind="$props">      
+      <template v-slot:options-slot>
+        <div v-if="optionsSlot" v-html="optionsSlot" />
+      </template>
+    </options-dropdown>`,
   }),
 };
 
-export const Default = {
+export const Menu = {
   args: {
-    text: "hi mone",
-    prependIcon: "mdi-magnify",
+    text: "All",
+    appendIcon: "mdi-menu-down",
+    optionsSlot: `<ul>
+            <li>Mango</li>
+            <li>Apple</li>
+            <li>Banana</li>
+        </ul>`,
   },
 };
 
-export const Primary = {
+export const ProfileIconMenu = {
   args: {
-    text: "Primary",
-    prependIcon: "mdi-account",
+    imageUrl:
+      "https://images.unsplash.com/photo-1518815068914-038920b6f0c6?q=80&w=1126&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    optionsSlot: `<ul>
+            <li>John Heart</li>
+            <li>Log Out</li>
+        </ul>`,
   },
 };
