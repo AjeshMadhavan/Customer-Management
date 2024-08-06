@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps, withDefaults } from "vue";
 
 interface Props {
   prependIcon?: string;
@@ -25,7 +25,13 @@ interface Props {
   textContainerStyle?: string;
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  prependIcon: '',
+  text: '',
+  linkText: '',
+  linkTextStyle: '',
+  textContainerStyle: ''
+})
 
 //<text-component prependIcon="mdi-phone" textContainerStyle="px-3 py-2.5"  linkText="CTO" />
 //<text-component textContainerStyle="px-3 pb-1" text="Position" linkText="CTO" linkTextStyle="text-blue-600"/>
