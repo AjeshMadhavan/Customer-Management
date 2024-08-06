@@ -1,7 +1,7 @@
 import type { Preview } from "@storybook/vue";
 
-import "vuetify/dist/vuetify.min.css";
 import { withVuetify } from "./addon-vuetify";
+
 import "../src/index.css";
 
 const preview: Preview = {

@@ -1,4 +1,3 @@
-// Imports
 import Vue from 'vue';
 import Vuetify from 'vuetify';
 import { makeDecorator } from '@storybook/addons';
@@ -11,7 +10,7 @@ export default makeDecorator({
   name: 'withVuetify',
   parameterName: 'vuetify',
   wrapper: (storyFn, context, { parameters = {} }) => {
-    // Reduce to one new URL?
+    
     const vuetify = new Vuetify(parameters);
     const WrappedComponent = storyFn(context);
 
