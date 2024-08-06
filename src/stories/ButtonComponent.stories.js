@@ -3,6 +3,7 @@ import ButtonComponent from "../components/ButtonComponent.vue";
 
 export default {
   component: ButtonComponent,
+  title: 'Common Components/Button',
   tags: ["autodocs"],
   argTypes: {
     text: {
