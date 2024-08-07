@@ -39,8 +39,8 @@ const props = defineProps({
     default: "",
   },
   buttonFontWeight: {
-    type: Number || String,
-    default: 500,
+    type: String,
+    default: "500",
   },
 });
 
