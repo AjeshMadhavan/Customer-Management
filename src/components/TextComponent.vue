@@ -2,7 +2,7 @@
   <div class="flex items-center">
     <v-icon
       v-if="props.prependIcon"
-      class="!text-base/[16px] !text-slate-400 p-[5px]"
+      class="!text-base/4 !text-slate-400 p-[5px]"
     >
       {{ props.prependIcon }}
     </v-icon>
@@ -20,10 +20,7 @@
       <span v-if="props.text" class="text-[10px]/[10px]">
         {{ props.text }}
       </span>
-      <span
-        v-if="props.linkText"
-        :class="['text-[12px]/4', props.linkTextStyle]"
-      >
+      <span v-if="props.linkText" :class="['text-xs', props.linkTextStyle]">
         {{ props.linkText }}
       </span>
     </div>
