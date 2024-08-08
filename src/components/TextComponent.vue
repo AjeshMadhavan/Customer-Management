@@ -31,11 +31,11 @@
 import { defineProps } from "vue";
 
 interface Props {
-  prependIcon: string;
-  text: string;
-  linkText: string;
-  linkTextStyle: string;
-  textContainerStyle: string;
+  prependIcon?: string;
+  text?: string;
+  linkText?: string;
+  linkTextStyle?: string;
+  textContainerStyle?: string;
 }
 
 const props = defineProps<Props>();
