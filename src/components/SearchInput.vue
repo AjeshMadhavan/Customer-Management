@@ -1,6 +1,5 @@
 <template>
   <v-text-field
-    v-model.lazy.trim="inputValue"
     filled
     hide-details
     clearable
@@ -9,26 +8,28 @@
     :placeholder="props.placeholderText"
     :prepend-inner-icon="props.prependIcon"
     class="!text-sky-500 text-xs text-input"
+    @input="onValueChange"
   />
 </template>
 
 <script lang="ts" setup>
-import { defineProps, ref, watch, defineEmits } from "vue";
+import { defineProps, defineEmits, withDefaults } from "vue";
 
 interface Props {
   placeholderText: string;
   prependIcon: string;
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  placeholderText: "",
+  prependIcon: "",
+});
 
 const emit = defineEmits(["onValueChange"]);
 
-const inputValue = ref<string>("");
-
-watch(inputValue, (newValue) => {
-  emit("onValueChange", newValue);
-});
+const onValueChange = (inputValue: string) => {
+  emit("onValueChange", inputValue.trim());
+};
 </script>
 
 <style lang="scss" scoped>
