@@ -8,7 +8,7 @@
     >
       <span v-if="props.text" class="uppercase">{{ props.text }}</span>
       <img v-if="props.imageUrl" :src="props.imageUrl" class="profile-image" />
-      <v-icon v-if="props.appendIcon" class="!text-[16px] ml-1">
+      <v-icon v-if="props.appendIcon" class="!text-base/4 ml-1">
         {{ props.appendIcon }}
       </v-icon>
     </button>
@@ -33,26 +33,6 @@ const shouldShowOptions = ref<boolean>(false);
 const toggleOptions = () => {
   shouldShowOptions.value = !shouldShowOptions.value;
 };
-
-/**
- * ---------- using this component --------
- * <options-dropdown
-      text="Options"
-      optionButtonStyle="!py-[5px] !pr-2 !pl-3 font-medium focus:bg-[rgba(0,0,0,0.08)] hover:bg-[rgba(0,0,0,0.08)]"
-    >
-      <template v-slot:options-slot>
-        <ul class="shadow-[0_2px_4px_rgba(0,0,0,0.2)] p-px absolute">
-          <li
-            v-for="item in content"
-            :key="item"
-            class="first:mt-1 hover:bg-[rgba(0,0,0,0.04)] pt-2.5 px-[11px] pb-[9px] cursor-pointer text-[13px] leading-4 text-left capitalize"
-          >
-            {{ item }}
-          </li>
-        </ul>
-      </template>
-    </options-dropdown>
- */
 </script>
 
 <style lang="scss" scoped>
@@ -75,4 +55,22 @@ const toggleOptions = () => {
     border-color: rgb(3, 169, 244);
   }
 }
+
+//  * ---------- using this component --------
+// <options-dropdown
+// text="Options"
+// optionButtonStyle="!py-[5px] !pr-2 !pl-3 font-medium focus:bg-[rgba(0,0,0,0.08)] hover:bg-[rgba(0,0,0,0.08)]"
+// >
+//   <template v-slot:options-slot>
+//     <ul class="shadow-[0_2px_4px_rgba(0,0,0,0.2)] p-px absolute">
+//       <li
+//         v-for="item in content"
+//         :key="item"
+//         class="first:mt-1 hover:bg-[rgba(0,0,0,0.04)] pt-2.5 px-[11px] pb-[9px] cursor-pointer text-[13px] leading-4 text-left capitalize"
+//       >
+//         {{ item }}
+//       </li>
+//     </ul>
+//   </template>
+// </options-dropdown>
 </style>
