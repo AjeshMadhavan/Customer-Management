@@ -1,65 +1,67 @@
 <template>
   <v-text-field
-    v-model="inputValue"
+    v-model.lazy.trim="inputValue"
     filled
-    :placeholder="props.placeholderText"
     hide-details
+    clearable
+    clear-icon="mdi-close"
     loader-height="3"
-    :class="[
-      '!text-[rgb(3,169,244)]',
-      'text-xs',
-      'text-input',
-      props.inputStyles,
-    ]"
-  >
-    <template v-if="props.prependIcon" v-slot:prepend-inner>
-      <v-icon class="mr-2.5 !text-base">{{ props.prependIcon }}</v-icon>
-    </template>
-    <template v-if="inputValue && props.appendIcon" v-slot:append>
-      <v-icon
-        @click="clearText"
-        class="w-4 h-4 !text-base rounded-full bg-[#c2c2c2de] text-[#757575de] translate-y-[20%]"
-      >
-        {{ props.appendIcon }}
-      </v-icon>
-    </template>
-  </v-text-field>
+    :placeholder="props.placeholderText"
+    :prepend-inner-icon="props.prependIcon"
+    class="!text-sky-500 text-xs text-input"
+  />
 </template>
 
 <script lang="ts" setup>
-import { defineProps, ref } from "vue";
+import { defineProps, ref, watch, defineEmits } from "vue";
 
 interface Props {
   placeholderText: string;
   prependIcon: string;
-  inputStyle: string;
-  appendIcon: string;
 }
 
 const props = defineProps<Props>();
 
+const emit = defineEmits(["onValueChange"]);
+
 const inputValue = ref<string>("");
 
-const clearText = () => {
-  inputValue.value = "";
-};
+watch(inputValue, (newValue) => {
+  emit("onValueChange", newValue);
+});
 </script>
 
 <style lang="scss" scoped>
-.text-input {
-  &::v-deep .v-input__slot {
+.text-input::v-deep {
+  .v-input__slot {
     min-height: 32px;
   }
 
-  &::v-deep .v-input__prepend-inner {
+  .v-input__prepend-inner {
     margin-top: 4px;
+    margin-right: 10px;
+
+    .v-icon {
+      font-size: 16px;
+    }
   }
 
-  &::v-deep .v-input__append-inner {
-    margin-top: 5px;
+  .v-input__append-inner {
+    margin-top: 7px;
     padding-left: 12px;
+
+    .v-input__icon--clear {
+      background-color: rgba(194, 194, 194, 0.87);
+      min-width: 16px;
+      width: 16px;
+      height: 16px;
+
+      .v-icon {
+        font-size: 16px;
+      }
+    }
   }
 }
 
-// <search-input prependIcon="mdi-magnify" appendIcon="mdi-close" placeholderText="Search"/>
+// <search-input prependIcon="mdi-magnify" placeholderText="Search"/>
 </style>
