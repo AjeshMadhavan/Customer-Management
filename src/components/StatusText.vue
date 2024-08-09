@@ -7,16 +7,12 @@
 <script lang="ts" setup>
 import { defineProps } from "vue";
 
-const props = defineProps({
-  statusText: {
-    type: String,
-    default: "",
-  },
-  textStyle: {
-    type: String,
-    default: "",
-  },
-});
+interface Props {
+  statusText?: string;
+  textStyle?: string;
+}
+
+const props = defineProps<Props>();
 </script>
 
 <style lang="scss" scoped>
