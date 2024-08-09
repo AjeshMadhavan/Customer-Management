@@ -20,7 +20,7 @@ export default {
     props: Object.keys(argTypes),
     components: { OptionsDropdown },
     template: `<options-dropdown v-bind="$props">      
-      <template v-slot:options-slot>
+      <template v-slot:optionsSlot>
         <div v-if="optionsSlot" v-html="optionsSlot" />
       </template>
     </options-dropdown>`,
