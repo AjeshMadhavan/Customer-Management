@@ -12,7 +12,7 @@
         {{ props.appendIcon }}
       </v-icon>
     </button>
-    <slot name="options-slot" v-if="shouldShowOptions" />
+    <slot name="optionsSlot" v-if="shouldShowOptions" />
   </div>
 </template>
 
