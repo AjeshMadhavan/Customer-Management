@@ -16,32 +16,21 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits, defineProps, computed } from "vue";
+import { defineEmits, defineProps, computed, withDefaults } from "vue";
 
 import { ButtonVariants } from "../Type/Enums";
 
+interface Props {
+  text?: string;
+  icon?: string;
+  variant: string;
+  buttonBackgroundColor?: string;
+  buttonFontWeight?: string;
+}
+
 const emits = defineEmits(["handleButtonClick"]);
-const props = defineProps({
-  text: {
-    type: String,
-    default: "",
-  },
-  icon: {
-    type: String,
-    default: "",
-  },
-  variant: {
-    type: String,
-    default: "",
-  },
-  buttonBackgroundColor: {
-    type: String,
-    default: "",
-  },
-  buttonFontWeight: {
-    type: String,
-    default: "500",
-  },
+const props = withDefaults(defineProps<Props>(), {
+  buttonFontWeight: "500",
 });
 
 const buttonStyles = computed(() => {
