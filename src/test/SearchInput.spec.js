@@ -5,30 +5,30 @@ import SearchInput from "../components/SearchInput.vue";
 
 describe("test with searh input", () => {
   it("renders placeholder text", () => {
-    const wrapper = shallowMount(SearchInput, {
+    const searchInput = shallowMount(SearchInput, {
       propsData: {
         placeholderText: "Search",
       },
     });
 
-    expect(wrapper.attributes("placeholder")).toMatch("Search");
+    expect(searchInput.attributes("placeholder")).toMatch("Search");
   });
 
   it("renders with prepend icon", () => {
-    const wrapper = shallowMount(SearchInput, {
+    const searchInput = shallowMount(SearchInput, {
       propsData: {
         prependIcon: "mdi-magnify",
       },
     });
 
-    expect(wrapper.props("prependIcon")).toMatch("mdi-magnify");
+    expect(searchInput.props("prependIcon")).toMatch("mdi-magnify");
   });
 
   it("test with emit", async () => {
-    const wrapper = shallowMount(SearchInput);
+    const searchInput = shallowMount(SearchInput);
 
-    await wrapper.vm.$emit("onChangeValue", "hello");
+    await searchInput.vm.$emit("onChangeValue", "hello");
 
-    expect(wrapper.emitted().onChangeValue[0][0]).toMatch("hello");
+    expect(searchInput.emitted().onChangeValue[0][0]).toMatch("hello");
   });
 });
