@@ -8,27 +8,10 @@
     item-key="name"
     :headers-length="30"
     class="table"
+    mobile-breakpoint
+    item-class="are-you-item"
+    :header-props="{ 'sort-icon': 'mdi-arrow-up-thin' }"
   >
-    <template v-slot:header.name="{ header }">
-        {{header.text}}
-        <v-icon class="left-10"> mdi-magnify </v-icon>      
-    </template>
-    <template v-slot:header.company="{ header }">
-        {{header.text}}
-        <v-icon> mdi-magnify </v-icon>      
-    </template>
-    <template v-slot:header.status="{ header }">
-        {{header.text}}
-        <v-icon> mdi-magnify </v-icon>      
-    </template>
-    <template v-slot:header.assignedTo="{ header }">
-        {{header.text}}
-        <v-icon> mdi-magnify </v-icon>      
-    </template>
-    <template v-slot:header.phone="{ header }">
-        {{header.text}}
-        <v-icon> mdi-magnify </v-icon>      
-    </template>
   </v-data-table>
 </template>
 
@@ -38,34 +21,29 @@ const headers = [
     text: "Dessert",
     sortable: true,
     value: "name",
-    filterable: true,
-    divider: true,
-    class: "dummy",
-    icon: "mdi-magnify",
-    align: "left",
-    groupable: true,
+    align: "start",
   },
   {
     text: "Company",
-    sortable: false,
+    sortable: true,
     value: "company",
-    align: "left",
+    align: "start",
   },
   {
     text: "Status",
-    sortable: false,
+    sortable: true,
     value: "status",
-    align: "left",
+    align: "start",
   },
   {
     text: "Assigned to",
-    sortable: false,
+    sortable: true,
     value: "assignedTo",
-    align: "left",
+    align: "start",
   },
   {
     text: "Phone",
-    sortable: false,
+    sortable: true,
     value: "phone",
     align: "start",
   },
@@ -117,6 +95,14 @@ const values = [
 
     &:first-child {
       padding: 8px;
+
+      .theme--light {
+        color: rgb(3, 169, 244) !important;
+      }
+
+      .mdi-checkbox-blank-outline.theme--light {
+        color: rgba(0, 0, 0, 0.54) !important;
+      }
     }
   }
 
@@ -133,8 +119,21 @@ const values = [
     height: max-content;
   }
 
-  .v-data-table__wrapper table tbody tr:hover {
-    background-color: transparent !important;
+  .v-data-table__wrapper table tbody tr {
+    // background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background: #fff !important;
+    }
+
+    &:focus {
+      background-color: green !important;
+    }
+
+    &.v-data-table__selected {
+      background-color: rgba(3, 169, 244, 0.04) !important;
+    }
   }
 
   .v-data-table__wrapper table tbody tr td {
@@ -145,10 +144,6 @@ const values = [
     &:first-child {
       padding: 8px;
     }
-  }
-
-  .v-data-table__selected {
-    background-color: rgba(3, 169, 244, 0.04) !important;
   }
 }
 </style>
