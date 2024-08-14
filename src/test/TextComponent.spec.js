@@ -5,7 +5,7 @@ import TextComponent from "../components/TextComponent.vue";
 
 describe("test with text component", () => {
   it("renders with props", () => {
-    const wrapper = shallowMount(TextComponent, {
+    const textComponent = shallowMount(TextComponent, {
       propsData: {
         text: "position",
         linkText: "CTO",
@@ -13,20 +13,20 @@ describe("test with text component", () => {
       },
     });
 
-    expect(wrapper.props("text")).toMatch("position");
-    expect(wrapper.props("linkText")).toMatch("CTO");
-    expect(wrapper.props("prependIcon")).toMatch("mdi-phone");
+    expect(textComponent.props("text")).toMatch("position");
+    expect(textComponent.props("linkText")).toMatch("CTO");
+    expect(textComponent.props("prependIcon")).toMatch("mdi-phone");
   });
 
   it("renders text and style", () => {
-    const wrapper = shallowMount(TextComponent, {
+    const textComponent = shallowMount(TextComponent, {
       propsData: {
         linkText: "CTO",
         linkTextStyle: "text-orange",
       },
     });
 
-    expect(wrapper.find(".text-orange").text()).toMatch("CTO");
-    expect(wrapper.find(".text-orange").exists()).toBeTruthy();
+    expect(textComponent.find(".text-orange").text()).toMatch("CTO");
+    expect(textComponent.find(".text-orange").exists()).toBeTruthy();
   });
 });
