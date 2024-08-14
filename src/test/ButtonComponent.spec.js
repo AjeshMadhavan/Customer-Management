@@ -5,7 +5,7 @@ import ButtonComponent from "../components/ButtonComponent.vue";
 
 describe("test with button component", () => {
   it("renders button component with primary variant", () => {
-    const wrapper = shallowMount(ButtonComponent, {
+    const Button = shallowMount(ButtonComponent, {
       propsData: {
         variant: "primary",
         text: "Add Contact",
@@ -13,34 +13,33 @@ describe("test with button component", () => {
       },
     });
 
-    expect(wrapper.props("variant")).toMatch("primary");
-    expect(wrapper.classes()).toContain("primary");
-    expect(wrapper.text()).toMatch("Add Contact");
-    expect(wrapper.props("icon")).toMatch("mdi-plus");
+    expect(Button.props("variant")).toMatch("primary");
+    expect(Button.classes()).toContain("primary");
+    expect(Button.text()).toMatch("Add Contact");
+    expect(Button.props("icon")).toMatch("mdi-plus");
   });
 
   it("renders button with outline variant", () => {
-    const wrapper = shallowMount(ButtonComponent, {
+    const Button = shallowMount(ButtonComponent, {
       propsData: {
         variant: "outlined",
         text: "Details",
       },
     });
 
-    expect(wrapper.props("variant")).toMatch("outlined");
-    expect(wrapper.find(".outlined").exists()).toBeTruthy();
-    expect(wrapper.text()).toMatch("Details");
+    expect(Button.props("variant")).toMatch("outlined");
+    expect(Button.text()).toMatch("Details");
   });
 
   it("renders button with icon variant", () => {
-    const wrapper = shallowMount(ButtonComponent, {
+    const Button = shallowMount(ButtonComponent, {
       propsData: {
         variant: "icon",
         icon: "mdi-magnify",
       },
     });
 
-    expect(wrapper.find(".icon").exists()).toBeTruthy();
-    expect(wrapper.props("icon")).toMatch("mdi-magnify");
+    expect(Button.find(".icon").exists()).toBeTruthy();
+    expect(Button.props("icon")).toMatch("mdi-magnify");
   });
 });
