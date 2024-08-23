@@ -1,6 +1,6 @@
 <template>
   <v-data-table
-    :headers="headers"
+    :headers="props.tableHeader"
     :items="tableData"
     :headers-length="30"
     :item-class="getRowClass"
@@ -73,10 +73,11 @@
 <script setup lang="ts">
 import { ref, defineProps, computed } from "vue";
 
-import { UserData } from "../Type/Types";
+import { UserData, TableHeader } from "../Type/Types";
 
 interface Props {
   userData: UserData[];
+  tableHeader: TableHeader[];
 }
 
 const props = defineProps<Props>();
@@ -84,49 +85,6 @@ const props = defineProps<Props>();
 const expanded = [];
 const selectedRow = ref<string>("");
 const shouldShowExpandMenu = ref<boolean>(true);
-
-const headers = [
-  {
-    text: "Name",
-    sortable: true,
-    value: "name",
-    align: "start",
-  },
-  {
-    text: "Company",
-    sortable: true,
-    value: "company",
-    align: "start max-[447px]:hidden",
-  },
-  {
-    text: "Status",
-    sortable: true,
-    value: "status",
-    align: "start max-[726px]:hidden",
-  },
-  {
-    text: "Assigned to",
-    sortable: true,
-    value: "assignedTo",
-    align: "start max-[616px]:hidden",
-  },
-  {
-    text: "Phone",
-    sortable: true,
-    value: "phone",
-    align: "start max-[854px]:hidden",
-  },
-  {
-    text: "Email",
-    sortable: true,
-    value: "email",
-    align: "start max-[1372px]:hidden",
-  },
-  {
-    text: "",
-    value: "data-table-expand",
-  },
-];
 
 const tableData = computed(() => {
   return props.userData;
@@ -142,8 +100,8 @@ const getRowClass = (item) => {
   }
 };
 
-window.addEventListener("resize", (event) => {
-  if (event?.target?.outerWidth > 1372) {
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 1372) {
     shouldShowExpandMenu.value = false;
   } else {
     shouldShowExpandMenu.value = true;

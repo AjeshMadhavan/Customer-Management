@@ -21,3 +21,10 @@ export interface UserData {
   userOpertunities: UserOpertunities[];
   userActivities: UserActivities[];
 }
+
+export interface TableHeader {
+  text: string;
+  sortable: boolean;
+  value: string;
+  align: string;
+}
