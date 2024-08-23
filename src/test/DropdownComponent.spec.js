@@ -47,4 +47,33 @@ describe("test with dropdown component", () => {
       ...dropdownButtonStyles.split(" ")
     );
   });
+
+  it("renders slot", () => {
+    const dropdown = shallowMount(DropdownComponent, {
+      propsData: {
+        text: "CRM",
+      },
+      slots: {
+        "item-slot": `<div>Hello World</div>`,
+      },
+    });
+
+    expect(dropdown.vm.$slots["item-slot"][0].children[0].text).toMatch(
+      "Hello World"
+    );
+  });
+
+  it("test for button click", () => {
+    const dropdown = shallowMount(DropdownComponent, {
+      propsData: {
+        text: "CRM",
+      },
+    });
+
+    expect(dropdown.vm._setupProxy.showDropdownItems).toBe(false);
+
+    dropdown.find(".toggle-button").trigger("click");
+
+    expect(dropdown.vm._setupProxy.showDropdownItems).toBe(true);
+  });
 });
