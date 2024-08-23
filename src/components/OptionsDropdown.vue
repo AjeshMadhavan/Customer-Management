@@ -7,7 +7,7 @@
       @focusout="toggleOptions"
     >
       <span v-if="props.text" class="uppercase">{{ props.text }}</span>
-      <img v-if="props.imageUrl" :src="props.imageUrl" class="profile-image" />
+      <img v-if="props.imageUrl" :src="props.imageUrl" class="profile-image" alt="user profile"/>
       <v-icon v-if="props.appendIcon" class="!text-base/4 ml-1">
         {{ props.appendIcon }}
       </v-icon>
