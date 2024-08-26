@@ -70,10 +70,27 @@ describe("test with dropdown component", () => {
       },
     });
 
-    expect(dropdown.vm._setupProxy.showDropdownItems).toBe(false);
+    expect(dropdown.vm._setupState.showDropdownItems.value).toBe(false);
 
     dropdown.find(".toggle-button").trigger("click");
 
-    expect(dropdown.vm._setupProxy.showDropdownItems).toBe(true);
+    expect(dropdown.vm._setupState.showDropdownItems.value).toBe(true);
+  });
+
+  it("test with arrow icon with computed property", async () => {
+    const dropdown = shallowMount(DropdownComponent, {
+      propsData: {
+        prependIcon: "mdi-plus",
+        text: "CRM",
+      },
+    });
+
+    const arrowIcon = dropdown.find(".arrow-icon");
+
+    expect(arrowIcon.text()).toMatch("mdi-chevron-right");
+
+    await dropdown.find(".toggle-button").trigger("click");
+
+    expect(arrowIcon.text()).toMatch("mdi-chevron-down");
   });
 });
