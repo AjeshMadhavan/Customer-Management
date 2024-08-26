@@ -29,4 +29,14 @@ describe("test with text component", () => {
     expect(textComponent.find(".text-orange").text()).toMatch("CTO");
     expect(textComponent.find(".text-orange").exists()).toBeTruthy();
   });
+
+  it("renders icon", () => {
+    const textComponent = shallowMount(TextComponent, {
+      propsData: {
+        prependIcon: "mdi-magnify",
+      },
+    });
+
+    expect(textComponent.find("v-icon").exists()).toBeTruthy();
+  });
 });
