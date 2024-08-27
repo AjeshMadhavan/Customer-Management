@@ -8,8 +8,11 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        'dropdown-shadow': '0 2px 4px 0 rgba(0,0,0,0.2)'
-      }
+        "dropdown-shadow": "0 2px 4px 0 rgba(0,0,0,0.2)",
+      },
+      fontSize: {
+        "2xs": ["10px", "10px"],
+      },
     },
   },
   plugins: [],
