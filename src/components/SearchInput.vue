@@ -17,19 +17,21 @@
 <script lang="ts" setup>
 import { ref, defineProps, defineEmits, withDefaults } from "vue";
 
-const inputValue = ref<string>("");
-
 interface Props {
   placeholderText?: string;
   prependIcon?: string;
+  inputBoxValue?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   placeholderText: "",
   prependIcon: "",
+  inputBoxValue: "",
 });
 
 const emit = defineEmits(["onValueChange"]);
+
+const inputValue = ref<string>(props.inputBoxValue);
 
 const onValueChange = () => {
   emit("onValueChange", inputValue.value);
