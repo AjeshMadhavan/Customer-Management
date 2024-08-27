@@ -32,8 +32,8 @@ export const DropdownWithIcon = {
   args: {
     text: "CRM",
     prependIcon: "mdi-account",
-    dropdownButtonStyle: "py-[9px] pr-4",
-    itemSlot: `<ul class="text-[13px] ">
+    dropdownButtonStyle: "py-2.5 pr-4",
+    itemSlot: `<ul class="text-xs ">
                 <li>Contact List</li>
                 <li>Contact Details</li>
             </ul>`,
@@ -43,9 +43,9 @@ export const DropdownWithIcon = {
 export const DropdownWithoutIcon = {
   args: {
     text: "Oppertunities",
-    dropdownButtonStyle: "py-1.5 pr-2.5 pl-[11px]",
-    dropdownContainerStyle: "bg-white shadow-[0_2px_4px_0_rgba(0,0,0,0.2)]",
-    itemSlot: `<ul class="text-[13px] p-[11px]">
+    dropdownButtonStyle: "py-1.5 pr-2.5 pl-3",
+    dropdownContainerStyle: "bg-white dropdown-shadow]",
+    itemSlot: `<ul class="text-sm p-3">
                 <li>Incoming Request</li>
                 <li>POS Touch Screens</li>
             </ul>`,
