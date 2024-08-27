@@ -53,20 +53,21 @@ const toggleOptions = () => {
 
   &:hover {
     border-color: rgb(3, 169, 244);
+    color: hsla(0, 0%, 0%, 0.078);
   }
 }
 
 //  * ---------- using this component --------
 // <options-dropdown
 // text="Options"
-// optionButtonStyle="!py-[5px] !pr-2 !pl-3 font-medium focus:bg-[rgba(0,0,0,0.08)] hover:bg-[rgba(0,0,0,0.08)]"
+// optionButtonStyle="!py-1 !pr-2 !pl-3 font-medium focus:bg-neutral-100 hover:neutral-100"
 // >
 //   <template v-slot:options-slot>
-//     <ul class="shadow-[0_2px_4px_rgba(0,0,0,0.2)] p-px absolute">
+//     <ul class="dropdown-shadow p-px absolute">
 //       <li
 //         v-for="item in content"
 //         :key="item"
-//         class="first:mt-1 hover:bg-[rgba(0,0,0,0.04)] pt-2.5 px-[11px] pb-[9px] cursor-pointer text-[13px] leading-4 text-left capitalize"
+//         class="first:mt-1 hover:bg-neutral-50 pt-2.5 px-3 pb-2 cursor-pointer text-xs leading-4 text-left capitalize"
 //       >
 //         {{ item }}
 //       </li>
