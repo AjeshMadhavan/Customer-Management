@@ -1,0 +1,77 @@
+<template>
+  <div class="relative w-max">
+    <button
+      :class="['dropdown-button', props.optionButtonStyle]"
+      text
+      @click="toggleOptions"
+      @focusout="toggleOptions"
+    >
+      <span v-if="props.text" class="uppercase">{{ props.text }}</span>
+      <img v-if="props.imageUrl" :src="props.imageUrl" class="profile-image" alt="user profile"/>
+      <v-icon v-if="props.appendIcon" class="!text-base/4 ml-1">
+        {{ props.appendIcon }}
+      </v-icon>
+    </button>
+    <slot name="optionsSlot" v-if="shouldShowOptions" />
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { ref, defineProps } from "vue";
+
+interface Props {
+  optionButtonStyle?: string;
+  appendIcon?: string;
+  text?: string;
+  imageUrl?: string;
+}
+
+const props = defineProps<Props>();
+
+const shouldShowOptions = ref<boolean>(false);
+
+const toggleOptions = () => {
+  shouldShowOptions.value = !shouldShowOptions.value;
+};
+</script>
+
+<style lang="scss" scoped>
+.dropdown-button {
+  font-size: 13px;
+  letter-spacing: 0.52px;
+  display: flex;
+  align-items: center;
+}
+
+.profile-image {
+  width: 28px;
+  height: 28px;
+  border: 1px solid rgb(224, 224, 224);
+  object-fit: cover;
+  object-position: 50% 0%;
+  border-radius: 50%;
+
+  &:hover {
+    border-color: rgb(3, 169, 244);
+    color: hsla(0, 0%, 0%, 0.078);
+  }
+}
+
+//  * ---------- using this component --------
+// <options-dropdown
+// text="Options"
+// optionButtonStyle="!py-1 !pr-2 !pl-3 font-medium focus:bg-neutral-100 hover:neutral-100"
+// >
+//   <template v-slot:options-slot>
+//     <ul class="dropdown-shadow p-px absolute">
+//       <li
+//         v-for="item in content"
+//         :key="item"
+//         class="first:mt-1 hover:bg-neutral-50 pt-2.5 px-3 pb-2 cursor-pointer text-xs leading-4 text-left capitalize"
+//       >
+//         {{ item }}
+//       </li>
+//     </ul>
+//   </template>
+// </options-dropdown>
+</style>
