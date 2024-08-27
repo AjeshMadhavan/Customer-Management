@@ -1,13 +1,10 @@
 <template>
-  <div id="app">
-  </div>
+  <div id="app" />
 </template>
-
-<script lang="ts" setup>
-</script>
 
 <style>
 #app {
+  width: 650px;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -17,5 +14,13 @@
   display: flex;
   margin-left: 20px;
   column-gap: 10px;
+}
+
+.dropdown-item {
+  text-align: left;
+  text-transform: capitalize;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
 }
 </style>
