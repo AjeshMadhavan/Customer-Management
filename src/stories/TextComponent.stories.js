@@ -45,6 +45,6 @@ export const TextWithIcon = {
   args: {
     linkText: "+1(213)555-4276",
     prependIcon: "mdi-phone",
-    textContainerStyle: "px-3 pb-[3px]",
+    textContainerStyle: "px-3 pb-1",
   },
 };
