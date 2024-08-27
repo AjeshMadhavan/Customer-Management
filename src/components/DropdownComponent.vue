@@ -86,7 +86,7 @@ const dropdownArrow = computed(() => {
 //       <li
 //         v-for="option in content.options"
 //         :key="option.text"
-//         class="dropdown-item pt-[9px] pr-4 pb-[9px] pl-12 cursor-pointer"
+//         class="dropdown-item pt-2.5 pr-4 pb-2.5 pl-12 cursor-pointer"
 //       >
 //         {{ option.text }}
 //       </li>
@@ -94,6 +94,6 @@ const dropdownArrow = computed(() => {
 //   </template>
 // </dropdown-component>
 
-// const buttonStyle1 = '!font-bold pt-[9px] pr-[16px] pb-[9px]'
-// const container2 = 'bg-white shadow-[0_2px_4px_0_rgba(0,0,0,0.2)]'
+// const buttonStyle1 = '!font-bold pt-2.5 pr-4 pb-2.5'
+// const container2 = 'bg-white dropdown-shadow'
 </style>
