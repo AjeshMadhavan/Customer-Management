@@ -4,8 +4,8 @@
     :items="tableData"
     :headers-length="30"
     :item-class="getRowClass"
-    :expanded.sync="expanded"
-    :show-expand="shouldShowExpandMenu"
+    :show-expand="expandMenuData.length > 0"
+    :expanded="expandMenuData"
     hide-default-footer
     show-select
     must-sort
@@ -17,52 +17,13 @@
     :header-props="{ 'sort-icon': 'mdi-arrow-up-thin' }"
     @click:row="handleRowClick"
   >
-    <template v-slot:header.name="{ header }">
-      {{ header.text }}
-      <v-icon class="header-filter-icon"> mdi-filter-variant </v-icon>
-    </template>
-    <template v-slot:header.company="{ header }">
-      {{ header.text }}
-      <v-icon class="header-filter-icon">mdi-filter-variant</v-icon>
-    </template>
-    <template v-slot:header.status="{ header }">
-      {{ header.text }}
-      <v-icon class="header-filter-icon"> mdi-filter-variant</v-icon>
-    </template>
-    <template v-slot:header.assignedTo="{ header }">
-      {{ header.text }}
-      <v-icon class="header-filter-icon">mdi-filter-variant</v-icon>
-    </template>
-    <template v-slot:header.phone="{ header }">
-      {{ header.text }}
-      <v-icon class="header-filter-icon">mdi-filter-variant</v-icon>
-    </template>
-    <template v-slot:header.email="{ header }">
-      {{ header.text }}
-      <v-icon class="header-filter-icon">mdi-filter-variant</v-icon>
-    </template>
     <template v-slot:expanded-item="{ headers, item }">
       <td :colspan="headers.length" class="expanded-data">
         <ul>
-          <li class="min-[448px]:hidden pb-2.5">
-            <span class="expand-item-title">Company</span><br />
-            <span class="expand-item-data">{{ item.company }}</span>
-          </li>
-          <li class="min-[727px]:hidden pb-2.5">
-            <span class="expand-item-title">Status</span> <br />
-            <span class="expand-item-data">{{ item.status }}</span>
-          </li>
-          <li class="min-[617px]:hidden pb-2.5">
-            <span class="expand-item-title">Assigned to</span> <br />
-            <span class="expand-item-data">{{ item.assignedTo }}</span>
-          </li>
-          <li class="min-[855px]:hidden pb-2.5">
-            <span class="expand-item-title">Phone</span> <br />
-            <span class="expand-item-data">{{ item.phone }}</span>
-          </li>
-          <li class="min-[1371px]:hidden pb-2.5">
-            <span class="expand-item-title">Email</span> <br />
-            <span class="expand-item-data">{{ item.email }}</span>
+          <li v-for="data in expandMenuData" :key="data" class="pb-2.5">
+            <span class="expand-item-title capitalize">{{ data }}</span
+            ><br />
+            <span class="expand-item-data">{{ item[data] }}</span>
           </li>
         </ul>
       </td>
@@ -71,20 +32,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, computed } from "vue";
+import { ref, defineProps, computed, withDefaults } from "vue";
 
 import { UserData, TableHeader } from "../Type/Types";
 
 interface Props {
   userData: UserData[];
   tableHeader: TableHeader[];
+  expandMenuData?: string[];
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  expandMenuData: () => [],
+});
 
-const expanded = [];
 const selectedRow = ref<string>("");
-const shouldShowExpandMenu = ref<boolean>(true);
 
 const tableData = computed(() => {
   return props.userData;
@@ -99,14 +61,6 @@ const getRowClass = (item) => {
     return "active-row";
   }
 };
-
-window.addEventListener("resize", () => {
-  if (window.innerWidth > 1372) {
-    shouldShowExpandMenu.value = false;
-  } else {
-    shouldShowExpandMenu.value = true;
-  }
-});
 </script>
 
 <style lang="scss" scoped>
@@ -123,10 +77,6 @@ window.addEventListener("resize", () => {
     padding: 0;
     padding-left: 8px;
     text-align: left;
-
-    .header-filter-icon {
-      font-size: 16px;
-    }
 
     .v-icon.mdi-arrow-up-thin {
       transition: none;
@@ -157,17 +107,12 @@ window.addEventListener("resize", () => {
     &.active {
       .v-icon.mdi-arrow-up-thin {
         opacity: 1 !important;
-        right: 17px;
       }
 
       &:hover {
         .v-icon.mdi-arrow-up-thin {
           color: rgba(0, 0, 0, 0.38);
         }
-      }
-
-      .header-filter-icon {
-        left: 12px;
       }
     }
 
@@ -270,4 +215,87 @@ window.addEventListener("resize", () => {
     padding: 0 12px;
   }
 }
+
+// <table-component
+//   :userData="UserDetails.userDetails.users"
+//   :tableHeader="headers"
+//   :expandMenuData="expandMenuData"
+// />
+
+// const headers = [
+//   {
+//     text: "Name",
+//     sortable: true,
+//     value: "name",
+//     align: "start",
+//   },
+//   {
+//     text: "Company",
+//     sortable: true,
+//     value: "company",
+//     align: "start max-[447px]:hidden",
+//   },
+//   {
+//     text: "Status",
+//     sortable: true,
+//     value: "status",
+//     align: "start max-[726px]:hidden",
+//   },
+//   {
+//     text: "Assigned to",
+//     sortable: true,
+//     value: "assignedTo",
+//     align: "start max-[616px]:hidden",
+//   },
+//   {
+//     text: "Phone",
+//     sortable: true,
+//     value: "phone",
+//     align: "start max-[854px]:hidden",
+//   },
+//   {
+//     text: "Email",
+//     sortable: true,
+//     value: "email",
+//     align: "start max-[1372px]:hidden",
+//   },
+//   {
+//     text: "",
+//     value: "data-table-expand",
+//   },
+// ];
+
+// const expandMenuData = ref<string[]>([
+//   "company",
+//   "assignedTo",
+//   "status",
+//   "phone",
+//   "email",
+// ]);
+
+// const updateExpandMenuData = () => {
+//   if (window.innerWidth < 448) {
+//     expandMenuData.value = [
+//       "company",
+//       "assignedTo",
+//       "status",
+//       "phone",
+//       "email",
+//     ];
+//   } else if (window.innerWidth >= 448 && window.innerWidth < 617) {
+//     expandMenuData.value = ["assignedTo", "status", "phone", "email"];
+//   } else if (window.innerWidth >= 617 && window.innerWidth < 727) {
+//     expandMenuData.value = ["status", "phone", "email"];
+//   } else if (window.innerWidth >= 727 && window.innerWidth < 855) {
+//     expandMenuData.value = ["phone", "email"];
+//   } else if (window.innerWidth >= 855 && window.innerWidth < 1371) {
+//     expandMenuData.value = ["email"];
+//   } else {
+//     expandMenuData.value = [];
+//   }
+// };
+
+// window.addEventListener("resize", () => updateExpandMenuData());
+
+// onMounted(() => updateExpandMenuData());
 </style>
