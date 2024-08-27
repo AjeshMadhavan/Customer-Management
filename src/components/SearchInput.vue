@@ -1,23 +1,27 @@
 <template>
   <v-text-field
+    v-model.trim="inputValue"
     filled
     hide-details
     clearable
+    type="text"
     clear-icon="mdi-close"
     loader-height="3"
     :placeholder="props.placeholderText"
     :prepend-inner-icon="props.prependIcon"
     class="!text-sky-500 text-xs text-input"
-    @input="onValueChange"
+    @keyup.enter="onValueChange"
   />
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits, withDefaults } from "vue";
+import { ref, defineProps, defineEmits, withDefaults } from "vue";
+
+const inputValue = ref<string>("");
 
 interface Props {
-  placeholderText: string;
-  prependIcon: string;
+  placeholderText?: string;
+  prependIcon?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
@@ -27,8 +31,8 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(["onValueChange"]);
 
-const onValueChange = (inputValue: string) => {
-  emit("onValueChange", inputValue.trim());
+const onValueChange = () => {
+  emit("onValueChange", inputValue.value);
 };
 </script>
 
