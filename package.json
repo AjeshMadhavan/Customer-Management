@@ -8,7 +8,8 @@
     "lint": "vue-cli-service lint",
     "storybook": "storybook dev -p 6006",
     "test": "vitest",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@vitejs/plugin-vue2": "^2.3.1",

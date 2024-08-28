@@ -43,7 +43,9 @@ describe("test with options dropdown", () => {
       },
     });
 
-    expect(optionsDropdown.find(".profile-image").attributes("src")).toMatch(imageSrc);
+    expect(optionsDropdown.find(".profile-image").attributes("src")).toMatch(
+      imageSrc
+    );
   });
 
   it("renders slot", () => {
@@ -56,5 +58,19 @@ describe("test with options dropdown", () => {
     expect(optionsDropdown.vm.$slots.optionsSlot[0].children[0].text).toMatch(
       "Hello World"
     );
+  });
+
+  it("test for button click", () => {
+    const optionsDropdown = shallowMount(OptionsDropdown, {
+      propsData: {
+        text: "Export Data",
+      },
+    });
+
+    expect(optionsDropdown.vm._setupState.shouldShowOptions.value).toBeFalsy();
+
+    optionsDropdown.find(".dropdown-button").trigger("click");
+
+    expect(optionsDropdown.vm._setupState.shouldShowOptions.value).toBeTruthy();
   });
 });
