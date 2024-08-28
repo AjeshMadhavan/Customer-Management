@@ -1,6 +1,8 @@
 <template>
-  <div id="app" />
+  <div id="app"></div>
 </template>
+
+<script lang="ts" setup></script>
 
 <style>
 #app {
