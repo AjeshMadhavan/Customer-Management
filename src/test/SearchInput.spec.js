@@ -24,18 +24,18 @@ describe("test with searh input", () => {
     expect(searchInput.props("prependIcon")).toMatch("mdi-magnify");
   });
 
-  it("test with emit", () => {
+  it("test with emit", async () => {
     const searchInput = shallowMount(SearchInput, {
-      props: {
-        placeholderText: "hi",
+      propsData: {
+        inputBoxValue: "Evan You",
       },
     });
 
     expect(searchInput.emitted()).toMatchObject({});
 
-    searchInput.vm._setupState.onValueChange("Hello World");
+    await searchInput.trigger("keyup.enter");
 
     expect(searchInput.emitted()).toHaveProperty("onValueChange");
-    expect(searchInput.emitted().onValueChange[0][0]).toBe("Hello World");
+    expect(searchInput.emitted().onValueChange[0][0]).toBe("Evan You");
   });
 });
