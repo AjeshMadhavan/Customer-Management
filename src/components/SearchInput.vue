@@ -4,7 +4,7 @@
     filled
     hide-details
     clearable
-    type="text"
+    :type="inputType"
     clear-icon="mdi-close"
     loader-height="3"
     :placeholder="props.placeholderText"
@@ -21,12 +21,14 @@ interface Props {
   placeholderText?: string;
   prependIcon?: string;
   inputBoxValue?: string;
+  inputType?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   placeholderText: "",
   prependIcon: "",
   inputBoxValue: "",
+  inputType: "text",
 });
 
 const emit = defineEmits(["onValueChange"]);

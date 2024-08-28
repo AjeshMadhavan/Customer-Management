@@ -2,7 +2,6 @@ import SearchInput from "../components/SearchInput.vue";
 
 export default {
   component: SearchInput,
-  title: "Common Components/Search Input",
   tags: ["autodocs"],
   argTypes: {
     placeholderText: {
@@ -11,10 +10,10 @@ export default {
     prependIcon: {
       control: "text",
     },
-    appendIcon: {
+    inputBoxValue: {
       control: "text",
     },
-    inputStype: {
+    inputType: {
       control: "text",
     },
   },
@@ -29,6 +28,5 @@ export const SearchBox = {
   args: {
     placeholderText: "Search",
     prependIcon: "mdi-magnify",
-    appendIcon: "mdi-close",
   },
 };
