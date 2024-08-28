@@ -21,8 +21,8 @@
       <td :colspan="headers.length" class="expanded-data">
         <ul>
           <li v-for="data in expandMenuData" :key="data" class="pb-2.5">
-            <span class="expand-item-title capitalize">{{ data }}</span
-            ><br />
+            <span class="expand-item-title capitalize">{{ data }}</span>
+            <br />
             <span class="expand-item-data">{{ item[data] }}</span>
           </li>
         </ul>
