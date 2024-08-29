@@ -1,13 +1,16 @@
 <template>
-  <div class="relative w-max">
+  <div class="relative w-max" @click.stop>
     <button
       :class="['dropdown-button', props.optionButtonStyle]"
-      text
-      @click="toggleOptions"
-      @focusout="toggleOptions"
+      @click.stop="toggleOptions(!shouldShowOptions)"
     >
       <span v-if="props.text" class="uppercase">{{ props.text }}</span>
-      <img v-if="props.imageUrl" :src="props.imageUrl" class="profile-image" alt="user profile"/>
+      <img
+        v-if="props.imageUrl"
+        :src="props.imageUrl"
+        class="profile-image"
+        alt="user profile"
+      />
       <v-icon v-if="props.appendIcon" class="!text-base/4 ml-1">
         {{ props.appendIcon }}
       </v-icon>
@@ -30,9 +33,13 @@ const props = defineProps<Props>();
 
 const shouldShowOptions = ref<boolean>(false);
 
-const toggleOptions = () => {
-  shouldShowOptions.value = !shouldShowOptions.value;
+const toggleOptions = (toggleValue: boolean) => {
+  shouldShowOptions.value = toggleValue;
 };
+
+window.addEventListener("click", () => {
+  shouldShowOptions.value = false;
+});
 </script>
 
 <style lang="scss" scoped>
@@ -62,8 +69,8 @@ const toggleOptions = () => {
 // text="Options"
 // optionButtonStyle="!py-1 !pr-2 !pl-3 font-medium focus:bg-neutral-100 hover:neutral-100"
 // >
-//   <template v-slot:options-slot>
-//     <ul class="dropdown-shadow p-px absolute">
+//   <template v-slot:optionsSlot>
+//     <ul class="shadow-dropdown p-px absolute">
 //       <li
 //         v-for="item in content"
 //         :key="item"
