@@ -3,7 +3,6 @@ import "../index.css";
 
 export default {
   component: OptionsDropdown,
-  title: "Common Components/Options Dropdown",
   tags: ["autodocs"],
   argTypes: {
     text: {
