@@ -9,7 +9,7 @@
     <v-icon v-if="props.icon" class="button-icon">
       {{ props.icon }}
     </v-icon>
-    <span v-if="props.text" class="button-text">
+    <span v-if="shouldShowText" class="button-text">
       {{ props.text }}
     </span>
   </v-btn>
@@ -58,6 +58,13 @@ const buttonStyleVariant = computed(() => {
     default:
       return "";
   }
+});
+
+const shouldShowText = computed(() => {
+  return (
+    props.variant === ButtonVariants.PRIMARY ||
+    props.variant === ButtonVariants.OUTLINED
+  );
 });
 
 const handleButtonClick = () => {
