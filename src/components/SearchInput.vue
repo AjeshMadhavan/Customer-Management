@@ -58,6 +58,7 @@ const onValueChange = () => {
   .v-input__append-inner {
     margin-top: 7px;
     padding-left: 12px;
+    width: 28px;
 
     .v-input__icon--clear {
       background-color: rgba(194, 194, 194, 0.87);
