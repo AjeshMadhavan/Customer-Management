@@ -3,7 +3,6 @@ import ButtonComponent from "../components/ButtonComponent.vue";
 
 export default {
   component: ButtonComponent,
-  title: 'Common Components/Button',
   tags: ["autodocs"],
   argTypes: {
     text: {
@@ -15,20 +14,17 @@ export default {
     variant: {
       control: "text",
     },
-    buttonStyles: {
+    buttonBackgroundColor: {
+      control: "color",
+    },
+    buttonFontWeight: {
       control: "text",
     },
   },
   render: (args, { argTypes }) => ({
     components: { ButtonComponent },
     props: Object.keys(argTypes),
-    template: `<button-component 
-        :text="text" 
-        :prependIcon="icon" 
-        :buttonStyles="buttonStyles" 
-        :icon="icon" 
-        :variant="variant" 
-    />`,
+    template: `<button-component v-bind="$props" />`,
   }),
 };
 
