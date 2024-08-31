@@ -1,5 +1,5 @@
-import { ButtonVariants } from "../constants";
 import CustomButton from "../components/CustomButton.vue";
+import { ButtonVariants } from "../constants";
 
 export default {
   component: CustomButton,
