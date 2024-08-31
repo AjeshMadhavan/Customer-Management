@@ -79,45 +79,57 @@ const handleButtonClick = (event: Event) => {
 .button-text {
   letter-spacing: 0.52px;
   font-size: 13px;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
-.v-btn .button-icon {
-  font-size: 16px;
-}
+.v-btn {
+  width: 100%;
 
-/**outlined varient */
-.v-btn.outlined {
-  padding: 5px 12px;
-  height: 28px;
-  border-radius: 2px;
-}
-
-/**icon varient */
-.v-btn.icon {
-  padding: 5px;
-  width: 28px;
-  height: 28px;
-
-  &::before {
-    background-color: rgba(0, 0, 0);
-  }
-}
-
-/**primary varient */
-.v-btn.primary {
-  padding: 5px 12px 5px 8px;
-  color: #fff;
-  background-color: #03a9f4;
-  height: 28px;
-  border-radius: 2px;
-
-  &::before {
-    color: rgba(0, 0, 0);
-    transition: none;
+  &::v-deep &__content {
+    width: 100%;
   }
 
   .button-icon {
-    margin-right: 4px;
+    font-size: 16px;
+  }
+
+  /**outlined varient */
+  &.outlined {
+    padding: 5px 12px;
+    height: 28px;
+    border-radius: 2px;
+  }
+
+  /**icon varient */
+  &.icon {
+    padding: 5px;
+    width: 28px;
+    height: 28px;
+
+    &::before {
+      background-color: rgba(0, 0, 0);
+    }
+  }
+
+  /**primary varient */
+  &.primary {
+    padding: 5px 12px 5px 8px;
+    color: #fff;
+    background-color: #03a9f4;
+    height: 28px;
+    border-radius: 2px;
+
+    &::before {
+      color: rgba(0, 0, 0);
+      transition: none;
+    }
+
+    .button-icon {
+      margin-right: 4px;
+    }
   }
 }
 
