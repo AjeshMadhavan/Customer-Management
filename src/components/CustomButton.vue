@@ -5,6 +5,8 @@
     :class="[buttonStyleVariant, { icon: hasIcon }]"
     :style="buttonStyles"
     @click="handleButtonClick"
+    @mouseover="changeBgColor(true)"
+    @mouseout="changeBgColor(false)"
   >
     <v-icon v-if="props.icon" class="button-icon">
       {{ props.icon }}
@@ -16,7 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, defineEmits, defineProps, withDefaults } from "vue";
+import { computed, defineEmits, defineProps, ref, withDefaults } from "vue";
 
 import { ButtonVariants } from "../constants";
 
@@ -26,6 +28,7 @@ interface Props {
   variant: string;
   buttonBackgroundColor?: string;
   buttonFontWeight?: string;
+  backgroundColorOnHover?: string;
 }
 
 const emits = defineEmits<{
@@ -36,11 +39,20 @@ const props = withDefaults(defineProps<Props>(), {
   buttonFontWeight: "500",
 });
 
+const shouldChangeBgColor = ref<boolean>(false);
+
 const buttonStyles = computed(() => {
-  return {
+  const buttonStyleData = {
     backgroundColor: props.buttonBackgroundColor,
     fontWeight: props.buttonFontWeight,
   };
+
+  if (shouldChangeBgColor.value) {
+    buttonStyleData.backgroundColor =
+      props.backgroundColorOnHover || props.buttonBackgroundColor;
+  }
+
+  return buttonStyleData;
 });
 
 const buttonAttributes = computed(() => {
@@ -61,6 +73,10 @@ const buttonStyleVariant = computed(() => {
 });
 
 const hasIcon = computed(() => props.icon && !props.text);
+
+const changeBgColor = (shouldChange: boolean) => {
+  shouldChangeBgColor.value = shouldChange;
+};
 
 const handleButtonClick = (event: Event) => {
   emits("handleButtonClick", event);
