@@ -9,7 +9,7 @@
     <v-icon v-if="props.icon" class="button-icon">
       {{ props.icon }}
     </v-icon>
-    <span v-if="shouldShowText" class="button-text">
+    <span v-if="props.text" class="button-text">
       {{ props.text }}
     </span>
   </v-btn>
@@ -18,7 +18,7 @@
 <script lang="ts" setup>
 import { defineEmits, defineProps, computed, withDefaults } from "vue";
 
-import { ButtonVariants } from "../Type/Enums";
+import { ButtonVariants } from "../constants";
 
 interface Props {
   text?: string;
@@ -45,29 +45,19 @@ const buttonStyles = computed(() => {
 
 const buttonAttributes = computed(() => {
   return {
-    outlined: props.variant === ButtonVariants.OUTLINED,
-    icon: props.variant === ButtonVariants.ICON,
+    outlined: props.variant === ButtonVariants.Outlined,
   };
 });
 
 const buttonStyleVariant = computed(() => {
   switch (props.variant) {
-    case ButtonVariants.PRIMARY:
-      return "primary";
-    case ButtonVariants.OUTLINED:
+    case ButtonVariants.Normal:
+      return "normal";
+    case ButtonVariants.Outlined:
       return "outlined";
-    case ButtonVariants.ICON:
-      return "icon";
     default:
       return "";
   }
-});
-
-const shouldShowText = computed(() => {
-  return (
-    props.variant === ButtonVariants.PRIMARY ||
-    props.variant === ButtonVariants.OUTLINED
-  );
 });
 
 const handleButtonClick = (event: Event) => {
@@ -134,8 +124,7 @@ const handleButtonClick = (event: Event) => {
 }
 
 /**
-<custom-button text="ADD CONTACT" icon="mdi-plus" :variant="ButtonVariants.Primary"/>
-<custom-button text="DETAILS" :variant="ButtonVariants.OUTLINED" />
-<custom-button icon="mdi-menu" :variant="ButtonVariants.ICON" />
+<custom-button text="ADD CONTACT" icon="mdi-plus" :variant="ButtonVariants.Normal"/>
+<custom-button text="DETAILS" :variant="ButtonVariants.Outlined" />
 */
 </style>

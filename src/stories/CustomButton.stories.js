@@ -1,4 +1,4 @@
-import { ButtonVariants } from "../Type/Enums";
+import { ButtonVariants } from "../constants";
 import CustomButton from "../components/CustomButton.vue";
 
 export default {
@@ -28,24 +28,24 @@ export default {
   }),
 };
 
-export const Primary = {
+export const Normal = {
   args: {
     text: "ADD CONTACT",
     icon: "mdi-plus",
-    variant: ButtonVariants.PRIMARY,
+    variant: ButtonVariants.Normal,
   },
 };
 
 export const Outlined = {
   args: {
     text: "DETAILS",
-    variant: ButtonVariants.OUTLINED,
+    variant: ButtonVariants.Outlined,
   },
 };
 
 export const Icon = {
   args: {
     icon: "mdi-account",
-    variant: ButtonVariants.ICON,
+    variant: ButtonVariants.Normal,
   },
 };
