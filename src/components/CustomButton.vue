@@ -28,7 +28,10 @@ interface Props {
   buttonFontWeight?: string;
 }
 
-const emits = defineEmits(["handleButtonClick"]);
+const emits = defineEmits<{
+  (e: "handleButtonClick", value: Event): void;
+}>();
+
 const props = withDefaults(defineProps<Props>(), {
   buttonFontWeight: "500",
 });
@@ -67,8 +70,8 @@ const shouldShowText = computed(() => {
   );
 });
 
-const handleButtonClick = () => {
-  emits("handleButtonClick");
+const handleButtonClick = (event: Event) => {
+  emits("handleButtonClick", event);
 };
 </script>
 
