@@ -1,8 +1,8 @@
 import { ButtonVariants } from "../Type/Enums";
-import ButtonComponent from "../components/ButtonComponent.vue";
+import CustomButton from "../components/CustomButton.vue";
 
 export default {
-  component: ButtonComponent,
+  component: CustomButton,
   tags: ["autodocs"],
   argTypes: {
     text: {
@@ -22,9 +22,9 @@ export default {
     },
   },
   render: (args, { argTypes }) => ({
-    components: { ButtonComponent },
+    components: { CustomButton },
     props: Object.keys(argTypes),
-    template: `<button-component v-bind="$props" />`,
+    template: `<custom-button v-bind="$props" />`,
   }),
 };
 

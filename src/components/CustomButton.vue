@@ -119,8 +119,8 @@ const handleButtonClick = () => {
 }
 
 /**
-<button-component text="ADD CONTACT" icon="mdi-plus" :variant="ButtonVariants.Primary"/>
-<button-component text="DETAILS" :variant="ButtonVariants.OUTLINED" />
-<button-component icon="mdi-menu" :variant="ButtonVariants.ICON" />
+<custom-button text="ADD CONTACT" icon="mdi-plus" :variant="ButtonVariants.Primary"/>
+<custom-button text="DETAILS" :variant="ButtonVariants.OUTLINED" />
+<custom-button icon="mdi-menu" :variant="ButtonVariants.ICON" />
 */
 </style>
