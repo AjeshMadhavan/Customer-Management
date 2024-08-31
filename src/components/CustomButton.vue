@@ -2,7 +2,7 @@
   <v-btn
     v-bind="buttonAttributes"
     elevation="1"
-    :class="buttonStyleVariant"
+    :class="[buttonStyleVariant, { icon: isIcon }]"
     :style="buttonStyles"
     @click="handleButtonClick"
   >
@@ -60,6 +60,8 @@ const buttonStyleVariant = computed(() => {
   }
 });
 
+const isIcon = computed(() => props.icon && !props.text);
+
 const handleButtonClick = (event: Event) => {
   emits("handleButtonClick", event);
 };
@@ -93,17 +95,6 @@ const handleButtonClick = (event: Event) => {
     border-radius: 2px;
   }
 
-  /**icon varient */
-  &.icon {
-    padding: 5px;
-    width: 28px;
-    height: 28px;
-
-    &::before {
-      background-color: rgba(0, 0, 0);
-    }
-  }
-
   /**primary varient */
   &.primary {
     padding: 5px 12px 5px 8px;
@@ -119,6 +110,24 @@ const handleButtonClick = (event: Event) => {
 
     .button-icon {
       margin-right: 4px;
+    }
+  }
+
+  /**icon varient */
+  .v-btn.icon {
+    padding: 5px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    min-width: fit-content;
+    margin-right: 0;
+
+    .button-icon {
+      margin-right: -1px;
+    }
+
+    &::before {
+      background-color: rgba(0, 0, 0);
     }
   }
 }
