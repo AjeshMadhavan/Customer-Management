@@ -2,7 +2,7 @@
   <v-btn
     v-bind="buttonAttributes"
     elevation="1"
-    :class="[buttonStyleVariant, { icon: isIcon }]"
+    :class="[buttonStyleVariant, { icon: hasIcon }]"
     :style="buttonStyles"
     @click="handleButtonClick"
   >
@@ -16,7 +16,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineEmits, defineProps, computed, withDefaults } from "vue";
+import { computed, defineEmits, defineProps, withDefaults } from "vue";
 
 import { ButtonVariants } from "../constants";
 
@@ -60,7 +60,7 @@ const buttonStyleVariant = computed(() => {
   }
 });
 
-const isIcon = computed(() => props.icon && !props.text);
+const hasIcon = computed(() => props.icon && !props.text);
 
 const handleButtonClick = (event: Event) => {
   emits("handleButtonClick", event);
@@ -88,15 +88,15 @@ const handleButtonClick = (event: Event) => {
     font-size: 16px;
   }
 
-  /**outlined varient */
+  /* outlined varient */
   &.outlined {
     padding: 5px 12px;
     height: 28px;
     border-radius: 2px;
   }
 
-  /**primary varient */
-  &.primary {
+  /* normal varient */
+  &.normal {
     padding: 5px 12px 5px 8px;
     color: #fff;
     background-color: #03a9f4;
@@ -113,7 +113,7 @@ const handleButtonClick = (event: Event) => {
     }
   }
 
-  /**icon varient */
+  /* icon varient */
   .v-btn.icon {
     padding: 5px;
     width: 28px;
