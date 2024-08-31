@@ -12,7 +12,8 @@ export default {
       control: "text",
     },
     variant: {
-      control: "text",
+      control: "select",
+      options: Object.values(ButtonVariants),
     },
     buttonBackgroundColor: {
       control: "color",
