@@ -20,16 +20,21 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, defineProps } from "vue";
+import { defineProps, ref, withDefaults } from "vue";
 
 interface Props {
-  optionButtonStyle?: string;
   hideToggleArrow?: boolean;
-  text?: string;
   imageUrl?: string;
+  optionButtonStyle?: string;
+  text?: string;
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  appendIcon: "",
+  imageUrl: "",
+  optionButtonStyle: "",
+  text: "",
+});
 
 const shouldShowOptions = ref<boolean>(false);
 
