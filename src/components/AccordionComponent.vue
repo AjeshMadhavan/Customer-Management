@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, computed, defineProps } from "vue";
+import { computed, defineProps, ref, withDefaults } from "vue";
 
 interface Props {
   dropdownButtonStyle?: string;
@@ -26,7 +26,11 @@ interface Props {
   text: string;
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  dropdownButtonStyle: "",
+  dropdownContainerStyle: "",
+  prependIcon: "",
+});
 
 const showDropdownItems = ref<boolean>(false);
 
