@@ -33,9 +33,10 @@ export const DropdownWithIcon = {
     text: "CRM",
     prependIcon: "mdi-account",
     dropdownButtonStyle: "py-2.5 pr-4",
-    itemSlot: `<ul class="text-xs ">
-                <li>Contact List</li>
-                <li>Contact Details</li>
+    dropdownContainerStyle: "bg-zinc-100",
+    itemSlot: `<ul>
+                <li class="py-1.5 pr-4 pl-6 cursor-pointer text-sm">Contact List</li>
+                <li class="py-1.5 pr-4 pl-6 cursor-pointer text-sm">Contact Details</li>
             </ul>`,
   },
 };
@@ -44,10 +45,10 @@ export const DropdownWithoutIcon = {
   args: {
     text: "Oppertunities",
     dropdownButtonStyle: "py-1.5 pr-2.5 pl-3",
-    dropdownContainerStyle: "bg-white dropdown-shadow]",
-    itemSlot: `<ul class="text-sm p-3">
-                <li>Incoming Request</li>
-                <li>POS Touch Screens</li>
+    dropdownContainerStyle: "shadow-md",
+    itemSlot: `<ul>
+                <li class="text-sm py-1">Incoming Request</li>
+                <li class="text-sm py-1">POS Touch Screens</li>
             </ul>`,
   },
 };
