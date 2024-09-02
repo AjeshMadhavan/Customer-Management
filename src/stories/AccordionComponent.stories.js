@@ -1,7 +1,7 @@
-import DropdownComponent from "../components/DropdownComponent.vue";
+import AccordionComponent from "../components/AccordionComponent.vue";
 
 export default {
-  component: DropdownComponent,
+  component: AccordionComponent,
   tags: ["autodocs"],
   argTypes: {
     text: {
@@ -19,8 +19,8 @@ export default {
   },
   render: (args, { argTypes }) => ({
     props: Object.keys(argTypes),
-    components: { DropdownComponent },
-    template: `<dropdown-component v-bind="$props">
+    components: { AccordionComponent },
+    template: `<accordion-component v-bind="$props">
             <template v-slot:item-slot>
                 <div v-if="itemSlot" v-html="itemSlot" />
             </template>
