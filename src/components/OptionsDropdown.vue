@@ -11,8 +11,8 @@
         class="profile-image"
         alt="user profile"
       />
-      <v-icon v-if="props.appendIcon" class="!text-base/4 ml-1">
-        {{ props.appendIcon }}
+      <v-icon v-if="!hideToggleArrow" class="!text-base/4 ml-1">
+        mdi-menu-down
       </v-icon>
     </button>
     <slot name="optionsSlot" v-if="shouldShowOptions" />
@@ -24,7 +24,7 @@ import { ref, defineProps } from "vue";
 
 interface Props {
   optionButtonStyle?: string;
-  appendIcon?: string;
+  hideToggleArrow?: boolean;
   text?: string;
   imageUrl?: string;
 }
