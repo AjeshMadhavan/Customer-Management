@@ -20,14 +20,37 @@
         mdi-menu-down
       </v-icon>
     </button>
-    <slot name="optionsSlot" v-if="shouldShowOptions" />
+    <div v-if="shouldShowOptions">
+      <ul class="dropdown-container absolute shadow-md">
+        <li
+          v-for="data in dropdownContent"
+          :key="data.text"
+          class="dropdown-item"
+        >
+          <v-icon v-if="data.prependIcon" class="dropdown-item__icon">
+            {{ data.prependIcon }}
+          </v-icon>
+          {{ data.text }}
+          <v-icon v-if="!hideToggleArrow" class="dropdown-item__icon">
+            mdi-menu-down
+          </v-icon>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { defineProps, ref, withDefaults } from "vue";
 
+interface DropdownContent {
+  text: string;
+  appendIcon?: string;
+  prependIcon?: string;
+}
+
 interface Props {
+  dropdownContent: DropdownContent[];
   hideToggleArrow?: boolean;
   icon?: string;
   imageUrl?: string;
@@ -82,6 +105,42 @@ window.addEventListener("click", () => {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-transform: uppercase;
+}
+
+.dropdown-container {
+  width: max-content;
+}
+
+.dropdown-item {
+  padding: 10px 11px 9px;
+  font-size: 13px;
+  font-weight: 400;
+  text-align: left;
+
+  &:first-child {
+    margin-top: 4px;
+  }
+
+  &:last-child {
+    margin-bottom: 4px;
+  }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+  }
+
+  &.selected {
+    background-color: rgba(0, 0, 0, 0.12);
+
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.14);
+    }
+  }
+
+  &__icon {
+    width: 29px;
+    font-size: 18px;
+  }
 }
 
 //  * ---------- using this component --------
