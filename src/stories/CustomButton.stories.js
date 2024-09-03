@@ -15,14 +15,8 @@ export default {
       control: "select",
       options: Object.values(ButtonVariants),
     },
-    buttonFontWeight: {
+    buttonStyle: {
       control: "text",
-    },
-    buttonBackgroundColor: {
-      control: "color",
-    },
-    backgroundColorOnHover: {
-      control: "color",
     },
   },
   render: (args, { argTypes }) => ({
