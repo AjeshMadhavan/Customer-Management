@@ -9,8 +9,8 @@
         <img
           v-if="props.imageUrl"
           :src="props.imageUrl"
-          class="profile-image mr-1"
-          alt="user profile"
+          class="dropdown-image mr-1"
+          alt="dropdown image"
         />
         <span v-if="props.text" class="dropdown-title">
           {{ props.text }}
@@ -63,7 +63,7 @@ window.addEventListener("click", () => {
   align-items: center;
 }
 
-.profile-image {
+.dropdown-image {
   width: 28px;
   height: 28px;
   border: 1px solid rgb(224, 224, 224);
