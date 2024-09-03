@@ -30,9 +30,9 @@
           <v-icon v-if="data.prependIcon" class="dropdown-item__icon">
             {{ data.prependIcon }}
           </v-icon>
-          {{ data.text }}
-          <v-icon v-if="!hideToggleArrow" class="dropdown-item__icon">
-            mdi-menu-down
+          <span>{{ data.text }}</span>
+          <v-icon v-if="data.appendIcon" class="dropdown-item__icon">
+            {{ data.appendIcon }}
           </v-icon>
         </li>
       </ul>
