@@ -1,8 +1,17 @@
 <template>
   <v-btn
-    v-bind="buttonAttributes"
     elevation="1"
-    :class="[buttonStyleVariant, buttonStyle, { icon: hasIcon }]"    
+    :class="[
+      buttonStyle,
+      {
+        normal: variant === ButtonVariants.Normal,
+        outlined: variant === ButtonVariants.Outlined,
+      },
+      {
+        'icon': hasIcon
+      }
+    ]"
+    :outlined="showAsOutlined"
     @click="handleButtonClick"
     @mouseover="changeBgColor(true)"
     @mouseout="changeBgColor(false)"
@@ -36,22 +45,7 @@ const props = withDefaults(defineProps<Props>(), {
   buttonStyle: "",
 });
 
-const buttonAttributes = computed(() => {
-  return {
-    outlined: props.variant === ButtonVariants.Outlined,
-  };
-});
-
-const buttonStyleVariant = computed(() => {
-  switch (props.variant) {
-    case ButtonVariants.Normal:
-      return "normal";
-    case ButtonVariants.Outlined:
-      return "outlined";
-    default:
-      return "";
-  }
-});
+const showAsOutlined = computed(() => props.variant === ButtonVariants.Outlined);
 
 const hasIcon = computed(() => props.icon && !props.text);
 
