@@ -1,8 +1,8 @@
 <template>
-  <div :class="['dropdown-menu', props.accordionContainerStyle]">
+  <div :class="['accordion-menu', props.containerStyle]">
     <button
-      @click="toggleDropdownItems"
-      :class="['toggle-button', props.accordionButtonStyle]"
+      @click="toggleAccordionContent"
+      :class="['toggle-button', props.toggleButtonStyle]"
     >
       <div class="toggle-button__title flex justify-start items-center">
         <v-icon v-if="props.prependIcon" class="prepend-icon">
@@ -10,14 +10,14 @@
         </v-icon>
         <span>{{ props.text }}</span>
       </div>
-      <v-icon class="arrow-icon"> {{ dropdownArrow }} </v-icon>
+      <v-icon class="arrow-icon"> {{ toggleArrow }} </v-icon>
     </button>
     <div
       class="slot-container"
-      ref="dropdownContent"
-      :style="dropdownContentStyle"
+      ref="accordionContentElement"
+      :style="accordionContentStyle"
     >
-      <slot name="item-slot" class="slot-items" />
+      <slot name="content-slot" class="slot-content" />
     </div>
   </div>
 </template>
@@ -26,8 +26,8 @@
 import { computed, defineProps, ref, withDefaults, onMounted } from "vue";
 
 interface Props {
-  accordionButtonStyle?: string;
-  accordionContainerStyle?: string;
+  toggleButtonStyle?: string;
+  containerStyle?: string;
   prependIcon?: string;
   text: string;
 }
@@ -38,28 +38,28 @@ const props = withDefaults(defineProps<Props>(), {
   prependIcon: "",
 });
 
-const showDropdownItems = ref<boolean>(true);
-const dropdownContent = ref<HTMLDivElement | null>(null);
-let dropdownContentHeight = ref<number | undefined>(
-  dropdownContent.value?.offsetHeight
+const showAccordionContent = ref<boolean>(true);
+const accordionContentElement = ref<HTMLDivElement | null>(null);
+let accordionContentHeight = ref<number | undefined>(
+  accordionContentElement.value?.offsetHeight
 );
 
-const toggleDropdownItems = () => {
-  showDropdownItems.value = !showDropdownItems.value;
+const toggleAccordionContent = () => {
+  showAccordionContent.value = !showAccordionContent.value;
 };
 
-const dropdownArrow = computed(() => {
+const toggleArrow = computed(() => {
   if (props.prependIcon) {
-    return showDropdownItems.value ? "mdi-chevron-down" : "mdi-chevron-right";
+    return showAccordionContent.value ? "mdi-chevron-down" : "mdi-chevron-right";
   } else {
-    return showDropdownItems.value ? "mdi-chevron-up" : "mdi-chevron-down";
+    return showAccordionContent.value ? "mdi-chevron-up" : "mdi-chevron-down";
   }
 });
 
-const dropdownContentStyle = computed(() => {
-  if (showDropdownItems.value) {
+const accordionContentStyle = computed(() => {
+  if (showAccordionContent.value) {
     return {
-      height: dropdownContentHeight.value + "px",
+      height: accordionContentHeight.value + "px",
     };
   }
 
@@ -67,13 +67,13 @@ const dropdownContentStyle = computed(() => {
 });
 
 onMounted(() => {
-  dropdownContentHeight.value = dropdownContent.value?.offsetHeight;
-  showDropdownItems.value = false;
+  accordionContentHeight.value = accordionContentElement.value?.offsetHeight;
+  showAccordionContent.value = false;
 });
 </script>
 
 <style lang="scss" scoped>
-.dropdown-menu {
+.accordion-menu {
   width: 100% !important;
   height: max-content;
 
@@ -109,24 +109,24 @@ onMounted(() => {
   }
 }
 
-// <dropdown-component
+// <accordion-component
 //   text="CRM"
 //   prependIcon="mdi-magnify"
-//   :accordionButtonStyle="buttonStyle1"
-//   :accordionContainerStyle="container1"
+//   :toggleButtonStyle="buttonStyle1"
+//   :containerStyle="container1"
 // >
 //   <template v-slot:item-slot>
 //     <ul>
 //       <li
 //         v-for="option in content.options"
 //         :key="option.text"
-//         class="dropdown-item pt-2.5 pr-4 pb-2.5 pl-12 cursor-pointer"
+//         class="accordion-item pt-2.5 pr-4 pb-2.5 pl-12 cursor-pointer"
 //       >
 //         {{ option.text }}
 //       </li>
 // </ul>
 //   </template>
-// </dropdown-component>
+// </accordion-component>
 
 // const buttonStyle1 = '!font-bold pt-2.5 pr-4 pb-2.5'
 // const container2 = 'bg-white dropdown-shadow'
