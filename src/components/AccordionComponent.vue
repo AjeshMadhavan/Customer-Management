@@ -1,8 +1,8 @@
 <template>
-  <div :class="['dropdown-menu', props.dropdownContainerStyle]">
+  <div :class="['dropdown-menu', props.accordionContainerStyle]">
     <button
       @click="toggleDropdownItems"
-      :class="['toggle-button', props.dropdownButtonStyle]"
+      :class="['toggle-button', props.accordionButtonStyle]"
     >
       <div class="toggle-button__title flex justify-start items-center">
         <v-icon v-if="props.prependIcon" class="prepend-icon">
@@ -20,15 +20,15 @@
 import { computed, defineProps, ref, withDefaults } from "vue";
 
 interface Props {
-  dropdownButtonStyle?: string;
-  dropdownContainerStyle?: string;
+  accordionButtonStyle?: string;
+  accordionContainerStyle?: string;
   prependIcon?: string;
   text: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  dropdownButtonStyle: "",
-  dropdownContainerStyle: "",
+  accordionButtonStyle: "",
+  accordionContainerStyle: "",
   prependIcon: "",
 });
 
@@ -82,8 +82,8 @@ const dropdownArrow = computed(() => {
 // <dropdown-component
 //   text="CRM"
 //   prependIcon="mdi-magnify"
-//   :dropdownButtonStyle="buttonStyle1"
-//   :dropdownContainerStyle="container1"
+//   :accordionButtonStyle="buttonStyle1"
+//   :accordionContainerStyle="container1"
 // >
 //   <template v-slot:item-slot>
 //     <ul>
