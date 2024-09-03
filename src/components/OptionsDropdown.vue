@@ -21,7 +21,7 @@
       </v-icon>
     </button>
     <div v-if="shouldShowOptions">
-      <ul class="dropdown-container absolute shadow-md">
+      <ul class="absolute shadow-md w-max">
         <li
           v-for="data in dropdownContent"
           :key="data.text"
