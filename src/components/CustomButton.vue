@@ -2,8 +2,7 @@
   <v-btn
     v-bind="buttonAttributes"
     elevation="1"
-    :class="[buttonStyleVariant, buttonStyle, { icon: hasIcon }]"
-    :style="buttonStyles"
+    :class="[buttonStyleVariant, buttonStyle, { icon: hasIcon }]"    
     @click="handleButtonClick"
     @mouseover="changeBgColor(true)"
     @mouseout="changeBgColor(false)"
@@ -23,9 +22,6 @@ import { computed, defineEmits, defineProps, ref, withDefaults } from "vue";
 import { ButtonVariants } from "../constants";
 
 interface Props {
-  buttonBackgroundColor?: string;
-  buttonFontWeight?: string;
-  backgroundColorOnHover?: string;
   buttonStyle?: string;
   icon?: string;
   text?: string;
@@ -37,24 +33,7 @@ const emits = defineEmits<{
 }>();
 
 const props = withDefaults(defineProps<Props>(), {
-  buttonFontWeight: "500",
   buttonStyle: "",
-});
-
-const shouldChangeBgColor = ref<boolean>(false);
-
-const buttonStyles = computed(() => {
-  const buttonStyleData = {
-    backgroundColor: props.buttonBackgroundColor,
-    fontWeight: props.buttonFontWeight,
-  };
-
-  if (shouldChangeBgColor.value) {
-    buttonStyleData.backgroundColor =
-      props.backgroundColorOnHover || props.buttonBackgroundColor;
-  }
-
-  return buttonStyleData;
 });
 
 const buttonAttributes = computed(() => {
