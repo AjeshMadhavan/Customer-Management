@@ -12,12 +12,18 @@
       </div>
       <v-icon class="arrow-icon"> {{ dropdownArrow }} </v-icon>
     </button>
-    <slot name="item-slot" v-if="showDropdownItems" />
+    <div
+      class="slot-container"
+      ref="dropdownContent"
+      :style="dropdownContentStyle"
+    >
+      <slot name="item-slot" class="slot-items" />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { computed, defineProps, ref, withDefaults } from "vue";
+import { computed, defineProps, ref, withDefaults, onMounted } from "vue";
 
 interface Props {
   accordionButtonStyle?: string;
@@ -32,7 +38,11 @@ const props = withDefaults(defineProps<Props>(), {
   prependIcon: "",
 });
 
-const showDropdownItems = ref<boolean>(false);
+const showDropdownItems = ref<boolean>(true);
+const dropdownContent = ref<HTMLDivElement | null>(null);
+let dropdownContentHeight = ref<number | undefined>(
+  dropdownContent.value?.offsetHeight
+);
 
 const toggleDropdownItems = () => {
   showDropdownItems.value = !showDropdownItems.value;
@@ -44,6 +54,21 @@ const dropdownArrow = computed(() => {
   } else {
     return showDropdownItems.value ? "mdi-chevron-up" : "mdi-chevron-down";
   }
+});
+
+const dropdownContentStyle = computed(() => {
+  if (showDropdownItems.value) {
+    return {
+      height: dropdownContentHeight.value + "px",
+    };
+  }
+
+  return { height: 0 };
+});
+
+onMounted(() => {
+  dropdownContentHeight.value = dropdownContent.value?.offsetHeight;
+  showDropdownItems.value = false;
 });
 </script>
 
@@ -76,6 +101,11 @@ const dropdownArrow = computed(() => {
     .arrow-icon {
       font-size: 18px;
     }
+  }
+
+  .slot-container {
+    transition: height 0.5s ease-in-out;
+    overflow: hidden;
   }
 }
 
