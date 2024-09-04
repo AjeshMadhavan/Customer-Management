@@ -13,6 +13,11 @@ module.exports = {
       fontSize: {
         "2xs": ["10px", "10px"],
       },
+      colors: {
+        "black-04": "rgba(0, 0, 0, 0.04)",
+        "black-12": "rgba(0, 0, 0, 0.12)",
+        "black-14": "rgba(0, 0, 0, 0.14)"
+      }
     },
   },
   plugins: [],

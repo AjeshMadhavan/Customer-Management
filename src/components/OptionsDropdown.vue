@@ -20,12 +20,12 @@
         mdi-menu-down
       </v-icon>
     </button>
-    <div v-if="shouldShowOptions">
-      <ul class="absolute shadow-md w-max">
+    <div v-if="shouldShowOptions" class="absolute shadow-md">
+      <ul class="w-max">
         <li
           v-for="data in dropdownContent"
           :key="data.text"
-          class="dropdown-item"
+          class="dropdown-item hover:bg-black-04"
         >
           <v-icon v-if="data.prependIcon" class="dropdown-item__icon">
             {{ data.prependIcon }}
@@ -125,21 +125,10 @@ window.addEventListener("click", () => {
     margin-bottom: 4px;
   }
 
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.04);
-  }
-
-  &.selected {
-    background-color: rgba(0, 0, 0, 0.12);
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.14);
-    }
-  }
-
   &__icon {
     width: 29px;
     font-size: 18px;
+    justify-content: left;
   }
 }
 
