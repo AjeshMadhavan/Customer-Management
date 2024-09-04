@@ -7,7 +7,7 @@
     :type="inputType"
     clear-icon="mdi-close"
     loader-height="3"
-    :placeholder="props.placeholderText"
+    :placeholder="placeholderText.trim()"
     :prepend-inner-icon="props.prependIcon"
     class="!text-sky-500 text-xs text-input"
     @keyup.enter="onValueChange"
@@ -15,20 +15,20 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, defineProps, defineEmits, withDefaults } from "vue";
+import { defineProps, defineEmits, ref, withDefaults } from "vue";
 
 interface Props {
-  placeholderText?: string;
-  prependIcon?: string;
   inputBoxValue?: string;
   inputType?: string;
+  placeholderText?: string;
+  prependIcon?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  placeholderText: "",
-  prependIcon: "",
   inputBoxValue: "",
   inputType: "text",
+  placeholderText: "",
+  prependIcon: "",
 });
 
 const emit = defineEmits(["onValueChange"]);
