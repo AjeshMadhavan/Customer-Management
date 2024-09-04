@@ -10,8 +10,10 @@
     loader-height="3"
     :placeholder="placeholderText.trim()"
     :prepend-inner-icon="props.prependIcon"
+    hide-spin-buttons
     class="!text-sky-500 text-xs text-input"
     @keyup.enter="onValueChange"
+    @keydown="restrictValues"
   />
 </template>
 
@@ -32,9 +34,17 @@ const props = withDefaults(defineProps<Props>(), {
   prependIcon: "",
 });
 
-const emit = defineEmits(["onValueChange"]);
+const emit = defineEmits<{
+  (e: "onValueChange", value: string | number): void;
+}>();
 
 const inputValue = ref<string>(props.inputBoxValue);
+const restrictedValues = ["ArrowUp", "ArrowDown", "e", "E"];
+
+const restrictValues = (e: KeyboardEvent) => {
+  if (restrictedValues.includes(e.key) && props.inputType === "number")
+    e.preventDefault();
+};
 
 const onValueChange = () => {
   emit("onValueChange", inputValue.value);
