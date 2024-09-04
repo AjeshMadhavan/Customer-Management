@@ -1,4 +1,4 @@
-{
+  {
   "topPanel": {
     "title": "UI Template Gallery",
     "searchBoxLabel": "Search",
@@ -10,11 +10,12 @@
     "userProfile": {
       "options": [
         {
-          "text": "John Heart"
+          "text": "John Heart",
+          "disableHover": true
         },
         {
           "text": "Logout",
-          "icon": "mdi-run",
+          "prependIcon": "mdi-run",
           "path": "#"
         }
       ]
@@ -135,19 +136,19 @@
       "options": [
         {
           "text": "Export all data into Excel",
-          "icon": "mdi-file-excel-outline"
+          "prependIcon": "mdi-file-excel-outline"
         },
         {
           "text": "Export selected rows to Excel",
-          "icon": "mdi-file-document-arrow-right-outline"
+          "prependIcon": "mdi-file-document-arrow-right-outline"
         },
         {
           "text": "Export all data to PDF",
-          "icon": "mdi-file"
+          "prependIcon": "mdi-file"
         },
         {
           "text": "Export selected rows to PDF",
-          "icon": "mdi-file-document-arrow-right-outline"
+          "prependIcon": "mdi-file-document-arrow-right-outline"
         }
       ]
     },
