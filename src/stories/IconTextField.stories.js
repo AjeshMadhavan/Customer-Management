@@ -1,7 +1,7 @@
-import TextComponent from "../components/TextComponent.vue";
+import IconTextField from "../components/IconTextField.vue";
 
 export default {
-  component: TextComponent,
+  component: IconTextField,
   tags: ["autodocs"],
   argTypes: {
     text: {
@@ -21,9 +21,9 @@ export default {
     },
   },
   render: (args, { argTypes }) => ({
-    components: { TextComponent },
+    components: { IconTextField },
     props: Object.keys(argTypes),
-    template: `<text-component 
+    template: `<icon-text-field 
                 :text="text" 
                 :linkText="linkText" 
                 :linkTextStyle="linkTextStyle"
