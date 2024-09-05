@@ -1,9 +1,17 @@
 <template>
   <v-btn
-    v-bind="buttonAttributes"
     elevation="1"
-    :class="[buttonStyleVariant, { icon: hasIcon }]"
-    :style="buttonStyles"
+    :class="[
+      buttonStyle,
+      {
+        normal: variant === ButtonVariants.Normal,
+        outlined: variant === ButtonVariants.Outlined,
+      },
+      {
+        'icon': hasIcon
+      }
+    ]"
+    :outlined="showAsOutlined"
     @click="handleButtonClick"
     @mouseover="changeBgColor(true)"
     @mouseout="changeBgColor(false)"
@@ -23,12 +31,10 @@ import { computed, defineEmits, defineProps, ref, withDefaults } from "vue";
 import { ButtonVariants } from "../constants";
 
 interface Props {
-  text?: string;
+  buttonStyle?: string;
   icon?: string;
+  text?: string;
   variant: string;
-  buttonBackgroundColor?: string;
-  buttonFontWeight?: string;
-  backgroundColorOnHover?: string;
 }
 
 const emits = defineEmits<{
@@ -36,41 +42,10 @@ const emits = defineEmits<{
 }>();
 
 const props = withDefaults(defineProps<Props>(), {
-  buttonFontWeight: "500",
+  buttonStyle: "",
 });
 
-const shouldChangeBgColor = ref<boolean>(false);
-
-const buttonStyles = computed(() => {
-  const buttonStyleData = {
-    backgroundColor: props.buttonBackgroundColor,
-    fontWeight: props.buttonFontWeight,
-  };
-
-  if (shouldChangeBgColor.value) {
-    buttonStyleData.backgroundColor =
-      props.backgroundColorOnHover || props.buttonBackgroundColor;
-  }
-
-  return buttonStyleData;
-});
-
-const buttonAttributes = computed(() => {
-  return {
-    outlined: props.variant === ButtonVariants.Outlined,
-  };
-});
-
-const buttonStyleVariant = computed(() => {
-  switch (props.variant) {
-    case ButtonVariants.Normal:
-      return "normal";
-    case ButtonVariants.Outlined:
-      return "outlined";
-    default:
-      return "";
-  }
-});
+const showAsOutlined = computed(() => props.variant === ButtonVariants.Outlined);
 
 const hasIcon = computed(() => props.icon && !props.text);
 
