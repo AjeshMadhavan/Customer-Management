@@ -8,13 +8,11 @@
         outlined: variant === ButtonVariants.Outlined,
       },
       {
-        'icon': hasIcon
-      }
+        icon: hasIcon,
+      },
     ]"
     :outlined="showAsOutlined"
     @click="handleButtonClick"
-    @mouseover="changeBgColor(true)"
-    @mouseout="changeBgColor(false)"
   >
     <v-icon v-if="props.icon" class="button-icon">
       {{ props.icon }}
@@ -26,7 +24,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, defineEmits, defineProps, ref, withDefaults } from "vue";
+import { computed, defineEmits, defineProps, withDefaults } from "vue";
 
 import { ButtonVariants } from "../constants";
 
@@ -43,15 +41,13 @@ const emits = defineEmits<{
 
 const props = withDefaults(defineProps<Props>(), {
   buttonStyle: "",
+  icon: "",
+  text: "",
 });
 
 const showAsOutlined = computed(() => props.variant === ButtonVariants.Outlined);
 
 const hasIcon = computed(() => props.icon && !props.text);
-
-const changeBgColor = (shouldChange: boolean) => {
-  shouldChangeBgColor.value = shouldChange;
-};
 
 const handleButtonClick = (event: Event) => {
   emits("handleButtonClick", event);
