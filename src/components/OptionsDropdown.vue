@@ -20,7 +20,16 @@
         mdi-menu-down
       </v-icon>
     </button>
-    <div v-if="shouldShowOptions" class="absolute shadow-md">
+    <div
+      v-if="shouldShowOptions"
+      :class="[
+        'absolute shadow-md',
+        {
+          'left-0': contentPosition === DropdownContentPosition.Left,
+          'right-0': contentPosition === DropdownContentPosition.Right,
+        },
+      ]"
+    >
       <ul class="w-max">
         <li
           v-for="dropdownItem in dropdownContent"
@@ -41,7 +50,8 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, ref, withDefaults } from "vue";
+import { computed, defineProps, ref, withDefaults } from "vue";
+
 import { DropdownContentPosition } from "@/constants";
 
 interface DropdownContent {
@@ -51,11 +61,12 @@ interface DropdownContent {
 }
 
 interface Props {
-  dropdownContent: DropdownContent[];  
+  dropdownContent: DropdownContent[];
   contentPosition?: string;
   hideToggleArrow?: boolean;
   icon?: string;
   imageUrl?: string;
+  optionButtonStyle?: string;
   text?: string;
   toggleButtonStyle?: string;
 }
