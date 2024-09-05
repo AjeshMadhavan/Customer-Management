@@ -1,8 +1,8 @@
 <template>
-  <div :class="['dropdown-menu', props.accordionContainerStyle]">
+  <div :class="['accordion-menu', props.containerStyle]">
     <button
-      @click="toggleDropdownItems"
-      :class="['toggle-button', props.accordionButtonStyle]"
+      @click="toggleAccordionContent"
+      :class="['toggle-button', props.toggleButtonStyle]"
     >
       <div class="toggle-button__title flex justify-start items-center">
         <v-icon v-if="props.prependIcon" class="prepend-icon">
@@ -10,18 +10,24 @@
         </v-icon>
         <span>{{ props.text }}</span>
       </div>
-      <v-icon class="arrow-icon"> {{ dropdownArrow }} </v-icon>
+      <v-icon class="arrow-icon"> {{ toggleArrow }} </v-icon>
     </button>
-    <slot name="item-slot" v-if="showDropdownItems" />
+    <div
+      class="slot-container"
+      ref="accordionContentElement"
+      :style="accordionContentStyle"
+    >
+      <slot name="content-slot" class="slot-content" />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import { computed, defineProps, ref, withDefaults } from "vue";
+import { computed, defineProps, ref, withDefaults, onMounted } from "vue";
 
 interface Props {
-  accordionButtonStyle?: string;
-  accordionContainerStyle?: string;
+  toggleButtonStyle?: string;
+  containerStyle?: string;
   prependIcon?: string;
   text: string;
 }
@@ -32,23 +38,42 @@ const props = withDefaults(defineProps<Props>(), {
   prependIcon: "",
 });
 
-const showDropdownItems = ref<boolean>(false);
+const showAccordionContent = ref<boolean>(true);
+const accordionContentElement = ref<HTMLDivElement | null>(null);
+let accordionContentHeight = ref<number | undefined>(
+  accordionContentElement.value?.offsetHeight
+);
 
-const toggleDropdownItems = () => {
-  showDropdownItems.value = !showDropdownItems.value;
+const toggleAccordionContent = () => {
+  showAccordionContent.value = !showAccordionContent.value;
 };
 
-const dropdownArrow = computed(() => {
+const toggleArrow = computed(() => {
   if (props.prependIcon) {
-    return showDropdownItems.value ? "mdi-chevron-down" : "mdi-chevron-right";
+    return showAccordionContent.value ? "mdi-chevron-down" : "mdi-chevron-right";
   } else {
-    return showDropdownItems.value ? "mdi-chevron-up" : "mdi-chevron-down";
+    return showAccordionContent.value ? "mdi-chevron-up" : "mdi-chevron-down";
   }
+});
+
+const accordionContentStyle = computed(() => {
+  if (showAccordionContent.value) {
+    return {
+      height: accordionContentHeight.value + "px",
+    };
+  }
+
+  return { height: 0 };
+});
+
+onMounted(() => {
+  accordionContentHeight.value = accordionContentElement.value?.offsetHeight;
+  showAccordionContent.value = false;
 });
 </script>
 
 <style lang="scss" scoped>
-.dropdown-menu {
+.accordion-menu {
   width: 100% !important;
   height: max-content;
 
@@ -77,26 +102,31 @@ const dropdownArrow = computed(() => {
       font-size: 18px;
     }
   }
+
+  .slot-container {
+    transition: height 0.5s ease-in-out;
+    overflow: hidden;
+  }
 }
 
-// <dropdown-component
+// <accordion-component
 //   text="CRM"
 //   prependIcon="mdi-magnify"
-//   :accordionButtonStyle="buttonStyle1"
-//   :accordionContainerStyle="container1"
+//   :toggleButtonStyle="buttonStyle1"
+//   :containerStyle="container1"
 // >
 //   <template v-slot:item-slot>
 //     <ul>
 //       <li
 //         v-for="option in content.options"
 //         :key="option.text"
-//         class="dropdown-item pt-2.5 pr-4 pb-2.5 pl-12 cursor-pointer"
+//         class="accordion-item pt-2.5 pr-4 pb-2.5 pl-12 cursor-pointer"
 //       >
 //         {{ option.text }}
 //       </li>
 // </ul>
 //   </template>
-// </dropdown-component>
+// </accordion-component>
 
 // const buttonStyle1 = '!font-bold pt-2.5 pr-4 pb-2.5'
 // const container2 = 'bg-white dropdown-shadow'
