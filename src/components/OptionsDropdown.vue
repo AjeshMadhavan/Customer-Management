@@ -1,16 +1,21 @@
 <template>
-  <div class="relative w-max" @click.stop>
+  <div class="relative w-full" @click.stop>
     <button
       :class="['dropdown-button', props.optionButtonStyle]"
       @click.stop="toggleOptions(!shouldShowOptions)"
     >
-      <span v-if="props.text" class="uppercase">{{ props.text }}</span>
-      <img
-        v-if="props.imageUrl"
-        :src="props.imageUrl"
-        class="profile-image"
-        alt="user profile"
-      />
+      <div class="flex items-center">
+        <v-icon class="mr-1 !text-base/4">{{ props.icon }}</v-icon>
+        <img
+          v-if="props.imageUrl"
+          :src="props.imageUrl"
+          class="dropdown-image mr-1"
+          alt="dropdown image"
+        />
+        <span v-if="props.text" class="dropdown-title">
+          {{ props.text }}
+        </span>
+      </div>
       <v-icon v-if="!hideToggleArrow" class="!text-base/4 ml-1">
         mdi-menu-down
       </v-icon>
@@ -24,13 +29,15 @@ import { defineProps, ref, withDefaults } from "vue";
 
 interface Props {
   hideToggleArrow?: boolean;
+  icon?: string;
   imageUrl?: string;
   optionButtonStyle?: string;
   text?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  appendIcon: "",
+  hideToggleArrow: false,
+  icon: "",
   imageUrl: "",
   optionButtonStyle: "",
   text: "",
@@ -49,13 +56,14 @@ window.addEventListener("click", () => {
 
 <style lang="scss" scoped>
 .dropdown-button {
+  width: 100%;
   font-size: 13px;
   letter-spacing: 0.52px;
   display: flex;
   align-items: center;
 }
 
-.profile-image {
+.dropdown-image {
   width: 28px;
   height: 28px;
   border: 1px solid rgb(224, 224, 224);
@@ -67,6 +75,13 @@ window.addEventListener("click", () => {
     border-color: rgb(3, 169, 244);
     color: hsla(0, 0%, 0%, 0.078);
   }
+}
+
+.dropdown-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-transform: uppercase;
 }
 
 //  * ---------- using this component --------
