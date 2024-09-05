@@ -1,5 +1,5 @@
 <template>
-  <div class="relative w-full" @click.stop>
+  <div class="relative w-max" ref="dropdownContainer">
     <button
       :class="['dropdown-button', props.toggleButtonStyle]"
       @click.stop="toggleOptions(!shouldShowOptions)"
@@ -83,13 +83,15 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const shouldShowOptions = ref<boolean>(false);
+const dropdownContainer = ref<HTMLDivElement | null>(null);
 
 const toggleOptions = (toggleValue: boolean) => {
   shouldShowOptions.value = toggleValue;
 };
 
-window.addEventListener("click", () => {
-  shouldShowOptions.value = false;
+document.addEventListener("click", (event: Event) => {
+  if (!dropdownContainer.value?.contains(event?.target))
+    shouldShowOptions.value = false;
 });
 </script>
 
