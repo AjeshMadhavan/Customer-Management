@@ -10,10 +10,10 @@ export default {
     prependIcon: {
       control: "text",
     },
-    dropdownButtonStyle: {
+    accordionButtonStyle: {
       control: "text",
     },
-    dropdownContainerStyle: {
+    accordionContainerStyle: {
       control: "text",
     },
   },
@@ -24,7 +24,7 @@ export default {
             <template v-slot:item-slot>
                 <div v-if="itemSlot" v-html="itemSlot" />
             </template>
-        </dropdown-component>`,
+        </accordion-component>`,
   }),
 };
 
@@ -32,8 +32,8 @@ export const DropdownWithIcon = {
   args: {
     text: "CRM",
     prependIcon: "mdi-account",
-    dropdownButtonStyle: "py-2.5 pr-4",
-    dropdownContainerStyle: "bg-zinc-100",
+    accordionButtonStyle: "py-2.5 pr-4",
+    accordionContainerStyle: "bg-zinc-100",
     itemSlot: `<ul>
                 <li class="py-1.5 pr-4 pl-6 cursor-pointer text-sm">Contact List</li>
                 <li class="py-1.5 pr-4 pl-6 cursor-pointer text-sm">Contact Details</li>
@@ -44,8 +44,8 @@ export const DropdownWithIcon = {
 export const DropdownWithoutIcon = {
   args: {
     text: "Oppertunities",
-    dropdownButtonStyle: "py-1.5 pr-2.5 pl-3",
-    dropdownContainerStyle: "shadow-md",
+    accordionButtonStyle: "py-1.5 pr-2.5 pl-3",
+    accordionContainerStyle: "shadow-md",
     itemSlot: `<ul>
                 <li class="text-sm py-1">Incoming Request</li>
                 <li class="text-sm py-1">POS Touch Screens</li>
