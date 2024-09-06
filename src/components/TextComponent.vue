@@ -1,12 +1,12 @@
 <template>
-  <div :class="['flex', 'items-center', directionColumnStyle]">
+  <div :class="['flex items-center', directionColumnStyle]">
     <v-icon
       v-if="props.prependIcon"
-      :class="['!text-base/4', '!text-slate-400', 'p-1.5', prependIconStyle]"
+      :class="['!text-base/4 !text-slate-400 p-1.5', prependIconStyle]"
     >
       {{ props.prependIcon }}
     </v-icon>
-    <div :class="['font-normal', 'text-container', directionColumnStyle]">
+    <div :class="['font-normal text-container', directionColumnStyle]">
       <span v-if="props.label" class="text-2xs pr-1">
         {{ props.label }}
       </span>
@@ -21,16 +21,16 @@
 import { computed, defineProps, withDefaults } from "vue";
 
 interface Props {
-  isDirectionColumn?: boolean;
+  text: string;
+  isVertically?: boolean;
   label?: string;
   prependIcon?: string;
   prependIconStyle?: string;
-  text: string;
   textStyle?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  isDirectionColumn: false,
+  isVertically: false,
   label: "",
   prependIcon: "",
   prependIconStyle: "",
@@ -38,11 +38,11 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const directionColumnStyle = computed(() => {
-  if (props.isDirectionColumn) {
-    return "flex-col !items-start";
+  if (props.isVertically) {
+    return "flex-col items-start";
+  } else {
+    return "items-center";
   }
-
-  return "";
 });
 
 //<text-component prependIcon="mdi-phone" textContainerStyle="px-3 py-2.5"  linkText="CTO" />
