@@ -10,7 +10,9 @@
         </v-icon>
         <span>{{ props.text }}</span>
       </div>
-      <v-icon class="arrow-icon"> {{ toggleArrow }} </v-icon>
+      <v-icon class="arrow-icon" v-if="!hideToggleArrow">
+        {{ toggleArrow }}
+      </v-icon>
     </button>
     <div
       class="slot-container"
@@ -28,12 +30,14 @@ import { computed, defineProps, ref, withDefaults, onMounted } from "vue";
 interface Props {
   text: string;
   containerStyle?: string;
+  hideToggleArrow?: boolean;
   prependIcon?: string;
   toggleButtonStyle?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
   containerStyle: "",
+  hideToggleArrow: false,
   prependIcon: "",
   toggleButtonStyle: "",
 });
