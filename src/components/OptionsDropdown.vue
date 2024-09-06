@@ -23,16 +23,16 @@
     <div v-if="shouldShowOptions" class="absolute shadow-md">
       <ul class="w-max">
         <li
-          v-for="data in dropdownContent"
-          :key="data.text"
+          v-for="dropdownItem in dropdownContent"
+          :key="dropdownItem.text"
           class="dropdown-item hover:bg-black-04"
         >
-          <v-icon v-if="data.prependIcon" class="dropdown-item__icon">
-            {{ data.prependIcon }}
+          <v-icon v-if="dropdownItem.prependIcon" class="dropdown-item__icon">
+            {{ dropdownItem.prependIcon }}
           </v-icon>
-          <span>{{ data.text }}</span>
-          <v-icon v-if="data.appendIcon" class="dropdown-item__icon">
-            {{ data.appendIcon }}
+          <span>{{ dropdownItem.text }}</span>
+          <v-icon v-if="dropdownItem.appendIcon" class="dropdown-item__icon">
+            {{ dropdownItem.appendIcon }}
           </v-icon>
         </li>
       </ul>
