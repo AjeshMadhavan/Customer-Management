@@ -24,20 +24,20 @@ export default {
     props: Object.keys(argTypes),
     components: { AccordionComponent },
     template: `<accordion-component v-bind="$props">
-            <template v-slot:item-slot>
-                <div v-if="itemSlot" v-html="itemSlot" />
+            <template v-slot:content-slot>
+                <div v-if="contentSlot" v-html="contentSlot" />
             </template>
         </accordion-component>`,
   }),
 };
 
-export const DropdownWithIcon = {
+export const Accordion = {
   args: {
     text: "CRM",
     prependIcon: "mdi-account",
     toggleButtonStyle: "py-2.5 pr-4",
     containerStyle: "bg-zinc-100",
-    itemSlot: `<ul>
+    contentSlot: `<ul>
                 <li class="py-1.5 pr-4 pl-6 cursor-pointer text-sm">Contact List</li>
                 <li class="py-1.5 pr-4 pl-6 cursor-pointer text-sm">Contact Details</li>
             </ul>`,
