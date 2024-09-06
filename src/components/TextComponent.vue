@@ -1,12 +1,12 @@
 <template>
-  <div :class="['flex items-center', directionColumnStyle]">
+  <div :class="['flex items-center', alignmentStyle]">
     <v-icon
       v-if="props.prependIcon"
       :class="['!text-base/4 !text-slate-400 p-1.5', prependIconStyle]"
     >
       {{ props.prependIcon }}
     </v-icon>
-    <div :class="['font-normal text-container', directionColumnStyle]">
+    <div :class="['font-normal text-container', alignmentStyle]">
       <span v-if="props.label" class="text-2xs pr-1">
         {{ props.label }}
       </span>
@@ -37,7 +37,7 @@ const props = withDefaults(defineProps<Props>(), {
   textStyle: "",
 });
 
-const directionColumnStyle = computed(() => {
+const alignmentStyle = computed(() => {
   if (props.isVertically) {
     return "flex-col items-start";
   } else {
