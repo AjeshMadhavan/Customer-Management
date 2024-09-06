@@ -32,7 +32,7 @@ interface Props {
   buttonStyle?: string;
   icon?: string;
   text?: string;
-  variant: string;
+  variant?: string;
 }
 
 const emits = defineEmits<{
@@ -43,6 +43,7 @@ const props = withDefaults(defineProps<Props>(), {
   buttonStyle: "",
   icon: "",
   text: "",
+  variant: ButtonVariants.Normal,
 });
 
 const showAsOutlined = computed(() => props.variant === ButtonVariants.Outlined);
