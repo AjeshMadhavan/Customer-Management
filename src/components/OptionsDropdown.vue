@@ -50,7 +50,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, defineProps, ref, withDefaults } from "vue";
+import { defineProps, ref, withDefaults } from "vue";
 
 import { DropdownContentPosition } from "@/constants";
 
