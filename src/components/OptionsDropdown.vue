@@ -23,7 +23,7 @@
     <div
       v-if="shouldShowOptions"
       :class="[
-        'absolute shadow-md',
+        'absolute shadow-md bg-white',
         {
           'left-0': contentPosition === DropdownContentPosition.Left,
           'right-0': contentPosition === DropdownContentPosition.Right,
@@ -34,7 +34,7 @@
         <li
           v-for="dropdownItem in dropdownContent"
           :key="dropdownItem.text"
-          class="dropdown-item hover:bg-black-04"
+          :class="['dropdown-item', {'hover:bg-black-04 cursor-pointer': !dropdownItem.disableHover}]"
         >
           <v-icon v-if="dropdownItem.prependIcon" class="dropdown-item__icon">
             {{ dropdownItem.prependIcon }}
