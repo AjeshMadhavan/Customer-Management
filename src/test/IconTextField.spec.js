@@ -1,10 +1,10 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { shallowMount } from "@vue/test-utils";
 
 import IconTextField from "../components/IconTextField.vue";
 
-describe("test with text component", () => {
-  it("renders with props", () => {
+describe("Testing for rendering IconTextField component", () => {
+  it("IconTextField renders all props correctly", () => {
     const iconTextFieldComponent = shallowMount(IconTextField, {
       propsData: {
         label: "position",
@@ -18,7 +18,7 @@ describe("test with text component", () => {
     expect(iconTextFieldComponent.props("prependIcon")).toMatch("mdi-phone");
   });
 
-  it("renders text and style", () => {
+  it("IconTextField renders text and style", () => {
     const iconTextFieldComponent = shallowMount(IconTextField, {
       propsData: {
         text: "CTO",
@@ -30,7 +30,7 @@ describe("test with text component", () => {
     expect(iconTextFieldComponent.find(".text-orange").exists()).toBeTruthy();
   });
 
-  it("renders icon", () => {
+  it("IconTextField renders icon correctly", () => {
     const iconTextFieldComponent = shallowMount(IconTextField, {
       propsData: {
         prependIcon: "mdi-magnify",
