@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, onMounted } from "vue";
+import { computed, onMounted, ref } from "vue";
 
 import UiData from "@/Json/UIdata.json";
 import { DropdownContentPosition } from "@/constants";
@@ -47,18 +47,11 @@ import OptionsDropdown from "@/components/OptionsDropdown.vue";
 const profileIcon = ref<string>("");
 const profileImage = ref<string>("");
 
-const headerData = computed(() => {
-  return UiData.topPanel;
-});
+const headerData = computed(() => UiData.topPanel);
 
 const setProfileIcon = () => {
-  if (window.innerWidth <= 536) {
-    profileImage.value = "";
-    profileIcon.value = "mdi-dots-vertical";
-  } else {
-    profileImage.value = UserProfileImage;
-    profileIcon.value = "";
-  }
+  profileImage.value = window.innerWidth <= 536 ? "" : UserProfileImage;
+  profileIcon.value = window.innerWidth <= 536 ? "mdi-dots-vertical" : "";
 };
 
 window.addEventListener("resize", () => setProfileIcon());
