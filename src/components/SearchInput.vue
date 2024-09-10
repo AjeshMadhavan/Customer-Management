@@ -5,36 +5,47 @@
     hide-details
     clearable
     id="input-box"
-    :type="inputType"
+    :type="type"
     clear-icon="mdi-close"
     loader-height="3"
-    :placeholder="placeholderText.trim()"
+    :placeholder="placeholder.trim()"
     :prepend-inner-icon="props.prependIcon"
-    class="!text-sky-500 text-xs text-input"
+    hide-spin-buttons
+    class="text-xs text-input"
     @keyup.enter="onValueChange"
+    @keydown="onKeyDown"
+    @scroll.prevent
   />
 </template>
 
 <script lang="ts" setup>
-import { defineProps, defineEmits, ref, withDefaults } from "vue";
+import { defineEmits, defineProps, ref, withDefaults } from "vue";
 
 interface Props {
-  inputBoxValue?: string;
-  inputType?: string;
-  placeholderText?: string;
+  placeholder?: string;
   prependIcon?: string;
+  type?: string;
+  value?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  inputBoxValue: "",
-  inputType: "text",
-  placeholderText: "",
+  placeholder: "",
   prependIcon: "",
+  type: "text",
+  value: "",
 });
 
-const emit = defineEmits(["onValueChange"]);
+const emit = defineEmits<{
+  (e: "onValueChange", value: string | number): void;
+}>();
 
-const inputValue = ref<string>(props.inputBoxValue);
+const inputValue = ref<string>(props.value);
+const restrictedValues = ["ArrowUp", "ArrowDown", "e", "E"];
+
+const onKeyDown = (event: KeyboardEvent) => {
+  if (restrictedValues.includes(event.key) && props.type === "number")
+    event.preventDefault();
+};
 
 const onValueChange = () => {
   emit("onValueChange", inputValue.value);
@@ -43,6 +54,8 @@ const onValueChange = () => {
 
 <style lang="scss" scoped>
 .text-input::v-deep {
+  color: rgb(3, 169, 244);
+
   .v-input__slot {
     min-height: 32px;
   }
@@ -77,5 +90,5 @@ const onValueChange = () => {
   }
 }
 
-// <search-input prependIcon="mdi-magnify" placeholderText="Search"/>
+// <search-input prependIcon="mdi-magnify" placeholder="Search"/>
 </style>

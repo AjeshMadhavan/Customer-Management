@@ -4,16 +4,16 @@ export default {
   component: SearchInput,
   tags: ["autodocs"],
   argTypes: {
-    placeholderText: {
+    placeholder: {
       control: "text",
     },
     prependIcon: {
       control: "text",
     },
-    inputBoxValue: {
+    value: {
       control: "text",
     },
-    inputType: {
+    type: {
       control: "text",
     },
   },
@@ -26,7 +26,7 @@ export default {
 
 export const SearchBox = {
   args: {
-    placeholderText: "Search",
+    placeholder: "Search",
     prependIcon: "mdi-magnify",
   },
 };
