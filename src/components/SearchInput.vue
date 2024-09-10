@@ -4,6 +4,7 @@
     filled
     hide-details
     clearable
+    id="input-box"
     :type="inputType"
     clear-icon="mdi-close"
     loader-height="3"
@@ -46,9 +47,12 @@ const onValueChange = () => {
     min-height: 32px;
   }
 
+  #input-box::placeholder {
+    text-transform: capitalize;
+  }
+
   .v-input__prepend-inner {
     margin-top: 4px;
-    margin-right: 10px;
 
     .v-icon {
       font-size: 16px;
