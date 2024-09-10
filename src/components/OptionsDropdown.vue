@@ -1,7 +1,7 @@
 <template>
   <div class="relative w-full" @click.stop>
     <button
-      :class="['dropdown-button', props.optionButtonStyle]"
+      :class="['dropdown-button', props.toggleButtonStyle]"
       @click.stop="toggleOptions(!shouldShowOptions)"
     >
       <div class="flex items-center">
@@ -20,7 +20,16 @@
         mdi-menu-down
       </v-icon>
     </button>
-    <div v-if="shouldShowOptions" class="absolute shadow-md">
+    <div
+      v-if="shouldShowOptions"
+      :class="[
+        'absolute shadow-md',
+        {
+          'left-0': contentPosition === DropdownContentPosition.Left,
+          'right-0': contentPosition === DropdownContentPosition.Right,
+        },
+      ]"
+    >
       <ul class="w-max">
         <li
           v-for="dropdownItem in dropdownContent"
@@ -43,6 +52,8 @@
 <script lang="ts" setup>
 import { defineProps, ref, withDefaults } from "vue";
 
+import { DropdownContentPosition } from "@/constants";
+
 interface DropdownContent {
   text: string;
   appendIcon?: string;
@@ -51,19 +62,22 @@ interface DropdownContent {
 
 interface Props {
   dropdownContent: DropdownContent[];
+  contentPosition?: string;
   hideToggleArrow?: boolean;
   icon?: string;
   imageUrl?: string;
   optionButtonStyle?: string;
   text?: string;
+  toggleButtonStyle?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  contentPosition: DropdownContentPosition.Left,
   hideToggleArrow: false,
   icon: "",
   imageUrl: "",
-  optionButtonStyle: "",
   text: "",
+  toggleButtonStyle: "",
 });
 
 const shouldShowOptions = ref<boolean>(false);
@@ -135,7 +149,7 @@ window.addEventListener("click", () => {
 //  * ---------- using this component --------
 // <options-dropdown
 // text="Options"
-// optionButtonStyle="!py-1 !pr-2 !pl-3 font-medium focus:bg-neutral-100 hover:neutral-100"
+// toggleButtonStyle="!py-1 !pr-2 !pl-3 font-medium focus:bg-neutral-100 hover:neutral-100"
 // >
 //   <template v-slot:optionsSlot>
 //     <ul class="shadow-dropdown p-px absolute">
