@@ -34,7 +34,10 @@
         <li
           v-for="dropdownItem in dropdownContent"
           :key="dropdownItem.text"
-          :class="['dropdown-item', {'hover:bg-black-04 cursor-pointer': !dropdownItem.disableHover}]"
+          :class="[
+            'dropdown-item',
+            { 'hover:bg-black-04 cursor-pointer': !dropdownItem.disableHover },
+          ]"
         >
           <v-icon v-if="dropdownItem.prependIcon" class="dropdown-item__icon">
             {{ dropdownItem.prependIcon }}
@@ -144,22 +147,4 @@ window.addEventListener("click", () => {
     justify-content: left;
   }
 }
-
-//  * ---------- using this component --------
-// <options-dropdown
-// text="Options"
-// toggleButtonStyle="!py-1 !pr-2 !pl-3 font-medium focus:bg-neutral-100 hover:neutral-100"
-// >
-//   <template v-slot:optionsSlot>
-//     <ul class="shadow-dropdown p-px absolute">
-//       <li
-//         v-for="item in content"
-//         :key="item"
-//         class="first:mt-1 hover:bg-neutral-50 pt-2.5 px-3 pb-2 cursor-pointer text-xs leading-4 text-left capitalize"
-//       >
-//         {{ item }}
-//       </li>
-//     </ul>
-//   </template>
-// </options-dropdown>
 </style>
