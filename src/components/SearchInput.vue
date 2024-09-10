@@ -11,9 +11,10 @@
     :placeholder="placeholder.trim()"
     :prepend-inner-icon="props.prependIcon"
     hide-spin-buttons
-    class="!text-sky-500 text-xs text-input"
+    class="text-xs text-input"
     @keyup.enter="onValueChange"
-    @keydown="restrictValues"
+    @keydown="onKeyDown"
+    @scroll.prevent
   />
 </template>
 
@@ -41,7 +42,7 @@ const emit = defineEmits<{
 const inputValue = ref<string>(props.value);
 const restrictedValues = ["ArrowUp", "ArrowDown", "e", "E"];
 
-const restrictValues = (event: KeyboardEvent) => {
+const onKeyDown = (event: KeyboardEvent) => {
   if (restrictedValues.includes(event.key) && props.type === "number")
     event.preventDefault();
 };
@@ -53,6 +54,8 @@ const onValueChange = () => {
 
 <style lang="scss" scoped>
 .text-input::v-deep {
+  color: rgb(3, 169, 244);
+
   .v-input__slot {
     min-height: 32px;
   }
