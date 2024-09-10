@@ -1,9 +1,9 @@
-import { describe, it, expect } from "vitest";
+import { describe, expect, it } from "vitest";
 import { shallowMount } from "@vue/test-utils";
 
 import SearchInput from "../components/SearchInput.vue";
 
-describe("test with searh input", () => {
+describe("test with search input component", () => {
   it("renders placeholder text", () => {
     const searchInput = shallowMount(SearchInput, {
       propsData: {
