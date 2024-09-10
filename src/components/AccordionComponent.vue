@@ -26,16 +26,16 @@
 import { computed, defineProps, ref, withDefaults, onMounted } from "vue";
 
 interface Props {
-  toggleButtonStyle?: string;
+  text: string;
   containerStyle?: string;
   prependIcon?: string;
-  text: string;
+  toggleButtonStyle?: string;
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  accordionButtonStyle: "",
-  accordionContainerStyle: "",
+  containerStyle: "",
   prependIcon: "",
+  toggleButtonStyle: "",
 });
 
 const showAccordionContent = ref<boolean>(true);

@@ -4,16 +4,19 @@ export default {
   component: AccordionComponent,
   tags: ["autodocs"],
   argTypes: {
-    text: {
+    containerStyle: {
       control: "text",
+    },
+    hideToggleArrow: {
+      control: "boolean",
     },
     prependIcon: {
       control: "text",
     },
-    accordionButtonStyle: {
+    text: {
       control: "text",
     },
-    accordionContainerStyle: {
+    toggleButtonStyle: {
       control: "text",
     },
   },
@@ -21,34 +24,22 @@ export default {
     props: Object.keys(argTypes),
     components: { AccordionComponent },
     template: `<accordion-component v-bind="$props">
-            <template v-slot:item-slot>
-                <div v-if="itemSlot" v-html="itemSlot" />
+            <template v-slot:content-slot>
+                <div v-if="contentSlot" v-html="contentSlot" />
             </template>
         </accordion-component>`,
   }),
 };
 
-export const DropdownWithIcon = {
+export const Accordion = {
   args: {
     text: "CRM",
     prependIcon: "mdi-account",
-    accordionButtonStyle: "py-2.5 pr-4",
-    accordionContainerStyle: "bg-zinc-100",
-    itemSlot: `<ul>
+    toggleButtonStyle: "py-2.5 pr-4",
+    containerStyle: "bg-zinc-100",
+    contentSlot: `<ul>
                 <li class="py-1.5 pr-4 pl-6 cursor-pointer text-sm">Contact List</li>
                 <li class="py-1.5 pr-4 pl-6 cursor-pointer text-sm">Contact Details</li>
-            </ul>`,
-  },
-};
-
-export const DropdownWithoutIcon = {
-  args: {
-    text: "Oppertunities",
-    accordionButtonStyle: "py-1.5 pr-2.5 pl-3",
-    accordionContainerStyle: "shadow-md",
-    itemSlot: `<ul>
-                <li class="text-sm py-1">Incoming Request</li>
-                <li class="text-sm py-1">POS Touch Screens</li>
             </ul>`,
   },
 };
