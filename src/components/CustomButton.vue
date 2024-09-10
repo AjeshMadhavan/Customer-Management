@@ -102,13 +102,15 @@ const handleButtonClick = (event: Event) => {
   }
 
   /* icon varient */
-  .v-btn.icon {
+  &.icon {
     padding: 5px;
     width: 28px;
     height: 28px;
     border-radius: 50%;
     min-width: fit-content;
     margin-right: 0;
+    color: #000;
+    background-color: transparent;
 
     .button-icon {
       margin-right: -1px;
