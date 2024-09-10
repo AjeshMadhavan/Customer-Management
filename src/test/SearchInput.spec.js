@@ -7,7 +7,7 @@ describe("test with searh input", () => {
   it("renders placeholder text", () => {
     const searchInput = shallowMount(SearchInput, {
       propsData: {
-        placeholderText: "Search",
+        placeholder: "Search",
       },
     });
 
@@ -27,7 +27,7 @@ describe("test with searh input", () => {
   it("test with emit", async () => {
     const searchInput = shallowMount(SearchInput, {
       propsData: {
-        inputBoxValue: "Evan You",
+        value: "Evan You",
       },
     });
 
