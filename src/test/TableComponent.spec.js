@@ -4,8 +4,8 @@ import { shallowMount } from "@vue/test-utils";
 import TableComponent from "../components/TableComponent.vue";
 import UserDetails from "../Json/UserDetails.json";
 
-describe("test with table component", () => {
-  it("test for prop", () => {
+describe("table component test", () => {
+  it("renders user data prop", () => {
     const tableComponent = shallowMount(TableComponent, {
       propsData: {
         userData: UserDetails.userDetails.users,
@@ -17,7 +17,7 @@ describe("test with table component", () => {
     );
   });
 
-  it("test for expand icon", () => {
+  it("renders table row expand icon", () => {
     const tableComponent = shallowMount(TableComponent, {
       propsData: {
         userData: UserDetails.userDetails.users,
