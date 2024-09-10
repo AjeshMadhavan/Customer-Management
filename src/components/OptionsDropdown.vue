@@ -52,7 +52,7 @@
 <script lang="ts" setup>
 import { defineProps, ref, withDefaults } from "vue";
 
-import { DropdownContentPosition } from "@/constants";
+import { DropdownContentPosition } from "../constants";
 
 interface DropdownContent {
   text: string;
@@ -66,7 +66,6 @@ interface Props {
   hideToggleArrow?: boolean;
   icon?: string;
   imageUrl?: string;
-  optionButtonStyle?: string;
   text?: string;
   toggleButtonStyle?: string;
 }
