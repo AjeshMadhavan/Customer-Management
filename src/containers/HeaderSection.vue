@@ -2,7 +2,7 @@
   <div class="header-section w-full py-2.5">
     <div class="flex items-center">
       <custom-button
-        buttonStyle="shadow-none !mx-2.5"
+        button-style="shadow-none !mx-2.5"
         :icon="headerData.icons.hamburgerIcon"
       />
       <h1 class="font-medium header-title">{{ headerData.title }}</h1>
@@ -10,24 +10,24 @@
     <div class="flex items-center justify-end">
       <search-input
         :placeholder="headerData.searchBoxLabel"
-        prependIcon="mdi-magnify"
+        prepend-icon="mdi-magnify"
         class="pl-1.5 search-input"
       />
       <custom-button
-        buttonStyle="shadow-none ml-1"
+        button-style="shadow-none ml-1"
         :icon="headerData.icons.themeSwitchingIcon"
       />
       <custom-button
-        buttonStyle="shadow-none ml-1"
+        button-style="shadow-none ml-1"
         :icon="headerData.icons.notificationIcon"
       />
       <options-dropdown
         class="pl-2.5 w-max"
-        :contentPosition="DropdownContentPosition.Right"
-        :dropdownContent="headerData.userProfile.options"
+        :content-position="DropdownContentPosition.Right"
+        :dropdown-content="headerData.userProfile.options"
         :icon="profileIcon"
-        :imageUrl="profileImage"
-        :hideToggleArrow="true"
+        :image-url="profileImage"
+        :hide-toggle-arrow="true"
       />
     </div>
   </div>
