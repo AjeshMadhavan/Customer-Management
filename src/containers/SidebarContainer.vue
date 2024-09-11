@@ -7,9 +7,9 @@
         v-for="accordion in sidebarData.sidebarContents"
         :key="accordion.title"
         :text="accordion.title"
-        :prependIcon="accordion.icon"
-        toggleButtonStyle="py-2.5 pr-4 font-bold"
-        containerStyle="border-b border-b-zinc-200"
+        :prepend-icon="accordion.icon"
+        toggle-button-style="py-2.5 pr-4 font-bold"
+        container-style="border-b border-b-zinc-200"
       >
         <template #content-slot>
           <ul>
