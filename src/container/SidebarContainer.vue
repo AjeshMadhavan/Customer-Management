@@ -4,7 +4,7 @@
   >
     <div class="accordion-container w-full">
       <accordion-component
-        v-for="accordion in accordionList"
+        v-for="accordion in sidebarData.sidebarContents"
         :key="accordion.title"
         :text="accordion.title"
         :prependIcon="accordion.icon"
@@ -26,10 +26,10 @@
     </div>
     <div v-if="showSidebar" class="pt-5 pb-4 pl-4">
       <span class="sidebar-container__label">
-        {{ UIdata.sidebar.copyrightText }}
+        {{ sidebarData.copyrightText }}
       </span>
       <span class="sidebar-container__label">
-        {{ UIdata.sidebar.companyName }}
+        {{ sidebarData.companyName }}
       </span>
     </div>
   </div>
@@ -44,7 +44,7 @@ import AccordionComponent from "@/components/AccordionComponent.vue";
 
 const showSidebar = ref<boolean>(true);
 
-const accordionList = computed(() => UIdata.sidebar.sidebarContents);
+const sidebarData = computed(() => UIdata.sidebar);
 </script>
 
 <style scoped lang="scss">
