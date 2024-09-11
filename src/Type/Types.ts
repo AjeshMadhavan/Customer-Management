@@ -1,4 +1,4 @@
-interface UserOpertunities {
+interface UserOpportunities {
   text: string;
   price: string;
 }
@@ -18,7 +18,7 @@ export interface UserData {
   phone: string;
   email: string;
   address: string;
-  userOpertunities: UserOpertunities[];
+  userOpertunities: UserOpportunities[];
   userActivities: UserActivities[];
 }
 

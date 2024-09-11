@@ -4,8 +4,8 @@
     :items="tableData"
     :headers-length="30"
     :item-class="getRowClass"
-    :show-expand="expandMenuData.length > 0"
-    :expanded="expandMenuData"
+    :show-expand="expandedMenuData.length > 0"
+    :expanded="expandedMenuData"
     hide-default-footer
     show-select
     must-sort
@@ -20,7 +20,7 @@
     <template v-slot:expanded-item="{ headers, item }">
       <td :colspan="headers.length" class="expanded-data">
         <ul>
-          <li v-for="data in expandMenuData" :key="data" class="pb-2.5">
+          <li v-for="data in expandedMenuData" :key="data" class="pb-2.5">
             <span class="expand-item-title capitalize">{{ data }}</span>
             <br />
             <span class="expand-item-data">{{ item[data] }}</span>
@@ -32,32 +32,30 @@
 </template>
 
 <script setup lang="ts">
-import { ref, defineProps, computed, withDefaults } from "vue";
+import { computed, defineProps, ref, withDefaults } from "vue";
 
-import { UserData, TableHeader } from "../Type/Types";
+import { TableHeader, UserData } from "../Type/Types";
 
 interface Props {
-  userData: UserData[];
+  expandedMenuData?: string[];
   tableHeader: TableHeader[];
-  expandMenuData?: string[];
+  userData: UserData[];
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  expandMenuData: () => [],
+  expandedMenuData: () => [],
 });
 
 const selectedRow = ref<string>("");
 
-const tableData = computed(() => {
-  return props.userData;
-});
+const tableData = computed(() => props.userData);
 
-const handleRowClick = (item) => {
-  selectedRow.value = item.name;
+const handleRowClick = (TableRowData: UserData) => {
+  selectedRow.value = TableRowData.name;
 };
 
-const getRowClass = (item) => {
-  if (item.name === selectedRow.value) {
+const getRowClass = (TableRowData: UserData) => {
+  if (TableRowData.name === selectedRow.value) {
     return "active-row";
   }
 };
@@ -219,7 +217,7 @@ const getRowClass = (item) => {
 // <table-component
 //   :userData="UserDetails.userDetails.users"
 //   :tableHeader="headers"
-//   :expandMenuData="expandMenuData"
+//   :expandedMenuData="expandedMenuData"
 // />
 
 // const headers = [
@@ -265,7 +263,7 @@ const getRowClass = (item) => {
 //   },
 // ];
 
-// const expandMenuData = ref<string[]>([
+// const expandedMenuData = ref<string[]>([
 //   "company",
 //   "assignedTo",
 //   "status",
@@ -273,9 +271,9 @@ const getRowClass = (item) => {
 //   "email",
 // ]);
 
-// const updateExpandMenuData = () => {
+// const updateExpandedMenuData = () => {
 //   if (window.innerWidth < 448) {
-//     expandMenuData.value = [
+//     expandedMenuData.value = [
 //       "company",
 //       "assignedTo",
 //       "status",
@@ -283,19 +281,19 @@ const getRowClass = (item) => {
 //       "email",
 //     ];
 //   } else if (window.innerWidth >= 448 && window.innerWidth < 617) {
-//     expandMenuData.value = ["assignedTo", "status", "phone", "email"];
+//     expandedMenuData.value = ["assignedTo", "status", "phone", "email"];
 //   } else if (window.innerWidth >= 617 && window.innerWidth < 727) {
-//     expandMenuData.value = ["status", "phone", "email"];
+//     expandedMenuData.value = ["status", "phone", "email"];
 //   } else if (window.innerWidth >= 727 && window.innerWidth < 855) {
-//     expandMenuData.value = ["phone", "email"];
+//     expandedMenuData.value = ["phone", "email"];
 //   } else if (window.innerWidth >= 855 && window.innerWidth < 1371) {
-//     expandMenuData.value = ["email"];
+//     expandedMenuData.value = ["email"];
 //   } else {
-//     expandMenuData.value = [];
+//     expandedMenuData.value = [];
 //   }
 // };
 
-// window.addEventListener("resize", () => updateExpandMenuData());
+// window.addEventListener("resize", () => updateExpandedMenuData());
 
-// onMounted(() => updateExpandMenuData());
+// onMounted(() => updateExpandedMenuData());
 </style>
