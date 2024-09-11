@@ -17,8 +17,8 @@
     :header-props="{ 'sort-icon': 'mdi-arrow-up-thin' }"
     @click:row="handleRowClick"
   >
-    <template v-slot:expanded-item="{ headers, item }">
-      <td :colspan="headers.length" class="expanded-data">
+    <template v-slot:expanded-item="{ headers: columnHeaders, item }">
+      <td :colspan="columnHeaders.length" class="expanded-data">
         <ul>
           <li v-for="data in expandedMenuData" :key="data" class="pb-2.5">
             <span class="expand-item-title capitalize">{{ data }}</span>
@@ -213,87 +213,4 @@ const getRowClass = (TableRowData: UserData) => {
     padding: 0 12px;
   }
 }
-
-// <table-component
-//   :userData="UserDetails.userDetails.users"
-//   :tableHeader="headers"
-//   :expandedMenuData="expandedMenuData"
-// />
-
-// const headers = [
-//   {
-//     text: "Name",
-//     sortable: true,
-//     value: "name",
-//     align: "start",
-//   },
-//   {
-//     text: "Company",
-//     sortable: true,
-//     value: "company",
-//     align: "start max-[447px]:hidden",
-//   },
-//   {
-//     text: "Status",
-//     sortable: true,
-//     value: "status",
-//     align: "start max-[726px]:hidden",
-//   },
-//   {
-//     text: "Assigned to",
-//     sortable: true,
-//     value: "assignedTo",
-//     align: "start max-[616px]:hidden",
-//   },
-//   {
-//     text: "Phone",
-//     sortable: true,
-//     value: "phone",
-//     align: "start max-[854px]:hidden",
-//   },
-//   {
-//     text: "Email",
-//     sortable: true,
-//     value: "email",
-//     align: "start max-[1372px]:hidden",
-//   },
-//   {
-//     text: "",
-//     value: "data-table-expand",
-//   },
-// ];
-
-// const expandedMenuData = ref<string[]>([
-//   "company",
-//   "assignedTo",
-//   "status",
-//   "phone",
-//   "email",
-// ]);
-
-// const updateExpandedMenuData = () => {
-//   if (window.innerWidth < 448) {
-//     expandedMenuData.value = [
-//       "company",
-//       "assignedTo",
-//       "status",
-//       "phone",
-//       "email",
-//     ];
-//   } else if (window.innerWidth >= 448 && window.innerWidth < 617) {
-//     expandedMenuData.value = ["assignedTo", "status", "phone", "email"];
-//   } else if (window.innerWidth >= 617 && window.innerWidth < 727) {
-//     expandedMenuData.value = ["status", "phone", "email"];
-//   } else if (window.innerWidth >= 727 && window.innerWidth < 855) {
-//     expandedMenuData.value = ["phone", "email"];
-//   } else if (window.innerWidth >= 855 && window.innerWidth < 1371) {
-//     expandedMenuData.value = ["email"];
-//   } else {
-//     expandedMenuData.value = [];
-//   }
-// };
-
-// window.addEventListener("resize", () => updateExpandedMenuData());
-
-// onMounted(() => updateExpandedMenuData());
 </style>
