@@ -46,12 +46,13 @@ import OptionsDropdown from "@/components/OptionsDropdown.vue";
 
 const profileIcon = ref<string>("");
 const profileImage = ref<string>("");
+const windowWidth = 536
 
 const headerData = computed(() => UiData.topPanel);
 
 const setProfileIcon = () => {
-  profileImage.value = window.innerWidth <= 536 ? "" : UserProfileImage;
-  profileIcon.value = window.innerWidth <= 536 ? "mdi-dots-vertical" : "";
+  profileImage.value = window.innerWidth <= windowWidth ? "" : UserProfileImage;
+  profileIcon.value = window.innerWidth <= windowWidth ? "mdi-dots-vertical" : "";
 };
 
 window.addEventListener("resize", () => setProfileIcon());
