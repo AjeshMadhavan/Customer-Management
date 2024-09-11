@@ -1,8 +1,12 @@
 <template>
-  <div id="app"></div>
+  <div id="app">
+    <user-details />
+  </div>
 </template>
 
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import UserDetails from './containers/UserDetails.vue'
+</script>
 
 <style>
 #app {
