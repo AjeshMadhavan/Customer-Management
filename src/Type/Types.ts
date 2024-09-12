@@ -18,7 +18,7 @@ export interface UserData {
   phone: string;
   email: string;
   address: string;
-  userOpertunities: UserOpportunities[];
+  userOpportunities: UserOpportunities[];
   userActivities: UserActivities[];
 }
 

@@ -55,9 +55,7 @@ const handleRowClick = (TableRowData: UserData) => {
 };
 
 const getRowClass = (TableRowData: UserData) => {
-  if (TableRowData.name === selectedRow.value) {
-    return "active-row";
-  }
+  if (TableRowData.name === selectedRow.value) return "active-row";
 };
 </script>
 
