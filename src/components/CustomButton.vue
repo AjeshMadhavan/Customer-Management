@@ -58,7 +58,7 @@ const handleButtonClick = (event: Event) => {
 <style lang="scss" scoped>
 .button-text {
   letter-spacing: 0.52px;
-  font-size: 13px;
+  font-size: inherit;
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
@@ -67,19 +67,20 @@ const handleButtonClick = (event: Event) => {
 
 .v-btn {
   width: 100%;
+  height: fit-content !important;
 
   &::v-deep &__content {
     width: 100%;
   }
 
   .button-icon {
-    font-size: 16px;
+    margin-right: 4px;
+    font-size: inherit;
   }
 
   /* outlined varient */
   &.outlined {
     padding: 5px 12px;
-    height: 28px;
     border-radius: 2px;
   }
 
@@ -88,24 +89,18 @@ const handleButtonClick = (event: Event) => {
     padding: 5px 12px 5px 8px;
     color: #fff;
     background-color: #03a9f4;
-    height: 28px;
     border-radius: 2px;
 
     &::before {
       color: rgba(0, 0, 0);
       transition: none;
     }
-
-    .button-icon {
-      margin-right: 4px;
-    }
   }
 
   /* icon varient */
   &.icon {
     padding: 5px;
-    width: 28px;
-    height: 28px;
+    width: fit-content;
     border-radius: 50%;
     min-width: fit-content;
     margin-right: 0;
