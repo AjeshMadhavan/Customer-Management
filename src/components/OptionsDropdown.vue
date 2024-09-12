@@ -1,10 +1,14 @@
 <template>
-  <div class="relative w-max" ref="dropdownContainer">
+  <div class="relative w-full" ref="dropdownContainer">
     <button
-      :class="['dropdown-button', props.toggleButtonStyle]"
+      :class="[
+        'dropdown-button w-full hover:bg-zinc-200',
+        { 'bg-zinc-200': shouldShowOptions },
+        props.toggleButtonStyle,
+      ]"
       @click.stop="toggleOptions(!shouldShowOptions)"
     >
-      <div class="flex items-center">
+      <div class="flex items-center w-4/5">
         <v-icon class="mr-1 !text-base/4">{{ props.icon }}</v-icon>
         <img
           v-if="props.imageUrl"
@@ -16,7 +20,7 @@
           {{ props.text }}
         </span>
       </div>
-      <v-icon v-if="!hideToggleArrow" class="!text-base/4 ml-1">
+      <v-icon v-if="!hideToggleArrow" class="!text-base/4 ml-1 w-min">
         mdi-menu-down
       </v-icon>
     </button>
@@ -36,7 +40,7 @@
           :key="dropdownItem.text"
           :class="[
             'dropdown-item',
-            { 'hover:bg-black-04 cursor-pointer': !dropdownItem.disableHover },
+            { 'hover:bg-zinc-100 cursor-pointer': !dropdownItem.disableHover },
           ]"
         >
           <v-icon v-if="dropdownItem.prependIcon" class="dropdown-item__icon">
@@ -123,10 +127,6 @@ document.addEventListener("click", (event: Event) => {
   white-space: nowrap;
   text-overflow: ellipsis;
   text-transform: uppercase;
-}
-
-.dropdown-container {
-  width: max-content;
 }
 
 .dropdown-item {
