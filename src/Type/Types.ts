@@ -1,9 +1,9 @@
-interface UserOpportunities {
+interface UserOpportunity {
   text: string;
   price: string;
 }
 
-interface UserActivities {
+export interface UserActivity {
   activity: string;
   date: string;
   assignedUser: string;
@@ -18,8 +18,8 @@ export interface UserData {
   phone: string;
   email: string;
   address: string;
-  userOpportunities: UserOpportunities[];
-  userActivities: UserActivities[];
+  userOpportunities: UserOpportunity[];
+  userActivities: UserActivity[];
 }
 
 export interface TableHeader {
@@ -27,4 +27,13 @@ export interface TableHeader {
   sortable: boolean;
   value: string;
   align: string;
+}
+
+interface UserActivitiesMenuOption {
+  text: string;
+}
+
+export interface UserActivitiesMenu {
+  icon: string;
+  options: UserActivitiesMenuOption[];
 }
