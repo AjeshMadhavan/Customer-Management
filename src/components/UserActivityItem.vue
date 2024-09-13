@@ -3,15 +3,15 @@
     class="user-activity mr-px py-2 pr-0.5 pl-4 border-l-2 font-normal w-full"
   >
     <span class="user-activity__title text-left w-full">
-      {{ props.userActivityDetails.activity }}
+      {{ props.userActivity.activity }}
     </span>
     <div class="flex items-center">
       <div class="user-activity__details px-2.5">
         <span class="text-xs">
-          {{ props.userActivityDetails.date }}
+          {{ props.userActivity.date }}
         </span>
         <span class="text-xs whitespace-nowrap">
-          {{ props.userActivityDetails.assignedUser }}
+          {{ props.userActivity.assignedUser }}
         </span>
       </div>
       <options-dropdown
@@ -28,13 +28,13 @@
 <script lang="ts" setup>
 import { defineProps } from "vue";
 
-import { UserActivities, UserActivitiesMenu } from "@/Type/Types";
+import { UserActivity, UserActivitiesMenu } from "@/Type/Types";
 import { DropdownContentPosition } from "@/constants";
 
 import OptionsDropdown from "@/components/OptionsDropdown.vue";
 
 interface Props {
-  userActivityDetails: UserActivities;
+  userActivity: UserActivity;
   userActivityMenu: UserActivitiesMenu;
 }
 
