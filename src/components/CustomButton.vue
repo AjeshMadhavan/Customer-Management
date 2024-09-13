@@ -105,7 +105,6 @@ const handleButtonClick = (event: Event) => {
     min-width: fit-content;
     margin-right: 0;
     color: #000;
-    background-color: transparent;
 
     .button-icon {
       margin-right: -1px;
