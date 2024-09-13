@@ -9,7 +9,9 @@
       @click.stop="toggleOptions(!shouldShowOptions)"
     >
       <div class="flex items-center w-4/5">
-        <v-icon class="mr-1 !text-base/4">{{ props.icon }}</v-icon>
+        <v-icon :class="['!text-base/4', { 'mr-1': !hasOnlyIcon }]">
+          {{ props.icon }}
+        </v-icon>
         <img
           v-if="props.imageUrl"
           :src="props.imageUrl"
@@ -57,7 +59,7 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps, ref, withDefaults } from "vue";
+import { computed, defineProps, ref, withDefaults } from "vue";
 
 import { DropdownContentPosition } from "../constants";
 
@@ -88,6 +90,10 @@ const props = withDefaults(defineProps<Props>(), {
 
 const shouldShowOptions = ref<boolean>(false);
 const dropdownContainer = ref<HTMLDivElement | null>(null);
+
+const hasOnlyIcon = computed(
+  () => props.icon && !props.text && !props.imageUrl
+);
 
 const toggleOptions = (toggleValue: boolean) => {
   shouldShowOptions.value = toggleValue;
