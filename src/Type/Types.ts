@@ -3,7 +3,7 @@ interface UserOpportunities {
   price: string;
 }
 
-interface UserActivities {
+export interface UserActivities {
   activity: string;
   date: string;
   assignedUser: string;
@@ -27,4 +27,13 @@ export interface TableHeader {
   sortable: boolean;
   value: string;
   align: string;
+}
+
+interface UserActivitiesMenuOptions {
+  text: string;
+}
+
+export interface UserActivitiesMenu {
+  icon: string;
+  options: UserActivitiesMenuOptions[];
 }
