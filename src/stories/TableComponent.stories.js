@@ -4,7 +4,6 @@ import UserDetails from "../Json/UserDetails.json";
 
 export default {
   component: TableComponent,
-  title: "Table Component",
   tags: ["autodocs"],
   render: (args, { argTypes }) => ({
     components: { TableComponent },
