@@ -107,7 +107,7 @@ const handleButtonClick = (event: Event) => {
     color: #000;
 
     .button-icon {
-      margin-right: -1px;
+      margin-right: 0px;
     }
 
     &::before {
