@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <user-details />
+    <user-details :user-data="UserDetailsJson.userDetails.users[0]"/>
   </div>
 </template>
 
 <script lang="ts" setup>
 import UserDetails from './containers/UserDetails.vue'
+import UserDetailsJson from './Json/UserDetails.json'
 </script>
 
 <style>
