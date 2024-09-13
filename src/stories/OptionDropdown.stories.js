@@ -40,5 +40,6 @@ export const Dropdown = {
     text: "All",
     contentPosition: DropdownContentPosition.Left,
     dropdownContent: UIdata.contactListPage.categoryOptions.options,
+    toggleButtonStyle: "p-2",
   },
 };
