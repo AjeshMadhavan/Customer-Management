@@ -28,29 +28,29 @@
         />
         <ul class="pl-3">
           <li
-            v-for="item in jobDetails"
-            :key="item.key"
+            v-for="jobDetail in jobDetails"
+            :key="jobDetail.key"
             class="pt-5 first:pt-0"
           >
             <icon-text-field
-              :label="item.key"
-              :text="item.value"
+              :label="jobDetail.key"
+              :text="jobDetail.value"
               is-vertically
-              :text-style="item.style"
+              :text-style="jobDetail.style"
             />
           </li>
         </ul>
       </div>
       <ul class="py-4">
         <li
-          v-for="item in personalDetails"
-          :key="item.value"
+          v-for="personalDetail in personalDetails"
+          :key="personalDetail.value"
           class="pt-5 first:pt-0"
         >
           <icon-text-field
-            :prepend-icon="item.prependIcon"
-            :prepend-icon-style="item.prependIconStyle"
-            :text="item.value"
+            :prepend-icon="personalDetail.prependIcon"
+            :prepend-icon-style="personalDetail.prependIconStyle"
+            :text="personalDetail.value"
           />
         </li>
       </ul>
@@ -108,8 +108,8 @@
               class="my-2.5"
             >
               <user-activity-item
-                :userActivity="userActivity"
-                :userActivityMenu="containerData.userActivities.activitiesMenu"
+                :user-activity="userActivity"
+                :user-activity-menu="containerData.userActivities.activitiesMenu"
               />
             </li>
           </ul>
