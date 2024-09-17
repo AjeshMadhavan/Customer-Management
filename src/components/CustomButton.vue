@@ -36,7 +36,7 @@ interface Props {
 }
 
 const emits = defineEmits<{
-  (e: "handle-button-click", value: Event): void;
+  (e: "click", value: Event): void;
 }>();
 
 const props = withDefaults(defineProps<Props>(), {
@@ -51,7 +51,7 @@ const showAsOutlined = computed(() => props.variant === ButtonVariants.Outlined)
 const hasIcon = computed(() => props.icon && !props.text);
 
 const handleButtonClick = (event: Event) => {
-  emits("handle-button-click", event);
+  emits("click", event);
 };
 </script>
 
