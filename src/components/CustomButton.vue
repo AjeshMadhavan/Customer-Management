@@ -36,7 +36,7 @@ interface Props {
 }
 
 const emits = defineEmits<{
-  (e: "handleButtonClick", value: Event): void;
+  (e: "handle-button-click", value: Event): void;
 }>();
 
 const props = withDefaults(defineProps<Props>(), {
@@ -51,7 +51,7 @@ const showAsOutlined = computed(() => props.variant === ButtonVariants.Outlined)
 const hasIcon = computed(() => props.icon && !props.text);
 
 const handleButtonClick = (event: Event) => {
-  emits("handleButtonClick", event);
+  emits("handle-button-click", event);
 };
 </script>
 
@@ -115,9 +115,4 @@ const handleButtonClick = (event: Event) => {
     }
   }
 }
-
-/**
-<custom-button text="ADD CONTACT" icon="mdi-plus" :variant="ButtonVariants.Normal"/>
-<custom-button text="DETAILS" :variant="ButtonVariants.Outlined" />
-*/
 </style>
