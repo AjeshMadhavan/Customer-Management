@@ -32,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps, ref, withDefaults } from "vue";
+import { computed, defineEmits, defineProps, ref, withDefaults } from "vue";
 
 import { TableHeader, UserData } from "../Type/Types";
 
@@ -46,12 +46,17 @@ const props = withDefaults(defineProps<Props>(), {
   expandedMenuData: () => [],
 });
 
+const emits = defineEmits<{
+  (e: "handle-row-click", value: UserData): void;
+}>();
+
 const selectedRow = ref<string>("");
 
 const tableData = computed(() => props.userData);
 
 const handleRowClick = (TableRowData: UserData) => {
   selectedRow.value = TableRowData.name;
+  emits("handle-row-click", TableRowData);
 };
 
 const getRowClass = (TableRowData: UserData) => {
