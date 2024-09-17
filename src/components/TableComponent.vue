@@ -47,7 +47,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emits = defineEmits<{
-  (e: "handle-row-click", value: UserData): void;
+  (e: "row-click", value: UserData): void;
 }>();
 
 const selectedRow = ref<string>("");
@@ -56,7 +56,7 @@ const tableData = computed(() => props.userData);
 
 const handleRowClick = (TableRowData: UserData) => {
   selectedRow.value = TableRowData.name;
-  emits("handle-row-click", TableRowData);
+  emits("row-click", TableRowData);
 };
 
 const getRowClass = (TableRowData: UserData) => {
