@@ -28,7 +28,7 @@
         :dropdown-content="headerData.userProfile.options"
         :icon="profileIcon"
         :image-url="profileImage"
-        hide-toggle-arrow
+        should-hide-toggle-arrow
       />
     </div>
   </div>
@@ -46,7 +46,7 @@ import SearchInput from "@/components/SearchInput.vue";
 import OptionsDropdown from "@/components/OptionsDropdown.vue";
 
 const emits = defineEmits<{
-  (e: "handle-toggle-button-click", value: Event): void;
+  (e: "toggle-button-click", value: Event): void;
 }>();
 
 const profileIcon = ref<string>("");
@@ -61,7 +61,7 @@ const setProfileIcon = () => {
 };
 
 const handleToggleButtonClick = (event: Event) => {
-  emits("handle-toggle-button-click", event);
+  emits("toggle-button-click", event);
 };
 
 window.addEventListener("resize", () => setProfileIcon());
