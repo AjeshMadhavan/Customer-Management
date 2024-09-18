@@ -9,13 +9,13 @@
           prepend-icon-style="!text-red-100 p-0"
         />
       </div>
-      <div class="flex items-center gap-x-1.5">
+      <div class="flex items-center justify-end gap-x-1.5">
         <custom-button
           icon="mdi-pin-outline"
           button-style="!shadow-none -rotate-90 !bg-transparent"
         />
         <custom-button
-          :icon="containerData.icons.closeIcon"
+          :icon="containerData.icons.close"
           button-style="!shadow-none !bg-transparent"
         />
       </div>
@@ -36,7 +36,7 @@
               :label="jobDetail.key"
               :text="jobDetail.value"
               is-vertically
-              :text-style="jobDetail.style"
+              :text-style="jobDetail.addColor ? 'text-light-blue-500' : ''"
             />
           </li>
         </ul>
@@ -141,43 +141,35 @@ const props = defineProps<Props>();
 
 const containerData = computed(() => UIdata.contactListPage.userData);
 
+const jobDataLables = {
+  company: "Company",
+  position: "Position",
+  assignedTo: "Assigned To",
+};
+
 const jobDetails = computed(() => {
-  const jobData = [];
+  const jobDataKeys = ["company", "position", "assignedTo"];
 
-  jobData.push({
-    key: "Company",
-    value: props.userData.company,
-    style: "text-light-blue-500",
-  });
-  jobData.push({ key: "Position", value: props.userData.position, style: "" });
-  jobData.push({
-    key: "Assigned To",
-    value: props.userData.assignedTo,
-    style: "text-light-blue-500",
-  });
+  const restrictedKeys = ["position"];
 
-  return jobData;
+  return jobDataKeys.map((key: string) => {
+    return {
+      key: jobDataLables[key],
+      value: props.userData[key],
+      addColor: !restrictedKeys.includes(key),
+    };
+  });
 });
 
 const personalDetails = computed(() => {
-  const personalData = [];
+  const personalDataKeys = ["phone", "email", "address"];
 
-  personalData.push({
-    prependIcon: containerData.value.icons.phoneIcon,
-    prependIconStyle: "pr-4",
-    value: props.userData.phone,
+  return personalDataKeys.map((key: string) => {
+    return {
+      prependIcon: containerData.value.icons[key],
+      prependIconStyle: "pr-4",
+      value: props.userData[key],
+    };
   });
-  personalData.push({
-    prependIcon: containerData.value.icons.emailIcon,
-    prependIconStyle: "pr-4",
-    value: props.userData.email,
-  });
-  personalData.push({
-    prependIcon: containerData.value.icons.homeIcon,
-    prependIconStyle: "pr-4",
-    value: props.userData.address,
-  });
-
-  return personalData;
 });
 </script>
