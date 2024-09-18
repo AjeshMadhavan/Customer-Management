@@ -158,10 +158,10 @@
     "searchBoxLabel": "Contact Search",
     "userData": {
       "icons": {
-        "closeIcon": "mdi-close",
-        "phoneIcon": "mdi-phone",
-        "emailIcon": "mdi-email",
-        "homeIcon": "mdi-home"
+        "close": "mdi-close",
+        "phone": "mdi-phone",
+        "email": "mdi-email",
+        "address": "mdi-home"
       },
       "actionsButton": {
         "title": "ACTIONS",
