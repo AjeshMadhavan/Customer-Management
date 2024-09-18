@@ -1,8 +1,8 @@
 <template>
   <div
-    :class="['w-full bg-zinc-100 sidebar-container', { '!w-12': !showSidebar }]"
+    :class="['w-full h-full bg-zinc-100 sidebar-container', { '!w-12': !showSidebar }]"
   >
-    <div class="accordion-container w-full">
+    <div class="accordion-container w-full pt-4">
       <accordion-component
         v-for="accordion in sidebarData.sidebarContents"
         :key="accordion.title"
@@ -24,7 +24,7 @@
         </template>
       </accordion-component>
     </div>
-    <div v-if="showSidebar" class="pt-5 pb-4 pl-4">
+    <div v-if="showSidebar" class="pt-5 pb-4 pl-4 absolute right-0 bottom-0 left-0">
       <span class="sidebar-container__label">
         {{ sidebarData.copyrightText }}
       </span>
@@ -54,6 +54,11 @@ const sidebarData = computed(() => UIdata.sidebar);
   overflow: hidden;
   justify-content: space-between;
   transition: width 0.5s ease-in-out;
+  position: relative;
+
+  .accordion-container {
+    padding-bottom: 70px;
+  }
 
   &__label {
     display: block;
