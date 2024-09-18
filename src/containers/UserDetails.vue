@@ -23,7 +23,7 @@
     <div class="px-4 border-b border-b-zinc-200">
       <div class="flex gap-x-5 items-start">
         <img
-          :src="UserProfileImage"
+          :src="props.userData.imageUrl"
           class="w-32 h-32 object-cover object-top rounded-lg border-solid border border-grey-400"
         />
         <ul class="pl-3">
@@ -126,7 +126,6 @@ import { UserData } from "@/Type/Types";
 import { ButtonVariants } from "@/constants";
 
 import UIdata from "@/Json/UIdata.json";
-import UserProfileImage from "@/assets/userProfileImage.png";
 import UserActivityItem from "@/components/UserActivityItem.vue";
 import OptionsDropdown from "@/components/OptionsDropdown.vue";
 import IconTextField from "@/components/IconTextField.vue";
