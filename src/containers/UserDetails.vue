@@ -12,11 +12,11 @@
       <div class="flex items-center justify-end gap-x-1.5">
         <custom-button
           icon="mdi-pin-outline"
-          button-style="!shadow-none -rotate-90 !bg-transparent"
+          button-style="shadow-none -rotate-90 header-button"
         />
         <custom-button
           :icon="containerData.icons.close"
-          button-style="!shadow-none !bg-transparent"
+          button-style="shadow-none header-button"
         />
       </div>
     </div>
@@ -67,12 +67,12 @@
         <custom-button
           :text="containerData.editButtonTitle.title"
           :icon="containerData.editButtonTitle.icon"
-          button-style="!w-min font-semibold"
+          button-style="font-semibold action-button "
         />
         <custom-button
           :text="containerData.detailsButtonTitle"
           :variant="ButtonVariants.Outlined"
-          button-style="!w-min font-semibold"
+          button-style="font-semibold action-button"
         />
       </div>
     </div>
@@ -172,3 +172,14 @@ const personalDetails = computed(() => {
   });
 });
 </script>
+
+<style scoped lang="scss">
+.header-button {
+  background-color: transparent !important;
+}
+
+.action-button {
+  min-width: 90px !important;
+  width: min-content;
+}
+</style>
