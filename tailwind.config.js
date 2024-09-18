@@ -17,6 +17,9 @@ module.exports = {
         "black-04": "rgba(0, 0, 0, 0.04)",
         "black-12": "rgba(0, 0, 0, 0.12)",
         "black-14": "rgba(0, 0, 0, 0.14)"
+      },
+      height: {
+        "9.5": "38px",
       }
     },
   },
