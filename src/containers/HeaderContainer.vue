@@ -2,7 +2,7 @@
   <div class="header-section w-full relative py-2.5">
     <div class="flex items-center">
       <custom-button
-        button-style="shadow-none !mx-2.5 !bg-transparent !text-base/4"
+        button-style="shadow-none !mx-2.5 custom-button"
         :icon="headerData.icons.hamburgerIcon"
         @handle-button-click="handleToggleButtonClick"
       />
@@ -15,11 +15,11 @@
         class="pl-1.5 search-input"
       />
       <custom-button
-        button-style="shadow-none ml-1 !bg-transparent !text-base/4"
+        button-style="shadow-none ml-1 custom-button"
         :icon="headerData.icons.themeSwitchingIcon"
       />
       <custom-button
-        button-style="shadow-none ml-1 !bg-transparent !text-base/4"
+        button-style="shadow-none ml-1 custom-button"
         :icon="headerData.icons.notificationIcon"
       />
       <options-dropdown
@@ -89,6 +89,12 @@ onMounted(() => setProfileIcon());
     @media (max-width: 531px) {
       display: none;
     }
+  }
+
+  .custom-button {
+    background-color: transparent;
+    font-size: 16px;
+    line-height: 16px;
   }
 }
 </style>
