@@ -22,7 +22,7 @@
           {{ props.text }}
         </span>
       </div>
-      <v-icon v-if="!hideToggleArrow" class="!text-base/4 ml-1 w-min">
+      <v-icon v-if="!shouldHideToggleArrow" class="!text-base/4 ml-1 w-min">
         mdi-menu-down
       </v-icon>
     </button>
@@ -72,7 +72,7 @@ interface DropdownContent {
 interface Props {
   dropdownContent: DropdownContent[];
   contentPosition?: string;
-  hideToggleArrow?: boolean;
+  shouldHideToggleArrow?: boolean;
   icon?: string;
   imageUrl?: string;
   text?: string;
@@ -81,7 +81,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   contentPosition: DropdownContentPosition.Left,
-  hideToggleArrow: false,
+  shouldHideToggleArrow: false,
   icon: "",
   imageUrl: "",
   text: "",
