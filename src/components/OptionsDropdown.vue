@@ -29,7 +29,7 @@
     <div
       v-if="shouldShowOptions"
       :class="[
-        'absolute shadow-md bg-white',
+        'absolute shadow-md bg-white z-50',
         {
           'left-0': contentPosition === DropdownContentPosition.Left,
           'right-0': contentPosition === DropdownContentPosition.Right,
