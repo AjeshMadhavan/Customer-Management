@@ -46,12 +46,14 @@
     <table-component
       :table-header="props.tableHeader"
       :user-data="props.tableData"
+      :expanded-menu-data="props.tableExpandData"
+      @row-click="handleTableRowClick"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from "vue";
+import { computed, defineEmits, defineProps, withDefaults } from "vue";
 
 import { TableHeader, UserData } from "@/Type/Types";
 
@@ -62,13 +64,24 @@ import OptionsDropdown from "@/components/OptionsDropdown.vue";
 import CustomButton from "@/components/CustomButton.vue";
 
 interface Props {
-  tableHeader: TableHeader;
-  tableData: UserData;
+  tableData: UserData[];
+  tableHeader: TableHeader[];
+  tableExpandData?: string[];
 }
 
-const props = defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  tableExpandData: () => [],
+});
+
+const emits = defineEmits<{
+  (e: "row-click", value: UserData): void;
+}>();
 
 const containerData = computed(() => UIdata.contactListPage);
+
+const handleTableRowClick = (TableRowData: UserData) => {
+  emits("row-click", TableRowData);
+};
 </script>
 
 <style scoped lang="scss">
