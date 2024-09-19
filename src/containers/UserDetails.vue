@@ -67,7 +67,7 @@
         <custom-button
           :text="containerData.editButtonTitle.title"
           :icon="containerData.editButtonTitle.icon"
-          button-style="font-semibold action-button "
+          button-style="font-semibold action-button"
         />
         <custom-button
           :text="containerData.detailsButtonTitle"
