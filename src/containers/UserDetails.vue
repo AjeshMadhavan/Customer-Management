@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full">
+  <div class="user-details">
     <div class="flex justify-between items-center p-2 pl-4 h-14">
       <div class="flex items-center">
         <h2 class="mr-2">{{ props.userData.name }}</h2>
@@ -17,6 +17,7 @@
         <custom-button
           :icon="containerData.icons.close"
           button-style="shadow-none header-button"
+          @click="handleCloseButtonClick"
         />
       </div>
     </div>
@@ -120,7 +121,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from "vue";
+import { computed, defineEmits, defineProps } from "vue";
 
 import { UserData } from "@/Type/Types";
 import { ButtonVariants } from "@/constants";
@@ -137,6 +138,10 @@ interface Props {
 }
 
 const props = defineProps<Props>();
+
+const emits = defineEmits<{
+  (event: "close-button-click", value: Event): void;
+}>();
 
 const containerData = computed(() => UIdata.contactListPage.userData);
 
@@ -171,6 +176,10 @@ const personalDetails = computed(() => {
     };
   });
 });
+
+const handleCloseButtonClick = (event: Event) => {
+  emits("close-button-click", event);
+};
 </script>
 
 <style scoped lang="scss">
@@ -181,5 +190,9 @@ const personalDetails = computed(() => {
 .action-button {
   min-width: 90px !important;
   width: min-content;
+}
+
+.user-details {
+  width: 350px;
 }
 </style>
