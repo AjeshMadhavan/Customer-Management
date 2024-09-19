@@ -17,7 +17,7 @@
       <options-dropdown
         :content-position="DropdownContentPosition.Right"
         :dropdown-content="userActivityMenu.options"
-        hide-toggle-arrow
+        should-hide-toggle-arrow
         :icon="userActivityMenu.icon"
         toggle-button-style="py-1.5 px-2 rounded-sm"
       />
