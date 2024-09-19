@@ -16,7 +16,8 @@ module.exports = {
       colors: {
         "black-04": "rgba(0, 0, 0, 0.04)",
         "black-12": "rgba(0, 0, 0, 0.12)",
-        "black-14": "rgba(0, 0, 0, 0.14)"
+        "black-14": "rgba(0, 0, 0, 0.14)",
+        "light-blue-500": "rgb(3, 169, 244)"
       },
       height: {
         "9.5": "38px",
