@@ -1,9 +1,10 @@
 <template>
-  <div class="header-section w-full py-2.5">
+  <div class="header-section w-full relative py-2.5">
     <div class="flex items-center">
       <custom-button
-        button-style="shadow-none !mx-2.5"
+        button-style="shadow-none !mx-2.5 custom-button"
         :icon="headerData.icons.hamburgerIcon"
+        @handle-button-click="handleToggleButtonClick"
       />
       <h1 class="font-medium header-title">{{ headerData.title }}</h1>
     </div>
@@ -14,11 +15,11 @@
         class="pl-1.5 search-input"
       />
       <custom-button
-        button-style="shadow-none ml-1"
+        button-style="shadow-none ml-1 custom-button"
         :icon="headerData.icons.themeSwitchingIcon"
       />
       <custom-button
-        button-style="shadow-none ml-1"
+        button-style="shadow-none ml-1 custom-button"
         :icon="headerData.icons.notificationIcon"
       />
       <options-dropdown
@@ -27,14 +28,14 @@
         :dropdown-content="headerData.userProfile.options"
         :icon="profileIcon"
         :image-url="profileImage"
-        :hide-toggle-arrow="true"
+        should-hide-toggle-arrow
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from "vue";
+import { computed, defineEmits, onMounted, ref } from "vue";
 
 import UiData from "@/Json/UIdata.json";
 import { DropdownContentPosition } from "@/constants";
@@ -44,15 +45,23 @@ import CustomButton from "@/components/CustomButton.vue";
 import SearchInput from "@/components/SearchInput.vue";
 import OptionsDropdown from "@/components/OptionsDropdown.vue";
 
+const emits = defineEmits<{
+  (e: "toggle-button-click", value: Event): void;
+}>();
+
 const profileIcon = ref<string>("");
 const profileImage = ref<string>("");
-const windowWidth = 536
+const windowWidth = 536;
 
 const headerData = computed(() => UiData.topPanel);
 
 const setProfileIcon = () => {
   profileImage.value = window.innerWidth <= windowWidth ? "" : UserProfileImage;
   profileIcon.value = window.innerWidth <= windowWidth ? "mdi-dots-vertical" : "";
+};
+
+const handleToggleButtonClick = (event: Event) => {
+  emits("toggle-button-click", event);
 };
 
 window.addEventListener("resize", () => setProfileIcon());
@@ -80,6 +89,12 @@ onMounted(() => setProfileIcon());
     @media (max-width: 531px) {
       display: none;
     }
+  }
+
+  .custom-button {
+    background-color: transparent;
+    font-size: 16px;
+    line-height: 16px;
   }
 }
 </style>
