@@ -3,7 +3,7 @@
     <div class="flex justify-between p-6">
       <div class="flex items-center">
         <h1 class="pr-7 text-2xl h-9.5">{{ containerData.title }}</h1>
-        <div class="h-9.5">
+        <div class="h-9.5 category-options">
           <options-dropdown
             :text="containerData.categoryOptions.title"
             :dropdown-content="containerData.categoryOptions.options"
@@ -16,29 +16,36 @@
           <custom-button
             :text="containerData.addContactButton.title"
             :icon="containerData.addContactButton.icon"
+            class="add-contact"
           />
         </div>
         <custom-button
           :icon="containerData.refreshDataButton.icon"
-          button-style="shadow-none !bg-transparent !text-base/4"
+          button-style="shadow-none custom-button data-refresh-button"
         />
         <span class="separator ml-1.5" />
-        <div class="pl-1.5">
+        <div class="pl-1.5 export-data">
           <options-dropdown
             :icon="containerData.exportOptions.icon"
             :dropdown-content="containerData.exportOptions.options"
             toggle-button-style="py-1.5 px-2"
           />
         </div>
-        <span class="separator mx-1.5" />
+        <span class="separator mx-1.5 hidden sm:block" />
         <custom-button
           :icon="containerData.columnChooserButton.icon"
-          button-style="shadow-none !bg-transparent !text-base/4"
+          button-style="shadow-none custom-button column-chooser"
         />
-        <div class="ml-5">
+        <div class="ml-5 contact-search">
           <search-input
             :placeholder="containerData.searchBoxLabel"
             prepend-icon="mdi-magnify"
+          />
+        </div>
+        <div class="ml-2.5 hidden dropdown-button">
+          <custom-button
+            icon="mdi-dots-vertical"
+            class="shadow-none custom-button"
           />
         </div>
       </div>
@@ -89,5 +96,55 @@ const handleTableRowClick = (TableRowData: UserData) => {
   width: 1px;
   height: 24px;
   background-color: #e0e0e0;
+
+  @media (max-width: 539px) {
+    display: none;
+  }
+}
+
+.custom-button {
+  font-size: 16px;
+  line-height: 16px;
+  background-color: transparent !important;
+}
+
+@media (max-width: 367px) {
+  .category-options {
+    display: none;
+  }
+}
+
+@media (max-width: 500px) {
+  .add-contact {
+    display: none;
+  }
+}
+
+@media (max-width: 533px) {
+  .data-refresh-button {
+    display: none;
+  }
+}
+
+@media (max-width: 644px) {
+  .export-data {
+    display: none;
+  }
+}
+
+@media (max-width: 683px) {
+  .column-chooser {
+    display: none;
+  }
+}
+
+@media (max-width: 820px) {
+  .contact-search {
+    display: none;
+  }
+
+  .dropdown-button {
+    display: block;
+  }
 }
 </style>
