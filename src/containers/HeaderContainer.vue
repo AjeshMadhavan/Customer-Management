@@ -4,7 +4,7 @@
       <custom-button
         button-style="shadow-none !mx-2.5 custom-button"
         :icon="headerData.icons.hamburgerIcon"
-        @handle-button-click="handleToggleButtonClick"
+        @click="handleToggleButtonClick"
       />
       <h1 class="font-medium header-title">{{ headerData.title }}</h1>
     </div>
