@@ -2,20 +2,23 @@
   <div class="w-full h-full">
     <header-container class="z-10" />
     <div class="flex relative">
-      <div class="sidebar-container">
+      <div class="sidebar-container-wrapper">
         <sidebar-container />
       </div>
       <contact-list-container
         :table-data="UserDetailsData.userDetails.users"
-        :table-header="tableHeader"
+        :table-header="tableHeaders"
         @row-click="handleTableRowClick"
       />
       <div
-        :class="['user-details-container bg-white', { '!right-0': userData }]"
+        :class="[
+          'user-details-container bg-white shadow-md',
+          { '!right-0': userData },
+        ]"
       >
         <user-details
           :user-data="userData"
-          @close-button-click="closeUserDetailsContainer"
+          @close-button-click="onUserDetailsCloseClick"
         />
       </div>
     </div>
@@ -33,9 +36,9 @@ import SidebarContainer from "@/containers/SidebarContainer.vue";
 import ContactListContainer from "@/containers/ContactListContainer.vue";
 import UserDetails from "@/containers/UserDetails.vue";
 
-const userData = ref<UserData | undefined>(undefined);
+const userData = ref<UserData>();
 
-const tableHeader = [
+const tableHeaders = [
   {
     text: "Name",
     sortable: true,
@@ -73,35 +76,29 @@ const tableHeader = [
     align: "start max-[1372px]:hidden",
   },
   {
-    text: "",
     value: "data-table-expand",
   },
 ];
 
-const handleTableRowClick = (TableRowData: UserData) => {
-  userData.value = TableRowData;
+const handleTableRowClick = (tableRowData: UserData) => {
+  userData.value = tableRowData;
 };
 
-const closeUserDetailsContainer = () => {
+const onUserDetailsCloseClick = () => {
   userData.value = undefined;
 };
 </script>
 
 <style scoped lang="scss">
-.sidebar-container {
+.sidebar-container-wrapper {
   width: 250px;
-  position: relative;
-  left: 0;
-  bottom: 0;
   height: calc(100vh - 58px);
 }
 
 .user-details-container {
   position: absolute;
   right: -350px;
-  bottom: 0;
   height: calc(100vh - 58px);
   transition: right 0.4s ease;
-  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.04), 0 4px 4px 0 rgba(0, 0, 0, 0.12);
 }
 </style>
