@@ -13,7 +13,10 @@
       <div
         :class="['user-details-container bg-white', { '!right-0': userData }]"
       >
-        <user-details :user-data="userData" />
+        <user-details
+          :user-data="userData"
+          @close-button-click="closeUserDetailsContainer"
+        />
       </div>
     </div>
   </div>
@@ -23,7 +26,6 @@
 import { ref } from "vue";
 
 import UserDetailsData from "@/Json/UserDetails.json";
-
 import { UserData } from "@/Type/Types";
 
 import HeaderContainer from "@/containers/HeaderContainer.vue";
@@ -79,6 +81,10 @@ const tableHeader = [
 const handleTableRowClick = (TableRowData: UserData) => {
   userData.value = TableRowData;
 };
+
+const closeUserDetailsContainer = () => {
+  userData.value = undefined;
+};
 </script>
 
 <style scoped lang="scss">
@@ -86,13 +92,15 @@ const handleTableRowClick = (TableRowData: UserData) => {
   width: 250px;
   position: relative;
   left: 0;
+  bottom: 0;
+  height: calc(100vh - 58px);
 }
 
 .user-details-container {
   position: absolute;
   right: -350px;
-  top: 0;
   bottom: 0;
+  height: calc(100vh - 58px);
   transition: right 0.4s ease;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.04), 0 4px 4px 0 rgba(0, 0, 0, 0.12);
 }
