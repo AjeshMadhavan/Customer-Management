@@ -2,7 +2,7 @@
   <div
     :class="[
       'h-full bg-zinc-100 sidebar-container',
-      showSidebar ? 'w-full' : 'w-12',
+      { 'w-full': showSidebar, 'w-12': !showSidebar },
     ]"
   >
     <div class="accordion-container w-full pt-4">
