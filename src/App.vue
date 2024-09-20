@@ -1,12 +1,8 @@
 <template>
-  <div id="app">
-    <contact-list-page />
-  </div>
+  <div id="app"></div>
 </template>
 
-<script lang="ts" setup>
-import ContactListPage from '@/pages/ContactListPage.vue'
-</script>
+<script lang="ts" setup></script>
 
 <style>
 #app {
