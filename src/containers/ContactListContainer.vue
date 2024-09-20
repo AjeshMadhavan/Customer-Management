@@ -24,7 +24,7 @@
           button-style="shadow-none custom-button data-refresh-button"
         />
         <span class="separator ml-1.5" />
-        <div class="pl-1.5 export-data">
+        <div class="export-data">
           <options-dropdown
             :icon="containerData.exportOptions.icon"
             :dropdown-content="containerData.exportOptions.options"
@@ -36,13 +36,13 @@
           :icon="containerData.columnChooserButton.icon"
           button-style="shadow-none custom-button column-chooser"
         />
-        <div class="ml-5 contact-search">
+        <div class="contact-search">
           <search-input
             :placeholder="containerData.searchBoxLabel"
             prepend-icon="mdi-magnify"
           />
         </div>
-        <div class="ml-2.5 hidden dropdown-button">
+        <div class="dropdown-button">
           <custom-button
             icon="mdi-dots-vertical"
             class="shadow-none custom-button"
@@ -110,6 +110,19 @@ const handleTableRowClick = (TableRowData: UserData) => {
 
 .category-options {
   height: 38px;
+}
+
+.export-data {
+  padding-left: 5px;
+}
+
+.contact-search {
+  margin-left: 20px;
+}
+
+.dropdown-button {  
+  display: none;
+  margin-left: 10px;
 }
 
 @media (max-width: 367px) {
