@@ -3,7 +3,7 @@
     <div class="flex justify-between p-6">
       <div class="flex items-center">
         <h1 class="pr-7 text-2xl h-9.5">{{ containerData.title }}</h1>
-        <div class="h-9.5 category-options">
+        <div class="category-options">
           <options-dropdown
             :text="containerData.categoryOptions.title"
             :dropdown-content="containerData.categoryOptions.options"
@@ -106,6 +106,10 @@ const handleTableRowClick = (TableRowData: UserData) => {
   font-size: 16px;
   line-height: 16px;
   background-color: transparent !important;
+}
+
+.category-options {
+  height: 38px;
 }
 
 @media (max-width: 367px) {
