@@ -14,6 +14,7 @@
         <contact-list-container
           :table-data="UserDetailsData.userDetails.users"
           :table-header="tableHeaders"
+          :table-expand-data="tableExpandColumns"
           @row-click="handleTableRowClick"
         />
       </div>
@@ -33,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 
 import UserDetailsData from "@/Json/UserDetails.json";
 import { UserData } from "@/Type/Types";
@@ -44,7 +45,15 @@ import ContactListContainer from "@/containers/ContactListContainer.vue";
 import UserDetails from "@/containers/UserDetails.vue";
 
 const userData = ref<UserData>();
+
 const shouldMinimizeSidebar = ref<boolean>(true);
+const tableExpandColumns = ref<string[]>([
+  "company",
+  "assignedTo",
+  "status",
+  "phone",
+  "email",
+]);
 
 const tableHeaders = [
   {
@@ -99,6 +108,32 @@ const onUserDetailsCloseClick = () => {
 const onToggleButtonClick = () => {
   shouldMinimizeSidebar.value = !shouldMinimizeSidebar.value;
 };
+
+const updateExpandedMenuData = () => {
+  if (window.innerWidth < 448) {
+    tableExpandColumns.value = [
+      "company",
+      "assignedTo",
+      "status",
+      "phone",
+      "email",
+    ];
+  } else if (window.innerWidth >= 448 && window.innerWidth < 617) {
+    tableExpandColumns.value = ["assignedTo", "status", "phone", "email"];
+  } else if (window.innerWidth >= 617 && window.innerWidth < 727) {
+    tableExpandColumns.value = ["status", "phone", "email"];
+  } else if (window.innerWidth >= 727 && window.innerWidth < 855) {
+    tableExpandColumns.value = ["phone", "email"];
+  } else if (window.innerWidth >= 855 && window.innerWidth < 1371) {
+    tableExpandColumns.value = ["email"];
+  } else {
+    tableExpandColumns.value = [];
+  }
+};
+
+window.addEventListener("resize", () => updateExpandedMenuData());
+
+onMounted(() => updateExpandedMenuData());
 </script>
 
 <style scoped lang="scss">
