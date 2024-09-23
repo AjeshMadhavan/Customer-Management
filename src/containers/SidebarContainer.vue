@@ -2,7 +2,7 @@
   <div
     :class="[
       'h-full bg-zinc-100 sidebar-container',
-      { 'w-full': props.shouldShowSidebar, 'w-12': !props.shouldShowSidebar },
+      { 'w-full': props.shouldMinimizeSidebar, 'w-12': !props.shouldMinimizeSidebar },
     ]"
   >
     <div class="accordion-container w-full pt-4">
@@ -13,7 +13,7 @@
         :prepend-icon="accordion.icon"
         toggle-button-style="py-2.5 pr-4 font-bold"
         container-style="border-b border-b-zinc-200"
-        :hide-toggle-arrow="!props.shouldShowSidebar"
+        :hide-toggle-arrow="!props.shouldMinimizeSidebar"
       >
         <template #content-slot>
           <ul>
@@ -32,8 +32,8 @@
       :class="[
         'pt-5 pb-4 pl-4 absolute right-0 bottom-0 left-0 bg-zinc-100 transition-opacity',
         {
-          'opacity-0 delay-0 duration-100': !props.shouldShowSidebar,
-          'opacity-1 delay-300 duration-500': props.shouldShowSidebar,
+          'opacity-0 delay-0 duration-100': !props.shouldMinimizeSidebar,
+          'opacity-1 delay-300 duration-500': props.shouldMinimizeSidebar,
         },
       ]"
     >
@@ -55,7 +55,7 @@ import UIdata from "@/Json/UIdata.json";
 import AccordionComponent from "@/components/AccordionComponent.vue";
 
 interface Props {
-  shouldShowSidebar: boolean;
+  shouldMinimizeSidebar: boolean;
 }
 
 const props = defineProps<Props>();
