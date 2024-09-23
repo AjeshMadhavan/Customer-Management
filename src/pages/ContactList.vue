@@ -105,35 +105,31 @@ const onToggleButtonClick = () => {
 const updateExpandedMenuData = () => {
   switch (true) {
     case window.innerWidth < 448:
-      tableExpandColumns.value = [
-        "company",
-        "assignedTo",
-        "status",
-        "phone",
-        "email",
-      ];
-      break;
+      return ["company", "assignedTo", "status", "phone", "email"];
+
     case window.innerWidth >= 448 && window.innerWidth < 617:
-      tableExpandColumns.value = ["assignedTo", "status", "phone", "email"];
-      break;
+      return ["assignedTo", "status", "phone", "email"];
+
     case window.innerWidth >= 617 && window.innerWidth < 727:
-      tableExpandColumns.value = ["status", "phone", "email"];
-      break;
+      return ["status", "phone", "email"];
+
     case window.innerWidth >= 727 && window.innerWidth < 855:
-      tableExpandColumns.value = ["phone", "email"];
-      break;
+      return ["phone", "email"];
+
     case window.innerWidth >= 855 && window.innerWidth < 1371:
-      tableExpandColumns.value = ["email"];
-      break;
+      return ["email"];
+
     default:
-      tableExpandColumns.value = [];
-      break;
+      return [];
   }
 };
 
-window.addEventListener("resize", () => updateExpandedMenuData());
+window.addEventListener(
+  "resize",
+  () => (tableExpandColumns.value = updateExpandedMenuData())
+);
 
-onMounted(() => updateExpandedMenuData());
+onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
 </script>
 
 <style scoped lang="scss">
