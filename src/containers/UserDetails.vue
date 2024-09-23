@@ -6,10 +6,7 @@
         <icon-text-field
           :text="props.userData.status"
           prepend-icon="mdi-circle"
-          :prepend-icon-style="[
-            'text-red-100 p-0 ',
-            userStatusClass[props.userData.status],
-          ]"
+          :prepend-icon-style="['p-0', userStatusClass[props.userData.status]]"
         />
       </div>
       <div class="flex items-center justify-end gap-x-1.5">
@@ -205,12 +202,12 @@ const handleCloseButtonClick = (event: Event) => {
   width: 350px;
 }
 
-.color-green {
-  color: green !important;
-}
-
 .color-red {
   color: #de8e8c !important;
+}
+
+.color-green {
+  color: green !important;
 }
 
 .color-blue {
