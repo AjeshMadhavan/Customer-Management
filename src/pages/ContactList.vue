@@ -3,7 +3,10 @@
     <header-container class="z-10" @toggle-button-click="onToggleButtonClick" />
     <div class="flex relative">
       <div
-        :class="['sidebar-container-wrapper', { '!w-12': !shouldShowSidebar }]"
+        :class="[
+          'sidebar-container-wrapper',
+          { 'sidebar-container-wrapper__minimize': !shouldShowSidebar },
+        ]"
       >
         <sidebar-container :should-show-sidebar="shouldShowSidebar" />
       </div>
@@ -17,7 +20,7 @@
       <div
         :class="[
           'user-details-container bg-white shadow-md',
-          { '!right-0': userData },
+          { 'user-details-container__show': userData },
         ]"
       >
         <user-details
@@ -103,6 +106,10 @@ const onToggleButtonClick = () => {
   width: 250px;
   height: calc(100vh - 58px);
   transition: all 0.5s ease;
+
+  &__minimize {
+    width: 48px;
+  }
 }
 
 .user-details-container {
@@ -110,5 +117,9 @@ const onToggleButtonClick = () => {
   right: -350px;
   height: calc(100vh - 58px);
   transition: right 0.4s ease;
+
+  &__show {
+    right: 0;
+  }
 }
 </style>

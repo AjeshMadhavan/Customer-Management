@@ -1,11 +1,13 @@
 <template>
   <div class="header-section w-full relative py-2.5">
     <div class="flex items-center">
-      <custom-button
-        button-style="shadow-none !mx-2.5 custom-button"
-        :icon="headerData.icons.hamburgerIcon"
-        @click="handleToggleButtonClick"
-      />
+      <div class="w-12">
+        <custom-button
+          button-style="shadow-none custom-button"
+          :icon="headerData.icons.hamburgerIcon"
+          @click="handleToggleButtonClick"
+        />
+      </div>
       <h1 class="font-medium header-title">{{ headerData.title }}</h1>
     </div>
     <div class="flex items-center justify-end">
