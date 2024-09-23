@@ -94,7 +94,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emits = defineEmits<{
-  (event: "dropdown-item-click", value: string): void;
+  (e: "dropdown-item-click", value: string): void;
 }>();
 
 const dropdownTitle = ref<string>(props.text);
