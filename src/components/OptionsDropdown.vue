@@ -19,7 +19,7 @@
           alt="dropdown image"
         />
         <span v-if="props.text" class="dropdown-title">
-          {{ props.text }}
+          {{ dropdownTitle }}
         </span>
       </div>
       <v-icon v-if="!shouldHideToggleArrow" class="!text-base/4 ml-1 w-min">
@@ -42,8 +42,13 @@
           :key="dropdownItem.text"
           :class="[
             'dropdown-item',
-            { 'hover:bg-zinc-100 cursor-pointer': !dropdownItem.disableHover },
+            {
+              'hover:bg-zinc-100 cursor-pointer': !dropdownItem.disableHover,
+              'bg-black-12 hover:bg-black-14':
+                dropdownTitle === dropdownItem.text,
+            },
           ]"
+          @click="() => onDropdownItemClick(dropdownItem.text)"
         >
           <v-icon v-if="dropdownItem.prependIcon" class="dropdown-item__icon">
             {{ dropdownItem.prependIcon }}
@@ -59,7 +64,7 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, defineProps, ref, withDefaults } from "vue";
+import { computed, defineEmits, defineProps, ref, withDefaults } from "vue";
 
 import { DropdownContentPosition } from "../constants";
 
@@ -88,6 +93,11 @@ const props = withDefaults(defineProps<Props>(), {
   toggleButtonStyle: "",
 });
 
+const emits = defineEmits<{
+  (event: "dropdown-item-click", value: string): void;
+}>();
+
+const dropdownTitle = ref<string>(props.text);
 const shouldShowOptions = ref<boolean>(false);
 const dropdownContainer = ref<HTMLDivElement | null>(null);
 
@@ -97,6 +107,12 @@ const hasOnlyIcon = computed(
 
 const toggleOptions = (toggleValue: boolean) => {
   shouldShowOptions.value = toggleValue;
+};
+
+const onDropdownItemClick = (dropdownItem: string) => {
+  dropdownTitle.value = dropdownItem;
+  shouldShowOptions.value = false;
+  emits("dropdown-item-click", dropdownItem);
 };
 
 document.addEventListener("click", (event: Event) => {

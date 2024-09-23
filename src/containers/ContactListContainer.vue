@@ -8,6 +8,7 @@
             :text="containerData.categoryOptions.title"
             :dropdown-content="containerData.categoryOptions.options"
             toggle-button-style="py-1.5 pr-2 pl-3 font-bold"
+            @dropdown-item-click="onDropdownItemClick"
           />
         </div>
       </div>
@@ -82,12 +83,17 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emits = defineEmits<{
   (e: "row-click", value: UserData): void;
+  (e: "dropdown-item-click", value: string): void;
 }>();
 
 const containerData = computed(() => UIdata.contactListPage);
 
 const handleTableRowClick = (TableRowData: UserData) => {
   emits("row-click", TableRowData);
+};
+
+const onDropdownItemClick = (dropdownItem: string) => {
+  emits("dropdown-item-click", dropdownItem);
 };
 </script>
 
