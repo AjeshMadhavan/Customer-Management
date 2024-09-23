@@ -2,7 +2,7 @@
   <div
     :class="[
       'h-full bg-zinc-100 sidebar-container',
-      { 'w-full': showSidebar, 'w-12': !showSidebar },
+      { 'w-full': props.shouldMinimizeSidebar, 'w-12': !props.shouldMinimizeSidebar },
     ]"
   >
     <div class="accordion-container w-full pt-4">
@@ -13,6 +13,7 @@
         :prepend-icon="accordion.icon"
         toggle-button-style="py-2.5 pr-4 font-bold"
         container-style="border-b border-b-zinc-200"
+        :hide-toggle-arrow="!props.shouldMinimizeSidebar"
       >
         <template #content-slot>
           <ul>
@@ -28,8 +29,13 @@
       </accordion-component>
     </div>
     <div
-      v-if="showSidebar"
-      class="pt-5 pb-4 pl-4 absolute right-0 bottom-0 left-0 bg-zinc-100"
+      :class="[
+        'pt-5 pb-4 pl-4 absolute right-0 bottom-0 left-0 bg-zinc-100 transition-opacity',
+        {
+          'opacity-0 delay-0 duration-100': !props.shouldMinimizeSidebar,
+          'opacity-1 delay-300 duration-500': props.shouldMinimizeSidebar,
+        },
+      ]"
     >
       <span class="sidebar-container__label">
         {{ sidebarData.copyrightText }}
@@ -42,13 +48,17 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { computed, defineProps } from "vue";
 
 import UIdata from "@/Json/UIdata.json";
 
 import AccordionComponent from "@/components/AccordionComponent.vue";
 
-const showSidebar = ref<boolean>(true);
+interface Props {
+  shouldMinimizeSidebar: boolean;
+}
+
+const props = defineProps<Props>();
 
 const sidebarData = computed(() => UIdata.sidebar);
 </script>
@@ -65,6 +75,7 @@ const sidebarData = computed(() => UIdata.sidebar);
   .accordion-container {
     padding-bottom: 70px;
     height: 100%;
+    overflow: hidden;
     overflow-y: scroll;
   }
 
