@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: "on-value-change", value: string | number): void;
+  (e: "change", value: string | number): void;
 }>();
 
 const inputValue = ref<string>(props.value);
@@ -48,7 +48,7 @@ const onKeyDown = (event: KeyboardEvent) => {
 };
 
 const onValueChange = () => {
-  if (inputValue.value) emit("on-value-change", inputValue.value);
+  if (inputValue.value) emit("change", inputValue.value);
 };
 </script>
 
