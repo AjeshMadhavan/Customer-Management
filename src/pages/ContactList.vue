@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { onMounted, ref } from "vue";
 
 import UserDetailsData from "@/Json/UserDetails.json";
 import { UserData } from "@/Type/Types";
@@ -45,15 +45,8 @@ import ContactListContainer from "@/containers/ContactListContainer.vue";
 import UserDetails from "@/containers/UserDetails.vue";
 
 const userData = ref<UserData>();
-
 const shouldMinimizeSidebar = ref<boolean>(true);
-const tableExpandColumns = ref<string[]>([
-  "company",
-  "assignedTo",
-  "status",
-  "phone",
-  "email",
-]);
+const tableExpandColumns = ref<string[]>([]);
 
 const tableHeaders = [
   {
@@ -110,24 +103,31 @@ const onToggleButtonClick = () => {
 };
 
 const updateExpandedMenuData = () => {
-  if (window.innerWidth < 448) {
-    tableExpandColumns.value = [
-      "company",
-      "assignedTo",
-      "status",
-      "phone",
-      "email",
-    ];
-  } else if (window.innerWidth >= 448 && window.innerWidth < 617) {
-    tableExpandColumns.value = ["assignedTo", "status", "phone", "email"];
-  } else if (window.innerWidth >= 617 && window.innerWidth < 727) {
-    tableExpandColumns.value = ["status", "phone", "email"];
-  } else if (window.innerWidth >= 727 && window.innerWidth < 855) {
-    tableExpandColumns.value = ["phone", "email"];
-  } else if (window.innerWidth >= 855 && window.innerWidth < 1371) {
-    tableExpandColumns.value = ["email"];
-  } else {
-    tableExpandColumns.value = [];
+  switch (true) {
+    case window.innerWidth < 448:
+      tableExpandColumns.value = [
+        "company",
+        "assignedTo",
+        "status",
+        "phone",
+        "email",
+      ];
+      break;
+    case window.innerWidth >= 448 && window.innerWidth < 617:
+      tableExpandColumns.value = ["assignedTo", "status", "phone", "email"];
+      break;
+    case window.innerWidth >= 617 && window.innerWidth < 727:
+      tableExpandColumns.value = ["status", "phone", "email"];
+      break;
+    case window.innerWidth >= 727 && window.innerWidth < 855:
+      tableExpandColumns.value = ["phone", "email"];
+      break;
+    case window.innerWidth >= 855 && window.innerWidth < 1371:
+      tableExpandColumns.value = ["email"];
+      break;
+    default:
+      tableExpandColumns.value = [];
+      break;
   }
 };
 
