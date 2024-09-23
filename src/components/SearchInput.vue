@@ -48,7 +48,7 @@ const onKeyDown = (event: KeyboardEvent) => {
 };
 
 const onValueChange = () => {
-  if (inputValue.value) emit("change", inputValue.value);
+  emit("change", inputValue.value);
 };
 </script>
 

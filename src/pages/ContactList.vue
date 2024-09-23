@@ -5,10 +5,10 @@
       <div
         :class="[
           'sidebar-container-wrapper',
-          { 'sidebar-container-wrapper__minimize': !shouldShowSidebar },
+          { 'sidebar-container-wrapper__minimize': !shouldMinimizeSidebar },
         ]"
       >
-        <sidebar-container :should-show-sidebar="shouldShowSidebar" />
+        <sidebar-container :should-minimize-sidebar="shouldMinimizeSidebar" />
       </div>
       <div class="w-full">
         <contact-list-container
@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from "vue";
+import { ref } from "vue";
 
 import UserDetailsData from "@/Json/UserDetails.json";
 import { UserData } from "@/Type/Types";
@@ -43,10 +43,8 @@ import SidebarContainer from "@/containers/SidebarContainer.vue";
 import ContactListContainer from "@/containers/ContactListContainer.vue";
 import UserDetails from "@/containers/UserDetails.vue";
 
-const searchText = ref<string>("");
-const selectedUserStatus = ref<string>("");
 const userData = ref<UserData>();
-const shouldShowSidebar = ref<boolean>(true);
+const shouldMinimizeSidebar = ref<boolean>(true);
 
 const tableHeaders = [
   {
@@ -90,14 +88,6 @@ const tableHeaders = [
   },
 ];
 
-const users = computed(() => {
-  return UserDetailsData.userDetails.users.filter(
-    (user: UserData) =>
-      user.status.includes(selectedUserStatus.value) &&
-      user.name.toLowerCase().includes(searchText.value.toLowerCase())
-  );
-});
-
 const handleTableRowClick = (tableRowData: UserData) => {
   userData.value = tableRowData;
 };
@@ -107,7 +97,7 @@ const onUserDetailsCloseClick = () => {
 };
 
 const onToggleButtonClick = () => {
-  shouldShowSidebar.value = !shouldShowSidebar.value;
+  shouldMinimizeSidebar.value = !shouldMinimizeSidebar.value;
 };
 </script>
 
