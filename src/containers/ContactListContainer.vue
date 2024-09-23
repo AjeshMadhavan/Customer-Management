@@ -41,6 +41,7 @@
           <search-input
             :placeholder="containerData.searchBoxLabel"
             prepend-icon="mdi-magnify"
+            @change="onUserSearch"
           />
         </div>
         <div class="dropdown-button">
@@ -84,6 +85,7 @@ const props = withDefaults(defineProps<Props>(), {
 const emits = defineEmits<{
   (e: "row-click", value: UserData): void;
   (e: "dropdown-item-click", value: string): void;
+  (e: "user-search", value: string | number): void;
 }>();
 
 const containerData = computed(() => UIdata.contactListPage);
@@ -94,6 +96,10 @@ const handleTableRowClick = (TableRowData: UserData) => {
 
 const onDropdownItemClick = (dropdownItem: string) => {
   emits("dropdown-item-click", dropdownItem);
+}
+
+const onUserSearch = (inputValue: string | number) => {
+  emits("user-search", inputValue);
 };
 </script>
 
@@ -126,7 +132,7 @@ const onDropdownItemClick = (dropdownItem: string) => {
   margin-left: 20px;
 }
 
-.dropdown-button {  
+.dropdown-button {
   display: none;
   margin-left: 10px;
 }

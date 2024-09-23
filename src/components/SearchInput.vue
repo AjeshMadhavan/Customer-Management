@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: "onValueChange", value: string | number): void;
+  (e: "change", value: string | number): void;
 }>();
 
 const inputValue = ref<string>(props.value);
@@ -48,7 +48,7 @@ const onKeyDown = (event: KeyboardEvent) => {
 };
 
 const onValueChange = () => {
-  emit("onValueChange", inputValue.value);
+  if (inputValue.value) emit("change", inputValue.value);
 };
 </script>
 
@@ -89,6 +89,4 @@ const onValueChange = () => {
     }
   }
 }
-
-// <search-input prependIcon="mdi-magnify" placeholder="Search"/>
 </style>
