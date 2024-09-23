@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 import UserDetailsData from "@/Json/UserDetails.json";
 import { UserData } from "@/Type/Types";
@@ -43,6 +43,8 @@ import SidebarContainer from "@/containers/SidebarContainer.vue";
 import ContactListContainer from "@/containers/ContactListContainer.vue";
 import UserDetails from "@/containers/UserDetails.vue";
 
+const searchText = ref<string>("");
+const selectedUserStatus = ref<string>("");
 const userData = ref<UserData>();
 const shouldShowSidebar = ref<boolean>(true);
 
@@ -87,6 +89,14 @@ const tableHeaders = [
     value: "data-table-expand",
   },
 ];
+
+const users = computed(() => {
+  return UserDetailsData.userDetails.users.filter(
+    (user: UserData) =>
+      user.status.includes(selectedUserStatus.value) &&
+      user.name.toLowerCase().includes(searchText.value.toLowerCase())
+  );
+});
 
 const handleTableRowClick = (tableRowData: UserData) => {
   userData.value = tableRowData;
