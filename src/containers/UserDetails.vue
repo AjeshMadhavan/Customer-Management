@@ -41,7 +41,7 @@
                 :label="jobDetail.key"
                 :text="jobDetail.value"
                 is-vertically
-                :text-style="jobDetail.addColor ? 'text-light-blue-500' : ''"
+                :text-style="jobDetail.shouldAddColor ? 'text-light-blue-500' : ''"
               />
             </li>
           </ul>
@@ -177,7 +177,7 @@ const jobDetails = computed(() => {
     return {
       key: jobDataLables[key],
       value: props.userData[key],
-      addColor: !restrictedKeys.includes(key),
+      shouldAddColor: !restrictedKeys.includes(key),
     };
   });
 });
