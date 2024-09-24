@@ -6,7 +6,8 @@
         <icon-text-field
           :text="props.userData.status"
           prepend-icon="mdi-circle"
-          :prepend-icon-style="['p-0', userStatusClass[props.userData.status]]"
+          :prepend-icon-style="`p-0 
+          ${userStatusClass[props.userData.status.toLowerCase()]}`"
         />
       </div>
       <div class="flex items-center justify-end gap-x-1.5">
@@ -137,6 +138,12 @@ interface Props {
   userData: UserData;
 }
 
+interface UserStatusClass {
+  salaried: string;
+  terminated: string;
+  commission: string;
+}
+
 const props = defineProps<Props>();
 
 const emits = defineEmits<{
@@ -145,10 +152,10 @@ const emits = defineEmits<{
 
 const containerData = computed(() => UIdata.contactListPage.userData);
 
-const userStatusClass = {
-  Salaried: "color-green",
-  Terminated: "color-red",
-  Commission: "color-blue",
+const userStatusClass: UserStatusClass = {
+  salaried: "color-green",
+  terminated: "color-red",
+  commission: "color-blue",
 };
 
 const jobDataLables = {
