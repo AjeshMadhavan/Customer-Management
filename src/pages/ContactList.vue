@@ -14,6 +14,7 @@
         <contact-list-container
           :table-data="UserDetailsData.userDetails.users"
           :table-header="tableHeaders"
+          :table-expand-data="tableExpandColumns"
           @row-click="handleTableRowClick"
         />
       </div>
@@ -33,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 import UserDetailsData from "@/Json/UserDetails.json";
 import { UserData } from "@/Type/Types";
@@ -45,6 +46,7 @@ import UserDetails from "@/containers/UserDetails.vue";
 
 const userData = ref<UserData>();
 const shouldMinimizeSidebar = ref<boolean>(true);
+const tableExpandColumns = ref<string[]>([]);
 
 const tableHeaders = [
   {
@@ -99,6 +101,35 @@ const onUserDetailsCloseClick = () => {
 const onToggleButtonClick = () => {
   shouldMinimizeSidebar.value = !shouldMinimizeSidebar.value;
 };
+
+const updateExpandedMenuData = () => {
+  switch (true) {
+    case window.innerWidth < 448:
+      return ["company", "assignedTo", "status", "phone", "email"];
+
+    case window.innerWidth >= 448 && window.innerWidth < 617:
+      return ["assignedTo", "status", "phone", "email"];
+
+    case window.innerWidth >= 617 && window.innerWidth < 727:
+      return ["status", "phone", "email"];
+
+    case window.innerWidth >= 727 && window.innerWidth < 855:
+      return ["phone", "email"];
+
+    case window.innerWidth >= 855 && window.innerWidth < 1371:
+      return ["email"];
+
+    default:
+      return [];
+  }
+};
+
+window.addEventListener(
+  "resize",
+  () => (tableExpandColumns.value = updateExpandedMenuData())
+);
+
+onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
 </script>
 
 <style scoped lang="scss">
