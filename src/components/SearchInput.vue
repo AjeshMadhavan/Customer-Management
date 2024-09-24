@@ -13,6 +13,7 @@
     hide-spin-buttons
     class="text-xs text-input"
     @keydown="onKeyDown"
+    @keydown.enter="onEnter"
     @scroll.prevent
     @input="onInput"
   />
@@ -40,26 +41,29 @@ const emit = defineEmits<{
 }>();
 
 const inputValue = ref<string>(props.value);
-const shouldInitiateSearch = ref<boolean>(false)
+const shouldInitiateSearch = ref<boolean>(false);
 const restrictedValues = ["ArrowUp", "ArrowDown", "e", "E"];
-let timeoutId 
-
+let timeoutId;
 
 const onKeyDown = (event: KeyboardEvent) => {
   if (restrictedValues.includes(event.key) && props.type === "number")
     event.preventDefault();
-  
-  shouldInitiateSearch.value = false
-  clearTimeout(timeoutId)
+
+  shouldInitiateSearch.value = false;
+  clearTimeout(timeoutId);
 
   timeoutId = setTimeout(() => {
-    shouldInitiateSearch.value = true
-  }, 1000)
+    if (inputValue.value.length >= 3) shouldInitiateSearch.value = true;
+  }, 1000);
+};
+
+const onEnter = () => {
+  emit("change", inputValue.value);
 };
 
 watch(shouldInitiateSearch, (newValue) => {
-  if(newValue) emit('change', inputValue.value)
-})
+  if (newValue) emit("change", inputValue.value);
+});
 </script>
 
 <style lang="scss" scoped>
