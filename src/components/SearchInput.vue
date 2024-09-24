@@ -12,14 +12,14 @@
     :prepend-inner-icon="props.prependIcon"
     hide-spin-buttons
     class="text-xs text-input"
-    @keyup.enter="onValueChange"
     @keydown="onKeyDown"
     @scroll.prevent
+    @input="onInput"
   />
 </template>
 
 <script lang="ts" setup>
-import { defineEmits, defineProps, ref, withDefaults } from "vue";
+import { defineEmits, defineProps, ref, watch, withDefaults } from "vue";
 
 interface Props {
   placeholder?: string;
@@ -40,16 +40,26 @@ const emit = defineEmits<{
 }>();
 
 const inputValue = ref<string>(props.value);
+const shouldInitiateSearch = ref<boolean>(false)
 const restrictedValues = ["ArrowUp", "ArrowDown", "e", "E"];
+let timeoutId 
+
 
 const onKeyDown = (event: KeyboardEvent) => {
   if (restrictedValues.includes(event.key) && props.type === "number")
     event.preventDefault();
+  
+  shouldInitiateSearch.value = false
+  clearTimeout(timeoutId)
+
+  timeoutId = setTimeout(() => {
+    shouldInitiateSearch.value = true
+  }, 1000)
 };
 
-const onValueChange = () => {
-  emit("change", inputValue.value);
-};
+watch(shouldInitiateSearch, (newValue) => {
+  if(newValue) emit('change', inputValue.value)
+})
 </script>
 
 <style lang="scss" scoped>
