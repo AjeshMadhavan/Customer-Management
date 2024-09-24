@@ -6,7 +6,8 @@
         <icon-text-field
           :text="props.userData.status"
           prepend-icon="mdi-circle"
-          prepend-icon-style="!text-red-100 p-0"
+          :prepend-icon-style="`p-0 
+          ${userStatusClass[props.userData.status.toLowerCase()]}`"
         />
       </div>
       <div class="flex items-center justify-end gap-x-1.5">
@@ -137,6 +138,12 @@ interface Props {
   userData: UserData;
 }
 
+interface UserStatusClass {
+  salaried: string;
+  terminated: string;
+  commission: string;
+}
+
 const props = defineProps<Props>();
 
 const emits = defineEmits<{
@@ -144,6 +151,12 @@ const emits = defineEmits<{
 }>();
 
 const containerData = computed(() => UIdata.contactListPage.userData);
+
+const userStatusClass: UserStatusClass = {
+  salaried: "color-green",
+  terminated: "color-red",
+  commission: "color-blue",
+};
 
 const jobDataLables = {
   company: "Company",
@@ -182,7 +195,7 @@ const handleCloseButtonClick = (event: Event) => {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .header-button {
   background-color: transparent !important;
 }
@@ -194,5 +207,17 @@ const handleCloseButtonClick = (event: Event) => {
 
 .user-details {
   width: 350px;
+}
+
+.color-red {
+  color: #de8e8c !important;
+}
+
+.color-green {
+  color: green !important;
+}
+
+.color-blue {
+  color: #03a9f4 !important;
 }
 </style>
