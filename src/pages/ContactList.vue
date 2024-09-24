@@ -1,6 +1,9 @@
 <template>
   <div class="w-full h-full">
-    <header-container class="z-10" @toggle-button-click="onToggleButtonClick" />
+    <header-container
+      class="z-10 bg-white"
+      @toggle-button-click="onToggleButtonClick"
+    />
     <div class="flex relative">
       <div
         :class="[
@@ -25,6 +28,7 @@
         ]"
       >
         <user-details
+          v-if="shouldShowUserDetails"
           :user-data="userData"
           @close-button-click="onUserDetailsCloseClick"
         />
@@ -34,7 +38,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 import UserDetailsData from "@/Json/UserDetails.json";
 import { UserData } from "@/Type/Types";
@@ -46,6 +50,7 @@ import UserDetails from "@/containers/UserDetails.vue";
 
 const userData = ref<UserData>();
 const shouldMinimizeSidebar = ref<boolean>(true);
+const shouldShowUserDetails = ref<boolean>(false);
 const tableExpandColumns = ref<string[]>([]);
 
 const tableHeaders = [
@@ -124,11 +129,20 @@ const updateExpandedMenuData = () => {
   }
 };
 
+watch(userData, (newValue) => {
+  if (newValue) shouldShowUserDetails.value = true;
+  else {
+    setTimeout(() => {
+      shouldShowUserDetails.value = false;
+    }, 400);
+  }
+});
+
 window.addEventListener("resize", () => {
   tableExpandColumns.value = updateExpandedMenuData();
 
   if (window.innerWidth === 800) {
-    shouldMinimizeSidebar.value = false
+    shouldMinimizeSidebar.value = false;
   }
 });
 
@@ -160,8 +174,8 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
   position: absolute;
   right: -350px;
   height: calc(100vh - 58px);
-  transition: all 0.4s ease;  
-  overflow: scroll;
+  transition: all 0.4s ease;
+  overflow: auto;
 
   &__show {
     right: 0;

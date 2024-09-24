@@ -2,7 +2,10 @@
   <div
     :class="[
       'h-full bg-zinc-100 sidebar-container',
-      { 'w-full': props.shouldMinimizeSidebar, 'w-12': !props.shouldMinimizeSidebar },
+      {
+        'w-full': props.shouldMinimizeSidebar,
+        'w-12': !props.shouldMinimizeSidebar,
+      },
     ]"
   >
     <div class="accordion-container w-full pt-4">
@@ -71,12 +74,13 @@ const sidebarData = computed(() => UIdata.sidebar);
   justify-content: space-between;
   transition: width 0.5s ease-in-out;
   position: relative;
+  z-index: 10;
 
   .accordion-container {
     padding-bottom: 70px;
     height: 100%;
     overflow: hidden;
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 
   &__label {
