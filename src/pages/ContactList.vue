@@ -1,10 +1,7 @@
 <template>
-  <div class="w-full h-full">
-    <header-container
-      class="z-10 bg-white"
-      @toggle-button-click="onToggleButtonClick"
-    />
-    <div class="flex relative">
+  <div class="w-full h-full relative">
+    <header-container class="z-10" @toggle-button-click="onToggleButtonClick" />
+    <div class="flex relative body-section">
       <div
         :class="[
           'sidebar-container-wrapper',
@@ -155,6 +152,10 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
 </script>
 
 <style scoped lang="scss">
+.body-section {
+  padding-top: 58px;
+}
+
 .sidebar-container-wrapper {
   width: 250px;
   height: calc(100vh - 58px);

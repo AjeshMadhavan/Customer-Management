@@ -78,6 +78,9 @@ onMounted(() => setProfileIcon());
   justify-content: space-between;
   padding-right: 24px;
   height: 58px;
+  position: fixed;
+  top: 0;
+  left: 0;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05), 0 0 4px rgba(0, 0, 0, 0.15);
 
   .title-section {
