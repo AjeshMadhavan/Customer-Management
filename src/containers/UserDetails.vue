@@ -1,5 +1,5 @@
 <template>
-  <div class="user-details">
+  <div class="user-details relative">
     <div
       class="flex justify-between items-center p-2 pl-4 h-14 fixed user-details__header"
     >
