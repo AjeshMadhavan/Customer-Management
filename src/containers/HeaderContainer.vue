@@ -1,6 +1,6 @@
 <template>
   <div class="header-section w-full relative py-2.5">
-    <div class="flex items-center">
+    <div class="title-section">
       <div class="w-12">
         <custom-button
           button-style="shadow-none custom-button"
@@ -10,7 +10,7 @@
       </div>
       <h1 class="font-medium header-title">{{ headerData.title }}</h1>
     </div>
-    <div class="flex items-center justify-end">
+    <div class="flex items-center justify-end w-full">
       <search-input
         :placeholder="headerData.searchBoxLabel"
         prepend-icon="mdi-magnify"
@@ -59,7 +59,8 @@ const headerData = computed(() => UiData.topPanel);
 
 const setProfileIcon = () => {
   profileImage.value = window.innerWidth <= windowWidth ? "" : UserProfileImage;
-  profileIcon.value = window.innerWidth <= windowWidth ? "mdi-dots-vertical" : "";
+  profileIcon.value =
+    window.innerWidth <= windowWidth ? "mdi-dots-vertical" : "";
 };
 
 const handleToggleButtonClick = (event: Event) => {
@@ -79,9 +80,18 @@ onMounted(() => setProfileIcon());
   height: 58px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05), 0 0 4px rgba(0, 0, 0, 0.15);
 
+  .title-section {
+    width: calc(100% - 78px);
+    display: flex;
+    align-items: center;
+  }
+
   .header-title {
     color: rgba(0, 0, 0, 0.87);
     font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .search-input {
