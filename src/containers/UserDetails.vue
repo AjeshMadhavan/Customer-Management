@@ -1,8 +1,6 @@
 <template>
   <div class="user-details relative">
-    <div
-      class="flex justify-between items-center p-2 pl-4 h-14 fixed user-details__header"
-    >
+    <div class="flex justify-between items-center p-2 pl-4 h-14">
       <div class="flex items-center">
         <h2 class="mr-2">{{ props.userData.name }}</h2>
         <icon-text-field
@@ -48,79 +46,93 @@
         </div>
         <ul class="py-4">
           <li
-            v-for="personalDetail in personalDetails"
-            :key="personalDetail.value"
+            v-for="jobDetail in jobDetails"
+            :key="jobDetail.key"
             class="pt-5 first:pt-0"
           >
             <icon-text-field
-              :prepend-icon="personalDetail.prependIcon"
-              :prepend-icon-style="personalDetail.prependIconStyle"
-              :text="personalDetail.value"
+              :label="jobDetail.key"
+              :text="jobDetail.value"
+              is-vertically
+              :text-style="jobDetail.addColor ? 'text-light-blue-500' : ''"
             />
           </li>
         </ul>
       </div>
-      <div class="flex items-center py-2.5 px-4 border-b border-zinc-200 mb-6">
-        <div class="pr-3.5">
-          <options-dropdown
-            :text="containerData.actionsButton.title"
-            :dropdown-content="containerData.actionsButton.options"
-            toggle-button-style="py-1.5 pr-2 pl-2.5"
-          />
-        </div>
-        <div class="flex items-center gap-x-1.5 pl-3.5">
-          <custom-button
-            :text="containerData.editButtonTitle.title"
-            :icon="containerData.editButtonTitle.icon"
-            button-style="font-semibold action-button"
-          />
-          <custom-button
-            :text="containerData.detailsButtonTitle"
-            :variant="ButtonVariants.Outlined"
-            button-style="font-semibold action-button"
-          />
-        </div>
-      </div>
-      <div class="px-4">
-        <accordion-component
-          :text="containerData.userOpportunitiesTitle"
-          toggle-button-style="py-1.5 px-2.5 h-10"
-          container-style="shadow-md"
+      <ul class="py-4">
+        <li
+          v-for="personalDetail in personalDetails"
+          :key="personalDetail.value"
+          class="pt-5 first:pt-0"
         >
-          <template #content-slot>
-            <ul class="p-2.5">
-              <li
-                v-for="userOpportunity in props.userData.userOpportunities"
-                :key="userOpportunity.text"
-                class="text-left pb-2.5 text-xs"
-              >
-                <span class="block">{{ userOpportunity.text }}</span>
-                <span>{{ userOpportunity.price }}</span>
-              </li>
-            </ul>
-          </template>
-        </accordion-component>
-        <accordion-component
-          :text="containerData.userActivities.title"
-          toggle-button-style="py-1.5 px-2.5 h-10"
-          container-style="shadow-md"
-        >
-          <template #content-slot>
-            <ul class="p-2.5">
-              <li
-                v-for="userActivity in props.userData.userActivities"
-                :key="userActivity.activity"
-                class="my-2.5"
-              >
-                <user-activity-item
-                  :user-activity="userActivity"
-                  :user-activity-menu="containerData.userActivities.activitiesMenu"
-                />
-              </li>
-            </ul>
-          </template>
-        </accordion-component>
+          <icon-text-field
+            :prepend-icon="personalDetail.prependIcon"
+            :prepend-icon-style="personalDetail.prependIconStyle"
+            :text="personalDetail.value"
+          />
+        </li>
+      </ul>
+    </div>
+    <div class="flex items-center py-2.5 px-4 border-b border-zinc-200 mb-6">
+      <div class="pr-3.5">
+        <options-dropdown
+          :text="containerData.actionsButton.title"
+          :dropdown-content="containerData.actionsButton.options"
+          toggle-button-style="py-1.5 pr-2 pl-2.5"
+        />
       </div>
+      <div class="flex items-center gap-x-1.5 pl-3.5">
+        <custom-button
+          :text="containerData.editButtonTitle.title"
+          :icon="containerData.editButtonTitle.icon"
+          button-style="font-semibold action-button"
+        />
+        <custom-button
+          :text="containerData.detailsButtonTitle"
+          :variant="ButtonVariants.Outlined"
+          button-style="font-semibold action-button"
+        />
+      </div>
+    </div>
+    <div class="px-4">
+      <accordion-component
+        :text="containerData.userOpportunitiesTitle"
+        toggle-button-style="py-1.5 px-2.5 h-10"
+        container-style="shadow-md"
+      >
+        <template #content-slot>
+          <ul class="p-2.5">
+            <li
+              v-for="userOpportunity in props.userData.userOpportunities"
+              :key="userOpportunity.text"
+              class="text-left pb-2.5 text-xs"
+            >
+              <span class="block">{{ userOpportunity.text }}</span>
+              <span>{{ userOpportunity.price }}</span>
+            </li>
+          </ul>
+        </template>
+      </accordion-component>
+      <accordion-component
+        :text="containerData.userActivities.title"
+        toggle-button-style="py-1.5 px-2.5 h-10"
+        container-style="shadow-md"
+      >
+        <template #content-slot>
+          <ul class="p-2.5">
+            <li
+              v-for="userActivity in props.userData.userActivities"
+              :key="userActivity.activity"
+              class="my-2.5"
+            >
+              <user-activity-item
+                :user-activity="userActivity"
+                :user-activity-menu="containerData.userActivities.activitiesMenu"
+              />
+            </li>
+          </ul>
+        </template>
+      </accordion-component>
     </div>
   </div>
 </template>
@@ -206,27 +218,11 @@ const handleCloseButtonClick = (event: Event) => {
 
 .action-button {
   min-width: 90px !important;
-  max-width: 90px;
   width: min-content;
 }
 
 .user-details {
   width: 350px;
-  height: calc(100vh - 58px);
-
-  &__header {
-    width: 350px;
-    z-index: 9;
-    background-color: #fff;
-  }
-
-  @media (max-width: 500px) {
-    width: 100%;
-
-    &__header {
-      width: 100%;
-    }
-  }
 }
 
 .color-red {
