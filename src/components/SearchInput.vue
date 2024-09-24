@@ -43,18 +43,21 @@ const emit = defineEmits<{
 const inputValue = ref<string>(props.value);
 const shouldInitiateSearch = ref<boolean>(false);
 const restrictedValues = ["ArrowUp", "ArrowDown", "e", "E"];
-let timeoutId;
+const onKeyDownTimeoutTime = 3000;
+const inputMinLength = 3;
+let timeoutID;
 
 const onKeyDown = (event: KeyboardEvent) => {
   if (restrictedValues.includes(event.key) && props.type === "number")
     event.preventDefault();
 
   shouldInitiateSearch.value = false;
-  clearTimeout(timeoutId);
+  clearTimeout(timeoutID);
 
-  timeoutId = setTimeout(() => {
-    if (inputValue.value.length >= 3) shouldInitiateSearch.value = true;
-  }, 1000);
+  timeoutID = setTimeout(() => {
+    if (inputValue.value.length >= inputMinLength)
+      shouldInitiateSearch.value = true;
+  }, onKeyDownTimeoutTime);
 };
 
 const onEnter = () => {
