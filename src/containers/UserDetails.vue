@@ -1,6 +1,6 @@
 <template>
   <div class="user-details relative">
-    <div class="flex justify-between items-center p-2 pl-4 h-14">
+    <div class="flex justify-between items-center p-2 pl-4 h-14 fixed user-details__header">
       <div class="flex items-center">
         <h2 class="mr-2">{{ props.userData.name }}</h2>
         <icon-text-field
@@ -218,11 +218,27 @@ const handleCloseButtonClick = (event: Event) => {
 
 .action-button {
   min-width: 90px !important;
+  max-width: 90px;
   width: min-content;
 }
 
 .user-details {
   width: 350px;
+   height: calc(100vh - 58px);
+
+  &__header {
+    width: 350px;
+    z-index: 9;
+    background-color: #fff;
+  }
+
+  @media (max-width: 500px) {
+    width: 100%;
+
+    &__header {
+      width: 100%;
+    }
+  }
 }
 
 .color-red {
