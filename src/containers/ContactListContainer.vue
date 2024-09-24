@@ -54,7 +54,7 @@
     </div>
     <table-component
       :table-header="props.tableHeader"
-      :user-data="props.tableData"
+      :user-data="users"
       :expanded-menu-data="props.tableExpandData"
       @row-click="handleTableRowClick"
     />
@@ -62,7 +62,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineEmits, defineProps, withDefaults } from "vue";
+import { computed, defineEmits, defineProps, ref, withDefaults } from "vue";
 
 import { TableHeader, UserData } from "@/Type/Types";
 
@@ -84,22 +84,34 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emits = defineEmits<{
   (e: "row-click", value: UserData): void;
-  (e: "dropdown-item-click", value: string): void;
-  (e: "user-search", value: string | number): void;
 }>();
 
+const searchText = ref<string>("");
+const selectedUserStatus = ref<string>("");
+
 const containerData = computed(() => UIdata.contactListPage);
+
+const users = computed(() => {
+  return props.tableData.filter(
+    (user: UserData) =>
+      user.status.includes(selectedUserStatus.value) &&
+      user.name.toLowerCase().includes(searchText.value.toLowerCase())
+  );
+});
 
 const handleTableRowClick = (TableRowData: UserData) => {
   emits("row-click", TableRowData);
 };
 
-const onDropdownItemClick = (dropdownItem: string) => {
-  emits("dropdown-item-click", dropdownItem);
-}
+const onDropdownItemClick = (status: string) => {
+  selectedUserStatus.value =
+    containerData.value.categoryOptions.options[0].text === status
+      ? ""
+      : (selectedUserStatus.value = status);
+};
 
-const onUserSearch = (inputValue: string | number) => {
-  emits("user-search", inputValue);
+const onUserSearch = (inputValue: string) => {
+  searchText.value = inputValue;
 };
 </script>
 

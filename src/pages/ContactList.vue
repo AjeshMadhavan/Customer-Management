@@ -5,10 +5,10 @@
       <div
         :class="[
           'sidebar-container-wrapper',
-          { 'sidebar-container-wrapper__minimize': !shouldShowSidebar },
+          { 'sidebar-container-wrapper__minimize': !shouldMinimizeSidebar },
         ]"
       >
-        <sidebar-container :should-show-sidebar="shouldShowSidebar" />
+        <sidebar-container :should-minimize-sidebar="shouldMinimizeSidebar" />
       </div>
       <div class="w-full">
         <contact-list-container
@@ -44,7 +44,7 @@ import ContactListContainer from "@/containers/ContactListContainer.vue";
 import UserDetails from "@/containers/UserDetails.vue";
 
 const userData = ref<UserData>();
-const shouldShowSidebar = ref<boolean>(true);
+const shouldMinimizeSidebar = ref<boolean>(true);
 
 const tableHeaders = [
   {
@@ -97,7 +97,7 @@ const onUserDetailsCloseClick = () => {
 };
 
 const onToggleButtonClick = () => {
-  shouldShowSidebar.value = !shouldShowSidebar.value;
+  shouldMinimizeSidebar.value = !shouldMinimizeSidebar.value;
 };
 </script>
 
