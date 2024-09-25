@@ -56,6 +56,7 @@
       :table-header="props.tableHeader"
       :user-data="users"
       :expanded-menu-data="props.tableExpandData"
+      :item-slot-data="tableSlotData"
       @row-click="handleTableRowClick"
     />
   </div>
@@ -89,6 +90,11 @@ const emits = defineEmits<{
 const searchText = ref<string>("");
 const selectedUserStatus = ref<string>("");
 
+const tableSlotData = {
+  slotKey: "name",
+  values: ["position"],
+};
+
 const containerData = computed(() => UIdata.contactListPage);
 
 const users = computed(() => {
@@ -121,7 +127,7 @@ const onUserSearch = (inputValue: string) => {
   height: 24px;
   background-color: #e0e0e0;
 
-  @media (max-width:700px) {
+  @media (max-width: 700px) {
     display: none;
   }
 }

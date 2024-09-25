@@ -14,6 +14,7 @@ module.exports = {
         "2xs": ["10px", "10px"],
       },
       colors: {
+        "black-6": "rgba(0, 0, 0, 0.6)",
         "black-04": "rgba(0, 0, 0, 0.04)",
         "black-12": "rgba(0, 0, 0, 0.12)",
         "black-14": "rgba(0, 0, 0, 0.14)",
