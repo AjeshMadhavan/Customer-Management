@@ -15,7 +15,6 @@
     @keydown="onKeyDown"
     @keydown.enter="onEnter"
     @scroll.prevent
-    @input="onInput"
   />
 </template>
 
@@ -43,7 +42,7 @@ const emit = defineEmits<{
 const inputValue = ref<string>(props.value);
 const shouldInitiateSearch = ref<boolean>(false);
 const restrictedValues = ["ArrowUp", "ArrowDown", "e", "E"];
-const onKeyDownTimeoutTime = 3000;
+const onKeyDownTimeoutTime = 1000;
 const inputMinLength = 3;
 let timeoutID;
 
