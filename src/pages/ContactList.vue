@@ -1,6 +1,8 @@
 <template>
   <div class="w-full h-full relative">
-    <header-container class="z-10" @toggle-button-click="onToggleButtonClick" />
+    <div class="fixed z-10 w-screen">
+      <header-container @toggle-button-click="onToggleButtonClick" />
+    </div>
     <div class="flex relative body-section">
       <div
         :class="[
