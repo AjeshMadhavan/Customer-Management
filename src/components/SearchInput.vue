@@ -42,21 +42,21 @@ const emit = defineEmits<{
 const inputValue = ref<string>(props.value);
 const shouldInitiateSearch = ref<boolean>(false);
 const restrictedValues = ["ArrowUp", "ArrowDown", "e", "E"];
-const onKeyDownTimeoutTime = 1000;
+const SEARCH_INITIATING_DELAY = 1000;
 const inputMinLength = 3;
-let timeoutID;
+let timeout;
 
 const onKeyDown = (event: KeyboardEvent) => {
   if (restrictedValues.includes(event.key) && props.type === "number")
     event.preventDefault();
 
   shouldInitiateSearch.value = false;
-  clearTimeout(timeoutID);
+  clearTimeout(timeout);
 
-  timeoutID = setTimeout(() => {
+  timeout = setTimeout(() => {
     if (inputValue.value.length >= inputMinLength)
       shouldInitiateSearch.value = true;
-  }, onKeyDownTimeoutTime);
+  }, SEARCH_INITIATING_DELAY);
 };
 
 const handleEnterKeyPress = () => {
