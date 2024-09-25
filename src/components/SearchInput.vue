@@ -13,7 +13,7 @@
     hide-spin-buttons
     class="text-xs text-input"
     @keydown="onKeyDown"
-    @keydown.enter="onEnter"
+    @keydown.enter="handleEnterKeyPress"
     @scroll.prevent
   />
 </template>
@@ -36,7 +36,7 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: "change", value: string | number): void;
+  (e: "on-input-change", value: string | number): void;
 }>();
 
 const inputValue = ref<string>(props.value);
@@ -59,12 +59,12 @@ const onKeyDown = (event: KeyboardEvent) => {
   }, onKeyDownTimeoutTime);
 };
 
-const onEnter = () => {
-  emit("change", inputValue.value);
+const handleEnterKeyPress = () => {
+  emit("on-input-change", inputValue.value);
 };
 
 watch(shouldInitiateSearch, (newValue) => {
-  if (newValue) emit("change", inputValue.value);
+  if (newValue) emit("on-input-change", inputValue.value);
 });
 </script>
 

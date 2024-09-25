@@ -41,7 +41,7 @@
           <search-input
             :placeholder="containerData.searchBoxLabel"
             prepend-icon="mdi-magnify"
-            @change="onUserSearch"
+            @on-input-change="onUserSearch"
           />
         </div>
         <div class="dropdown-button">
