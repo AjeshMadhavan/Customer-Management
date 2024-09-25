@@ -55,10 +55,10 @@ interface Props {
   tableHeader: TableHeader[];
   userData: UserData[];
   expandedMenuData?: string[];
-  itemSlotData?: ItemSlot;
+  itemSlotData?: ItemSlotData;
 }
 
-interface ItemSlot {
+interface ItemSlotData {
   slotKey: string;
   values: string[];
 }
