@@ -121,7 +121,7 @@ const onUserSearch = (inputValue: string) => {
   height: 24px;
   background-color: #e0e0e0;
 
-  @media (max-width: 539px) {
+  @media (max-width:700px) {
     display: none;
   }
 }
@@ -161,25 +161,25 @@ const onUserSearch = (inputValue: string) => {
   }
 }
 
-@media (max-width: 533px) {
+@media (max-width: 600px) {
   .data-refresh-button {
     display: none;
   }
 }
 
-@media (max-width: 644px) {
+@media (max-width: 700px) {
   .export-data {
     display: none;
   }
 }
 
-@media (max-width: 683px) {
+@media (max-width: 750px) {
   .column-chooser {
     display: none;
   }
 }
 
-@media (max-width: 820px) {
+@media (max-width: 850px) {
   .contact-search {
     display: none;
   }

@@ -110,13 +110,13 @@ const updateExpandedMenuData = () => {
     case window.innerWidth >= 448 && window.innerWidth < 617:
       return ["assignedTo", "status", "phone", "email"];
 
-    case window.innerWidth >= 617 && window.innerWidth < 727:
+    case window.innerWidth >= 617 && window.innerWidth < 850:
       return ["status", "phone", "email"];
 
-    case window.innerWidth >= 727 && window.innerWidth < 855:
+    case window.innerWidth >= 850 && window.innerWidth < 950:
       return ["phone", "email"];
 
-    case window.innerWidth >= 855 && window.innerWidth < 1371:
+    case window.innerWidth >= 950 && window.innerWidth < 1371:
       return ["email"];
 
     default:
@@ -124,10 +124,13 @@ const updateExpandedMenuData = () => {
   }
 };
 
-window.addEventListener(
-  "resize",
-  () => (tableExpandColumns.value = updateExpandedMenuData())
-);
+window.addEventListener("resize", () => {
+  tableExpandColumns.value = updateExpandedMenuData();
+
+  if (window.innerWidth === 800) {
+    shouldMinimizeSidebar.value = false
+  }
+});
 
 onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
 </script>
@@ -141,16 +144,31 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
   &__minimize {
     width: 48px;
   }
+
+  @media (max-width: 800px) {
+    position: absolute;
+    left: 0;
+    z-index: 9;
+
+    &__minimize {
+      left: -250px;
+    }
+  }
 }
 
 .user-details-container {
   position: absolute;
   right: -350px;
   height: calc(100vh - 58px);
-  transition: right 0.4s ease;
+  transition: all 0.4s ease;  
+  overflow: scroll;
 
   &__show {
     right: 0;
+
+    @media (max-width: 500px) {
+      left: 0;
+    }
   }
 }
 </style>
