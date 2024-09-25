@@ -218,7 +218,7 @@ const handleCloseButtonClick = (event: Event) => {
 
   &__header {
     width: 350px;
-    z-index: 7;
+    z-index: 2;
     background-color: #fff;
   }
 

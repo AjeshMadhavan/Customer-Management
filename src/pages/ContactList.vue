@@ -13,6 +13,10 @@
       >
         <sidebar-container :should-minimize-sidebar="shouldMinimizeSidebar" />
       </div>
+      <div
+        :class="['overlay-box', { 'overlay-box__show': shouldMinimizeSidebar }]"
+        @click="onToggleButtonClick"
+      />
       <div class="w-full">
         <contact-list-container
           :table-data="UserDetailsData.userDetails.users"
@@ -162,7 +166,7 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
   @media (max-width: 800px) {
     position: absolute;
     left: 0;
-    z-index: 9;
+    z-index: 51;
 
     &__minimize {
       left: -250px;
@@ -183,6 +187,27 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
     @media (max-width: 500px) {
       left: 0;
     }
+  }
+}
+
+.overlay-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 58px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.5s ease;
+
+  @media (min-width: 801px) {
+    display: none;
+  }
+
+  &__show {
+    opacity: 1;
+    z-index: 50;
   }
 }
 </style>
