@@ -1,6 +1,9 @@
 <template>
   <div class="w-full h-full">
-    <header-container class="z-10" @toggle-button-click="onToggleButtonClick" />
+    <header-container
+      class="z-10 bg-white"
+      @toggle-button-click="onToggleButtonClick"
+    />
     <div class="flex relative">
       <div
         :class="[
@@ -10,6 +13,10 @@
       >
         <sidebar-container :should-minimize-sidebar="shouldMinimizeSidebar" />
       </div>
+      <div
+        :class="['overlay-box', { 'overlay-box__show': shouldMinimizeSidebar }]"
+        @click="onToggleButtonClick"
+      />
       <div class="w-full">
         <contact-list-container
           :table-data="UserDetailsData.userDetails.users"
@@ -25,6 +32,7 @@
         ]"
       >
         <user-details
+          v-if="shouldShowUserDetails"
           :user-data="userData"
           @close-button-click="onUserDetailsCloseClick"
         />
@@ -34,7 +42,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onMounted, ref, watch } from "vue";
 
 import UserDetailsData from "@/Json/UserDetails.json";
 import { UserData } from "@/Type/Types";
@@ -46,6 +54,7 @@ import UserDetails from "@/containers/UserDetails.vue";
 
 const userData = ref<UserData>();
 const shouldMinimizeSidebar = ref<boolean>(true);
+const shouldShowUserDetails = ref<boolean>(false);
 const tableExpandColumns = ref<string[]>([]);
 
 const tableHeaders = [
@@ -124,11 +133,21 @@ const updateExpandedMenuData = () => {
   }
 };
 
+watch(userData, (newValue) => {
+  if (newValue) {
+    shouldShowUserDetails.value = true;
+  } else {
+    setTimeout(() => {
+      shouldShowUserDetails.value = false;
+    }, 400);
+  }
+});
+
 window.addEventListener("resize", () => {
   tableExpandColumns.value = updateExpandedMenuData();
 
   if (window.innerWidth === 800) {
-    shouldMinimizeSidebar.value = false
+    shouldMinimizeSidebar.value = false;
   }
 });
 
@@ -148,7 +167,7 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
   @media (max-width: 800px) {
     position: absolute;
     left: 0;
-    z-index: 9;
+    z-index: 51;
 
     &__minimize {
       left: -250px;
@@ -160,8 +179,8 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
   position: absolute;
   right: -350px;
   height: calc(100vh - 58px);
-  transition: all 0.4s ease;  
-  overflow: scroll;
+  transition: all 0.4s ease;
+  overflow: auto;
 
   &__show {
     right: 0;
@@ -169,6 +188,27 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
     @media (max-width: 500px) {
       left: 0;
     }
+  }
+}
+
+.overlay-box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 58px);
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.5s ease;
+
+  @media (min-width: 801px) {
+    display: none;
+  }
+
+  &__show {
+    opacity: 1;
+    z-index: 50;
   }
 }
 </style>
