@@ -16,20 +16,25 @@
         prepend-icon="mdi-magnify"
         class="pl-1.5 search-input"
       />
-      <custom-button
-        button-style="shadow-none ml-1 custom-button"
-        :icon="headerData.icons.themeSwitchingIcon"
-      />
-      <custom-button
-        button-style="shadow-none ml-1 custom-button"
-        :icon="headerData.icons.notificationIcon"
-      />
+      <div class="min-w-7 ml-1.25">
+        <custom-button
+          button-style="shadow-none custom-button"
+          :icon="headerData.icons.themeSwitchingIcon"
+        />
+      </div>
+      <div class="min-w-7 ml-1.25">
+        <custom-button
+          button-style="shadow-none custom-button"
+          :icon="headerData.icons.notificationIcon"
+        />
+      </div>
       <options-dropdown
-        class="pl-2.5 w-max"
+        class="pl-1.25 w-fit"
         :content-position="DropdownContentPosition.Right"
         :dropdown-content="headerData.userProfile.options"
-        :icon="profileIcon"
-        :image-url="profileImage"
+        :toggle-button-style="headerStyle.dropdownToggleButton"
+        :icon="headerStyle.profileIcon"
+        :image-url="headerStyle.profileImage"
         should-hide-toggle-arrow
       />
     </div>
@@ -51,25 +56,38 @@ const emits = defineEmits<{
   (e: "toggle-button-click", value: Event): void;
 }>();
 
-const profileIcon = ref<string>("");
-const profileImage = ref<string>("");
+interface HeaderStyle {
+  profileIcon: string;
+  profileImage: string;
+  dropdownToggleButton: string;
+}
+
+const headerStyle = ref<HeaderStyle>({
+  profileIcon: "",
+  profileImage: "",
+  dropdownToggleButton: "",
+});
+
 const windowWidth = 536;
 
 const headerData = computed(() => UiData.topPanel);
 
-const setProfileIcon = () => {
-  profileImage.value = window.innerWidth <= windowWidth ? "" : UserProfileImage;
-  profileIcon.value =
+const setHeaderStyles = () => {
+  headerStyle.value.profileImage =
+    window.innerWidth <= windowWidth ? "" : UserProfileImage;
+  headerStyle.value.profileIcon =
     window.innerWidth <= windowWidth ? "mdi-dots-vertical" : "";
+  headerStyle.value.dropdownToggleButton =
+    window.innerWidth <= windowWidth ? "px-1.25 text-black" : "";
 };
 
 const handleToggleButtonClick = (event: Event) => {
   emits("toggle-button-click", event);
 };
 
-window.addEventListener("resize", () => setProfileIcon());
+window.addEventListener("resize", () => setHeaderStyles());
 
-onMounted(() => setProfileIcon());
+onMounted(() => setHeaderStyles());
 </script>
 
 <style lang="scss" scoped>
@@ -81,9 +99,13 @@ onMounted(() => setProfileIcon());
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05), 0 0 4px rgba(0, 0, 0, 0.15);
 
   .title-section {
-    width: calc(100% - 78px);
+    width: max-content;
     display: flex;
     align-items: center;
+
+    @media (max-width: 550px) {
+      width: calc(100% - 78px);
+    }
   }
 
   .header-title {
@@ -95,8 +117,9 @@ onMounted(() => setProfileIcon());
   }
 
   .search-input {
-    max-width: 191px;
-    padding-right: 11px;
+    max-width: 192px;
+    padding-right: 12px;
+    border-radius: 0;
 
     @media (max-width: 531px) {
       display: none;

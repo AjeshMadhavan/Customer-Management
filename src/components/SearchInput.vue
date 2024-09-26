@@ -73,18 +73,31 @@ watch(shouldInitiateSearch, (newValue) => {
   color: rgb(3, 169, 244);
 
   .v-input__slot {
-    min-height: 32px;
+    min-height: 31px;    
+    max-height: 31px;
+    margin-top: -1px;
+    background-color: rgba(0, 0, 0, 0.04) !important;
   }
 
   #input-box::placeholder {
     text-transform: capitalize;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
   }
 
   .v-input__prepend-inner {
     margin-top: 4px;
+    padding: 4px 4px 4px 2px;
+
+    .v-input__icon {
+      width: 16px;
+      min-width: 16px;
+      height: 16px;
+    }
 
     .v-icon {
       font-size: 16px;
+      padding-right: 4px;
     }
   }
 
