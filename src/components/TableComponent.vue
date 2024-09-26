@@ -28,6 +28,21 @@
         </ul>
       </td>
     </template>
+    <template
+      v-if="props.itemSlotData"
+      v-slot:[`item.${props.itemSlotData.slotKey}`]="{ item }"
+    >
+      <td>
+        <span>{{ item[props.itemSlotData.slotKey] }}</span>
+        <span
+          v-for="value in props.itemSlotData.values"
+          :key="value"
+          class="block text-xs text-black-6"
+        >
+          {{ item[value] ?? value }}
+        </span>
+      </td>
+    </template>
   </v-data-table>
 </template>
 
@@ -37,13 +52,20 @@ import { computed, defineEmits, defineProps, ref, withDefaults } from "vue";
 import { TableHeader, UserData } from "../Type/Types";
 
 interface Props {
-  expandedMenuData?: string[];
   tableHeader: TableHeader[];
   userData: UserData[];
+  expandedMenuData?: string[];
+  itemSlotData?: ItemSlotData;
+}
+
+interface ItemSlotData {
+  slotKey: string;
+  values: string[];
 }
 
 const props = withDefaults(defineProps<Props>(), {
   expandedMenuData: () => [],
+  itemSlotData: undefined,
 });
 
 const emits = defineEmits<{
