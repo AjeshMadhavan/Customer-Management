@@ -1,5 +1,5 @@
 <template>
-  <div class="header-section w-full relative py-2.5">
+  <div class="header-section w-full py-2.5">
     <div class="title-section">
       <div class="w-12">
         <custom-button

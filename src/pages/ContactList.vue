@@ -1,10 +1,9 @@
 <template>
-  <div class="w-full h-full">
-    <header-container
-      class="z-10 bg-white"
-      @toggle-button-click="onToggleButtonClick"
-    />
-    <div class="flex relative">
+  <div class="w-full h-full relative">
+    <div class="fixed z-50 w-screen">
+      <header-container @toggle-button-click="onToggleButtonClick" />
+    </div>
+    <div class="flex relative contact-list-body">
       <div
         :class="[
           'sidebar-container-wrapper',
@@ -155,6 +154,10 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
 </script>
 
 <style scoped lang="scss">
+.contact-list-body {
+  padding-top: 58px;
+}
+
 .sidebar-container-wrapper {
   width: 250px;
   height: calc(100vh - 58px);
@@ -167,7 +170,7 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
   @media (max-width: 800px) {
     position: absolute;
     left: 0;
-    z-index: 51;
+    z-index: 41;
 
     &__minimize {
       left: -250px;
@@ -193,7 +196,7 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
 
 .overlay-box {
   position: absolute;
-  top: 0;
+  top: 58px;
   left: 0;
   width: 100%;
   height: calc(100vh - 58px);
@@ -208,7 +211,7 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
 
   &__show {
     opacity: 1;
-    z-index: 50;
+    z-index: 40;
   }
 }
 </style>
