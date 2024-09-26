@@ -96,7 +96,6 @@ const getRowClass = (TableRowData: UserData) => {
   width: 100%;
   border: 1px solid rgb(224, 224, 224);
   border-radius: 0;
-  height: 100vh;
 
   .v-data-table-header > tr > th {
     height: min-content !important;
