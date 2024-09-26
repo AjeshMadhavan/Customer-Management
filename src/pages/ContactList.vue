@@ -134,8 +134,9 @@ const updateExpandedMenuData = () => {
 };
 
 watch(userData, (newValue) => {
-  if (newValue) shouldShowUserDetails.value = true;
-  else {
+  if (newValue) {
+    shouldShowUserDetails.value = true;
+  } else {
     setTimeout(() => {
       shouldShowUserDetails.value = false;
     }, 400);
