@@ -6,7 +6,7 @@
     :item-class="getRowClass"
     :show-expand="expandedMenuData.length > 0"
     :expanded="expandedMenuData"
-    :items-per-page="itemsPerPage"
+    :items-per-page="ITEMS_PER_PAGE"
     fixed-header
     hide-default-footer
     show-select
@@ -14,7 +14,7 @@
     class="table"
     item-key="name"
     mobile-breakpoint="100"
-    :height="tableHeight"
+    :height="TABLE_HEIGHT"
     checkbox-color="#03a9f4"
     expand-icon="mdi-dots-horizontal"
     :header-props="{ 'sort-icon': 'mdi-arrow-up-thin' }"
@@ -76,8 +76,8 @@ const emits = defineEmits<{
 }>();
 
 const selectedRow = ref<string>("");
-const itemsPerPage = -1;
-const tableHeight = "100%";
+const ITEMS_PER_PAGE = -1;
+const TABLE_HEIGHT = "100%";
 
 const tableData = computed(() => props.userData);
 
