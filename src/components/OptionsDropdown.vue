@@ -20,7 +20,7 @@
           :src="props.imageUrl"
           :class="[
             'dropdown-image mr-1',
-            { 'dropdown-image__hover': shouldShowOptions },
+            { 'dropdown-image__active': shouldShowOptions },
           ]"
           alt="dropdown image"
         />
@@ -153,7 +153,7 @@ document.addEventListener("click", (event: Event) => {
   border-radius: 50%;
 
   &:hover,
-  &__hover {
+  &__active {
     border-color: rgb(3, 169, 244);
     color: hsla(0, 0%, 0%, 0.078);
   }
