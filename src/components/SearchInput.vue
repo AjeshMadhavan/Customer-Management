@@ -12,14 +12,14 @@
     :prepend-inner-icon="props.prependIcon"
     hide-spin-buttons
     class="text-xs text-input"
-    @keyup.enter="onValueChange"
     @keydown="onKeyDown"
+    @keydown.enter="handleEnterKeyPress"
     @scroll.prevent
   />
 </template>
 
 <script lang="ts" setup>
-import { defineEmits, defineProps, ref, withDefaults } from "vue";
+import { defineEmits, defineProps, ref, watch, withDefaults } from "vue";
 
 interface Props {
   placeholder?: string;
@@ -36,20 +36,36 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const emit = defineEmits<{
-  (e: "change", value: string | number): void;
+  (e: "on-input-change", value: string | number): void;
 }>();
 
 const inputValue = ref<string>(props.value);
+const shouldInitiateSearch = ref<boolean>(false);
 const restrictedValues = ["ArrowUp", "ArrowDown", "e", "E"];
+const SEARCH_INITIATING_DELAY = 1000;
+const inputMinLength = 3;
+let timeout;
 
 const onKeyDown = (event: KeyboardEvent) => {
   if (restrictedValues.includes(event.key) && props.type === "number")
     event.preventDefault();
+
+  shouldInitiateSearch.value = false;
+  clearTimeout(timeout);
+
+  timeout = setTimeout(() => {
+    if (inputValue.value.length >= inputMinLength)
+      shouldInitiateSearch.value = true;
+  }, SEARCH_INITIATING_DELAY);
 };
 
-const onValueChange = () => {
-  emit("change", inputValue.value);
+const handleEnterKeyPress = () => {
+  emit("on-input-change", inputValue.value);
 };
+
+watch(shouldInitiateSearch, (newValue) => {
+  if (newValue) emit("on-input-change", inputValue.value);
+});
 </script>
 
 <style lang="scss" scoped>
