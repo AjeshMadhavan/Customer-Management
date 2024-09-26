@@ -3,7 +3,7 @@
     <div class="fixed z-10 w-screen">
       <header-container @toggle-button-click="onToggleButtonClick" />
     </div>
-    <div class="flex relative body-section">
+    <div class="flex relative contact-list-body">
       <div
         :class="[
           'sidebar-container-wrapper',
@@ -154,7 +154,7 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
 </script>
 
 <style scoped lang="scss">
-.body-section {
+.contact-list-body {
   padding-top: 58px;
 }
 
