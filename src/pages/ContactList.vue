@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full relative">
+  <div class="w-full h-full relative overflow-hidden">
     <div class="fixed z-50 w-screen">
       <header-container @toggle-button-click="onToggleButtonClick" />
     </div>
@@ -14,7 +14,7 @@
       </div>
       <div
         :class="['overlay-box', { 'overlay-box__show': shouldMinimizeSidebar }]"
-        @click="onToggleButtonClick"
+        @click="onOverlayBoxClick"
       />
       <div class="w-full contact-list-container">
         <contact-list-container
@@ -108,6 +108,10 @@ const onUserDetailsCloseClick = () => {
 
 const onToggleButtonClick = () => {
   shouldMinimizeSidebar.value = !shouldMinimizeSidebar.value;
+};
+
+const onOverlayBoxClick = () => {
+  shouldMinimizeSidebar.value = false;
 };
 
 const updateExpandedMenuData = () => {

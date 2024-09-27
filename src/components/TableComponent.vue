@@ -105,6 +105,7 @@ const getRowClass = (TableRowData: UserData) => {
     padding: 0;
     padding-left: 8px;
     text-align: left;
+    z-index: 0;
 
     .v-icon.mdi-arrow-up-thin {
       transition: none;
