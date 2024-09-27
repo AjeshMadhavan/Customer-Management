@@ -59,7 +59,7 @@ const handleButtonClick = (event: Event) => {
 .button-text {
   letter-spacing: 0.52px;
   font-size: inherit;
-  width: 100%;
+  width: max-content;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

@@ -10,7 +10,7 @@
       <span v-if="props.label" class="text-2xs pr-1">
         {{ props.label }}
       </span>
-      <span v-if="props.text" :class="['text-xs', props.textStyle]">
+      <span v-if="props.text" :class="props.textStyle">
         {{ props.text }}
       </span>
     </div>

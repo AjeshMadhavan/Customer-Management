@@ -11,7 +11,7 @@
       ]"
       @click.stop="toggleOptions(!shouldShowOptions)"
     >
-      <div class="flex items-center w-4/5">
+      <div class="dropdown-button__content">
         <v-icon :class="['!text-base/4', { 'mr-1': !hasOnlyIcon }]">
           {{ props.icon }}
         </v-icon>
@@ -145,6 +145,11 @@ document.addEventListener("click", (event: Event) => {
   letter-spacing: 0.52px;
   display: flex;
   align-items: center;
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
 }
 
 .dropdown-image {
