@@ -12,7 +12,10 @@ module.exports = {
       },
       fontSize: {
         "2xs": ["10px", "10px"],
-        "3xs": "13px",
+        "3xs": "13px"
+      },
+      lineHeight: {
+        "3.25": "14px"
       },
       colors: {
         "black-6": "rgba(0, 0, 0, 0.6)",
@@ -27,7 +30,15 @@ module.exports = {
       },
       height: {
         "9.5": "38px",
-      }
+      },
+      padding: {
+        "1.25": "5px",
+        "2.75": "11px",
+        "3.75": "15px",
+      },
+      margin: {
+        "1.25": "5px"
+      },
     },
   },
   plugins: [],
