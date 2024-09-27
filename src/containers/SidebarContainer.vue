@@ -1,7 +1,7 @@
 <template>
   <div
     :class="[
-      'h-full bg-zinc-100 sidebar-container',
+      'h-full sidebar-container',
       {
         'w-full': props.shouldMinimizeSidebar,
         'w-12': !props.shouldMinimizeSidebar,
@@ -14,7 +14,7 @@
         :key="accordion.title"
         :text="accordion.title"
         :prepend-icon="accordion.icon"
-        toggle-button-style="py-2.5 pr-4 font-bold"
+        toggle-button-style="py-2.25 pr-4 font-bold text-black-87"
         container-style="border-b border-b-zinc-200"
         :hide-toggle-arrow="!props.shouldMinimizeSidebar"
       >
@@ -23,7 +23,7 @@
             <li
               v-for="accordionItem in accordion.options"
               :key="accordionItem.text"
-              class="py-2.5 pr-4 text-xs/4 text-left"
+              class="py-2.5 pr-4 text-3xs/4 text-left whitespace-nowrap"
             >
               <span class="pl-12">{{ accordionItem.text }}</span>
             </li>
@@ -33,7 +33,7 @@
     </div>
     <div
       :class="[
-        'pt-5 pb-4 pl-4 absolute right-0 bottom-0 left-0 bg-zinc-100 transition-opacity',
+        'pt-5 pb-4 absolute right-0 bottom-0 left-0 sidebar-label-container transition-opacity',
         {
           'opacity-0 delay-0 duration-100': !props.shouldMinimizeSidebar,
           'opacity-1 delay-300 duration-500': props.shouldMinimizeSidebar,
@@ -75,6 +75,7 @@ const sidebarData = computed(() => UIdata.sidebar);
   transition: width 0.5s ease-in-out;
   position: relative;
   z-index: 10;
+  background-color: rgb(242, 242, 242);
 
   .accordion-container {
     padding-bottom: 70px;
@@ -83,12 +84,19 @@ const sidebarData = computed(() => UIdata.sidebar);
     overflow-y: auto;
   }
 
+  .sidebar-label-container {
+    background-color: rgb(242, 242, 242);
+    padding-left: 15px;
+    height: 70px;
+  }
+
   &__label {
     display: block;
     text-align: left;
     font-size: 13px;
-    line-height: 16px;
+    line-height: 16.7141px;
     font-weight: 400;
+    color: rgba(0, 0, 0, 0.608);
   }
 }
 </style>

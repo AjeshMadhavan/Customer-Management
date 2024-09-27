@@ -159,7 +159,7 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
 }
 
 .sidebar-container-wrapper {
-  width: 250px;
+  min-width: 250px;
   height: calc(100vh - 58px);
   transition: all 0.5s ease;
 

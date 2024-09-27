@@ -12,13 +12,18 @@ module.exports = {
       },
       fontSize: {
         "2xs": ["10px", "10px"],
+        "3xs": "13px",
       },
       colors: {
         "black-6": "rgba(0, 0, 0, 0.6)",
         "black-04": "rgba(0, 0, 0, 0.04)",
         "black-12": "rgba(0, 0, 0, 0.12)",
         "black-14": "rgba(0, 0, 0, 0.14)",
+        "black-87": "rgba(0, 0, 0, 0.87)",
         "light-blue-500": "rgb(3, 169, 244)"
+      },
+      padding: {
+        "2.25": "9px"
       },
       height: {
         "9.5": "38px",
