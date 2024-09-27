@@ -25,14 +25,12 @@ module.exports = {
         "black-87": "rgba(0, 0, 0, 0.87)",
         "light-blue-500": "rgb(3, 169, 244)"
       },
-      padding: {
-        "2.25": "9px"
-      },
       height: {
         "9.5": "38px",
       },
       padding: {
         "1.25": "5px",
+        "2.25": "9px",
         "2.75": "11px",
         "3.75": "15px",
         "4.50": "18px"
