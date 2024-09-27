@@ -28,15 +28,17 @@
           :icon="headerData.icons.notificationIcon"
         />
       </div>
-      <options-dropdown
-        class="pl-1.25 w-fit"
-        :content-position="DropdownContentPosition.Right"
-        :dropdown-content="headerData.userProfile.options"
-        :toggle-button-style="headerStyle.dropdownToggleButton"
-        :icon="headerStyle.profileIcon"
-        :image-url="headerStyle.profileImage"
-        should-hide-toggle-arrow
-      />
+      <div class="sm:ml-1.25">
+        <options-dropdown
+          class="pl-1.25 w-fit"
+          :content-position="DropdownContentPosition.Right"
+          :dropdown-content="headerData.userProfile.options"
+          :toggle-button-style="headerStyle.dropdownToggleButton"
+          :icon="headerStyle.profileIcon"
+          :image-url="headerStyle.profileImage"
+          should-hide-toggle-arrow
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -72,13 +74,13 @@ const windowWidth = 536;
 
 const headerData = computed(() => UiData.topPanel);
 
-const setHeaderStyles = () => {
-  headerStyle.value.profileImage =
-    window.innerWidth <= windowWidth ? "" : UserProfileImage;
-  headerStyle.value.profileIcon =
-    window.innerWidth <= windowWidth ? "mdi-dots-vertical" : "";
-  headerStyle.value.dropdownToggleButton =
-    window.innerWidth <= windowWidth ? "px-1.25 text-black" : "";
+const onWindowResize = () => {
+  if (window.innerWidth <= windowWidth) {
+    headerStyle.value.profileIcon = "mdi-dots-vertical";
+    headerStyle.value.dropdownToggleButton = "px-1.25 text-black";
+  } else {
+    headerStyle.value.profileImage = UserProfileImage;
+  }
 };
 
 const handleToggleButtonClick = (event: Event) => {
@@ -86,8 +88,8 @@ const handleToggleButtonClick = (event: Event) => {
 };
 
 onMounted(() => {
-  setHeaderStyles();
-  window.addEventListener("resize", () => setHeaderStyles());
+  onWindowResize();
+  window.addEventListener("resize", () => onWindowResize());
 });
 </script>
 
@@ -118,8 +120,8 @@ onMounted(() => {
   }
 
   .search-input {
-    max-width: 192px;
-    padding-right: 12px;
+    max-width: 191px;
+    padding-right: 11px;
     border-radius: 0;
 
     @media (max-width: 531px) {
