@@ -16,7 +16,7 @@
         :class="['overlay-box', { 'overlay-box__show': shouldMinimizeSidebar }]"
         @click="onToggleButtonClick"
       />
-      <div class="w-full">
+      <div class="w-full contact-list-container">
         <contact-list-container
           :table-data="UserDetailsData.userDetails.users"
           :table-header="tableHeaders"
@@ -178,12 +178,18 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
   }
 }
 
+.contact-list-container {
+  height: calc(100vh - 58px);
+  overflow: hidden;
+}
+
 .user-details-container {
   position: absolute;
   right: -350px;
   height: calc(100vh - 58px);
   transition: all 0.4s ease;
   overflow: auto;
+  z-index: 2;
 
   &__show {
     right: 0;
