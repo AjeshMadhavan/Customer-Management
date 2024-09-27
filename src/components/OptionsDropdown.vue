@@ -20,7 +20,10 @@
           :src="props.imageUrl"
           :class="[
             'dropdown-image mr-1',
-            { 'dropdown-image__active': shouldShowOptions },
+            {
+              'dropdown-image__active': shouldShowOptions,
+              'mr-1': !hasOnlyImage,
+            },
           ]"
           alt="dropdown image"
         />
