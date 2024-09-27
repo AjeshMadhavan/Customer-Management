@@ -36,7 +36,7 @@
       v-slot:[`item.${props.itemSlotData.slotKey}`]="{ item }"
     >
       <td>
-        <span>{{ item[props.itemSlotData.slotKey] }}</span>
+        <span class="leading-4">{{ item[props.itemSlotData.slotKey] }}</span>
         <span
           v-for="value in props.itemSlotData.values"
           :key="value"
@@ -156,7 +156,7 @@ const getRowClass = (TableRowData: UserData) => {
   }
 
   .v-simple-checkbox .v-icon {
-    font-size: 16px !important;
+    font-size: 21px !important;
     width: auto !important;
   }
 
@@ -199,6 +199,8 @@ const getRowClass = (TableRowData: UserData) => {
     padding: 0;
     padding-left: 8px;
     text-align: left;
+    font-size: 13px;
+    height: 52.5px;
 
     &:first-child {
       padding: 8px;
