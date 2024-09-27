@@ -205,7 +205,7 @@ const personalDetails = computed(() => {
   return personalDataKeys.map((key: string) => {
     return {
       prependIcon: containerData.value.icons[key],
-      prependIconStyle: "pr-[18px] personal-details-prepend-icon",
+      prependIconStyle: "pr-4.50 personal-details-prepend-icon",
       value: props.userData[key],
     };
   });
