@@ -28,7 +28,7 @@
           :icon="headerData.icons.notificationIcon"
         />
       </div>
-      <div class="sm:ml-1.25">
+      <div>
         <options-dropdown
           class="pl-1.25 w-fit"
           :content-position="DropdownContentPosition.Right"
@@ -78,8 +78,11 @@ const onWindowResize = () => {
   if (window.innerWidth <= windowWidth) {
     headerStyle.value.profileIcon = "mdi-dots-vertical";
     headerStyle.value.dropdownToggleButton = "px-1.25 text-black";
+    headerStyle.value.profileImage = "";
   } else {
     headerStyle.value.profileImage = UserProfileImage;
+    headerStyle.value.profileIcon = "";
+    headerStyle.value.dropdownToggleButton = "";
   }
 };
 
@@ -120,8 +123,8 @@ onMounted(() => {
   }
 
   .search-input {
-    max-width: 191px;
-    padding-right: 11px;
+    max-width: 192px;
+    padding-right: 12px;
     border-radius: 0;
 
     @media (max-width: 531px) {

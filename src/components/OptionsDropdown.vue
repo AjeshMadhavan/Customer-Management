@@ -19,7 +19,7 @@
           v-if="props.imageUrl"
           :src="props.imageUrl"
           :class="[
-            'dropdown-image mr-1',
+            'dropdown-image',
             {
               'dropdown-image__active': shouldShowOptions,
               'mr-1': !hasOnlyImage,
