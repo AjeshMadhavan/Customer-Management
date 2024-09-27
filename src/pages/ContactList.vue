@@ -164,7 +164,7 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
   transition: all 0.5s ease;
 
   &__minimize {
-    width: 48px;
+    min-width: 48px;
   }
 
   @media (max-width: 800px) {
