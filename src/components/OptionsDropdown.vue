@@ -2,8 +2,11 @@
   <div class="relative w-full" ref="dropdownContainer">
     <button
       :class="[
-        'dropdown-button w-full hover:bg-zinc-200',
-        { 'bg-zinc-200': shouldShowOptions },
+        'dropdown-button w-full',
+        {
+          'bg-zinc-200': shouldShowOptions && !hasOnlyImage,
+          'hover:bg-zinc-200': !hasOnlyImage,
+        },
         props.toggleButtonStyle,
       ]"
       @click.stop="toggleOptions(!shouldShowOptions)"
@@ -15,7 +18,13 @@
         <img
           v-if="props.imageUrl"
           :src="props.imageUrl"
-          class="dropdown-image mr-1"
+          :class="[
+            'dropdown-image mr-1',
+            {
+              'dropdown-image__active': shouldShowOptions,
+              'mr-1': !hasOnlyImage,
+            },
+          ]"
           alt="dropdown image"
         />
         <span v-if="props.text" class="dropdown-title">
@@ -48,7 +57,11 @@
                 dropdownTitle === dropdownItem.text,
             },
           ]"
-          @click="() => onDropdownItemClick(dropdownItem.text)"
+          @click="
+            () =>
+              !dropdownItem.disableHover &&
+              onDropdownItemClick(dropdownItem.text)
+          "
         >
           <v-icon v-if="dropdownItem.prependIcon" class="dropdown-item__icon">
             {{ dropdownItem.prependIcon }}
@@ -105,6 +118,10 @@ const hasOnlyIcon = computed(
   () => props.icon && !props.text && !props.imageUrl
 );
 
+const hasOnlyImage = computed(
+  () => props.imageUrl && !props.text && !props.icon
+);
+
 const toggleOptions = (toggleValue: boolean) => {
   shouldShowOptions.value = toggleValue;
 };
@@ -138,7 +155,8 @@ document.addEventListener("click", (event: Event) => {
   object-position: 50% 0%;
   border-radius: 50%;
 
-  &:hover {
+  &:hover,
+  &__active {
     border-color: rgb(3, 169, 244);
     color: hsla(0, 0%, 0%, 0.078);
   }
