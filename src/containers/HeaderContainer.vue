@@ -85,9 +85,10 @@ const handleToggleButtonClick = (event: Event) => {
   emits("toggle-button-click", event);
 };
 
-window.addEventListener("resize", () => setHeaderStyles());
-
-onMounted(() => setHeaderStyles());
+onMounted(() => {
+  setHeaderStyles();
+  window.addEventListener("resize", () => setHeaderStyles());
+});
 </script>
 
 <style lang="scss" scoped>
