@@ -2,41 +2,45 @@
   <div class="w-full px-8">
     <div class="flex justify-between p-6">
       <div class="flex items-center">
-        <h1 class="pr-7 text-2xl h-9.5">{{ containerData.title }}</h1>
+        <h1 class="title">{{ containerData.title }}</h1>
         <div class="category-options">
           <options-dropdown
             :text="containerData.categoryOptions.title"
             :dropdown-content="containerData.categoryOptions.options"
-            toggle-button-style="py-1.5 pr-2 pl-3 font-bold"
+            toggle-button-style="py-1.25 pr-2 pl-3 font-bold leading-3.50"
             @dropdown-item-click="onDropdownItemClick"
           />
         </div>
       </div>
-      <div class="flex items-center justify-end">
-        <div class="pr-1.5">
+      <div class="flex items-center justify-end pl-3.75">
+        <div>
           <custom-button
             :text="containerData.addContactButton.title"
             :icon="containerData.addContactButton.icon"
             class="add-contact"
           />
         </div>
-        <custom-button
-          :icon="containerData.refreshDataButton.icon"
-          button-style="shadow-none custom-button data-refresh-button"
-        />
-        <span class="separator ml-1.5" />
-        <div class="export-data">
+        <div class="pl-1.25 data-refresh-button">
+          <custom-button
+            :icon="containerData.refreshDataButton.icon"
+            button-style="shadow-none custom-button"
+          />
+        </div>
+        <span class="separator ml-1.25" />
+        <div class="export-data pl-1.25">
           <options-dropdown
             :icon="containerData.exportOptions.icon"
             :dropdown-content="containerData.exportOptions.options"
-            toggle-button-style="py-1.5 px-2"
+            toggle-button-style="py-1.25 px-2"
           />
         </div>
-        <span class="separator mx-1.5 hidden sm:block" />
-        <custom-button
-          :icon="containerData.columnChooserButton.icon"
-          button-style="shadow-none custom-button column-chooser"
-        />
+        <span class="separator ml-1.25" />
+        <div class="pl-1.25 column-chooser">
+          <custom-button
+            :icon="containerData.columnChooserButton.icon"
+            button-style="shadow-none custom-button"
+          />
+        </div>
         <div class="contact-search">
           <search-input
             :placeholder="containerData.searchBoxLabel"
@@ -127,9 +131,33 @@ const onUserSearch = (inputValue: string) => {
   height: 24px;
   background-color: #e0e0e0;
 
-  @media (max-width: 700px) {
-    display: none;
+  &:first-of-type {
+    @media (max-width: 539px) {
+      display: none;
+    }
   }
+
+  &:last-of-type {
+    @media (max-width: 650px) {
+      display: none;
+    }
+  }
+}
+
+.title {
+  font-size: 22px;
+  padding-right: 25px;
+  line-height: 28px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.add-contact {
+  font-size: 13px !important;
+  min-height: 28px;
+  width: 132.95px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24);
 }
 
 .custom-button {
@@ -138,8 +166,9 @@ const onUserSearch = (inputValue: string) => {
   background-color: transparent !important;
 }
 
-.category-options {
-  height: 38px;
+.data-refresh-button,
+.column-chooser {
+  width: 33px;
 }
 
 .export-data {
@@ -148,11 +177,14 @@ const onUserSearch = (inputValue: string) => {
 
 .contact-search {
   margin-left: 20px;
+  width: 160px;
 }
 
 .dropdown-button {
   display: none;
   margin-left: 10px;
+  padding-left: 5px;
+  width: 33px;
 }
 
 @media (max-width: 367px) {
@@ -167,25 +199,25 @@ const onUserSearch = (inputValue: string) => {
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 533px) {
   .data-refresh-button {
     display: none;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 644px) {
   .export-data {
     display: none;
   }
 }
 
-@media (max-width: 750px) {
+@media (max-width: 683px) {
   .column-chooser {
     display: none;
   }
 }
 
-@media (max-width: 850px) {
+@media (max-width: 820px) {
   .contact-search {
     display: none;
   }

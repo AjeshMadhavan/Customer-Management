@@ -15,7 +15,8 @@ module.exports = {
         "3xs": "13px"
       },
       lineHeight: {
-        "3.25": "14px"
+        "3.25": "14px",
+        "3.50": "15px"
       },
       colors: {
         "black-6": "rgba(0, 0, 0, 0.6)",

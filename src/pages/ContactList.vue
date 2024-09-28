@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full h-full relative">
+  <div class="w-full h-full relative overflow-hidden">
     <div class="fixed z-50 w-screen">
       <header-container @toggle-button-click="onToggleButtonClick" />
     </div>
@@ -14,7 +14,7 @@
       </div>
       <div
         :class="['overlay-box', { 'overlay-box__show': shouldMinimizeSidebar }]"
-        @click="onToggleButtonClick"
+        @click="onOverlayBoxClick"
       />
       <div class="w-full contact-list-container">
         <contact-list-container
@@ -110,6 +110,10 @@ const onToggleButtonClick = () => {
   shouldMinimizeSidebar.value = !shouldMinimizeSidebar.value;
 };
 
+const onOverlayBoxClick = () => {
+  shouldMinimizeSidebar.value = false;
+};
+
 const updateExpandedMenuData = () => {
   switch (true) {
     case window.innerWidth < 448:
@@ -118,13 +122,13 @@ const updateExpandedMenuData = () => {
     case window.innerWidth >= 448 && window.innerWidth < 617:
       return ["assignedTo", "status", "phone", "email"];
 
-    case window.innerWidth >= 617 && window.innerWidth < 850:
+    case window.innerWidth >= 617 && window.innerWidth < 727:
       return ["status", "phone", "email"];
 
-    case window.innerWidth >= 850 && window.innerWidth < 950:
+    case window.innerWidth >= 727 && window.innerWidth < 855:
       return ["phone", "email"];
 
-    case window.innerWidth >= 950 && window.innerWidth < 1371:
+    case window.innerWidth >= 855 && window.innerWidth < 1371:
       return ["email"];
 
     default:
@@ -145,7 +149,7 @@ watch(userData, (newValue) => {
 window.addEventListener("resize", () => {
   tableExpandColumns.value = updateExpandedMenuData();
 
-  if (window.innerWidth === 800) {
+  if (window.innerWidth <= 1199) {
     shouldMinimizeSidebar.value = false;
   }
 });
@@ -156,22 +160,34 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
 <style scoped lang="scss">
 .contact-list-body {
   padding-top: 58px;
+
+  @media (max-width: 1199px) {
+    padding-left: 48px;
+  }
+
+  @media (max-width: 576px) {
+    padding-left: 0;
+  }
 }
 
 .sidebar-container-wrapper {
   min-width: 250px;
+  width: 250px;
   height: calc(100vh - 58px);
   transition: all 0.5s ease;
 
   &__minimize {
+    width: 48px;
     min-width: 48px;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: 1199px) {
     position: absolute;
     left: 0;
     z-index: 41;
+  }
 
+  @media (max-width: 576px) {
     &__minimize {
       left: -250px;
     }
@@ -211,7 +227,7 @@ onMounted(() => (tableExpandColumns.value = updateExpandedMenuData()));
   opacity: 0;
   transition: all 0.5s ease;
 
-  @media (min-width: 801px) {
+  @media (min-width: 1200px) {
     display: none;
   }
 
